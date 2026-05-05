@@ -21,6 +21,9 @@ public class AsteroidClass : MonoBehaviour
 
     public bool hitByLaser = false;
 
+    private float lifetime = 0.0f;
+    private float maxLifetime = 240.0f; // four minutes
+
     public void Init(int iSize, 
                      float iMoveSpeed, 
                      float iRotSpeed, 
@@ -41,6 +44,13 @@ public class AsteroidClass : MonoBehaviour
     {
         transform.Rotate(rotDir * rotSpeed * Time.deltaTime);
         transform.position += moveDir * moveSpeed * Time.deltaTime;
+
+        lifetime += Time.deltaTime;
+        if (lifetime >= maxLifetime)
+        {
+            Debug.Log("Lifetime Expired");
+            Destroy(gameObject);
+        }
     }
 
     public InheritanceType GetAsteroidType()

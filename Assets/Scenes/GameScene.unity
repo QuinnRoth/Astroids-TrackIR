@@ -133,7 +133,6 @@ GameObject:
   - component: {fileID: 60033870}
   - component: {fileID: 60033874}
   - component: {fileID: 60033875}
-  - component: {fileID: 60033876}
   - component: {fileID: 60033877}
   - component: {fileID: 60033878}
   - component: {fileID: 60033879}
@@ -290,28 +289,6 @@ MonoBehaviour:
   cockpitRadar: {fileID: 0}
   thirdPersonRadar: {fileID: 0}
   thirdPersonRadarScript: {fileID: 0}
---- !u!114 &60033876
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 60033867}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89b0a5f04112b50498704556331eea8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SpaceshipDamage
-  gameOverMenu: {fileID: 1617551419}
-  cursorCanvas: {fileID: 889884848}
-  damageFlash: {fileID: 728335390}
-  damageCooldown: 1
-  damageBlinkDuration: 0.8
-  damageBlinkTime: 0.1
-  screenFadingDuration: 1
-  screenIsBlackDuration: 1
-  shipModelRenderer: {fileID: 519351342}
-  fadeScreenImage: {fileID: 2122161153}
 --- !u!114 &60033877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -601,6 +578,7 @@ GameObject:
   m_Component:
   - component: {fileID: 310084676}
   - component: {fileID: 310084677}
+  - component: {fileID: 310084678}
   m_Layer: 0
   m_Name: BoxCollider
   m_TagString: Untagged
@@ -644,6 +622,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 7.380023, y: 2.5870714, z: 8.002352}
   m_Center: {x: -0.07935238, y: 1.5235882, z: -2.225047}
+--- !u!114 &310084678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 310084675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f51c8d3512d23e4eb57a18fcfb4a0a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DamageTriggerProxy
+  parentScript: {fileID: 1294839365}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -1262,7 +1253,7 @@ Transform:
   m_GameObject: {fileID: 480617693}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 14.91}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1281,9 +1272,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9f1d9db4f559324692cf50d8fdd7fe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  spaceship: {fileID: 0}
-  radarIconPrefab: {fileID: 0}
-  playerCamera: {fileID: 0}
+  spaceship: {fileID: 60033867}
+  radarIconPrefab: {fileID: 840798862}
+  playerCamera: {fileID: 330585545}
   screenEdgeBuffer: 40
   maxRadarIcons: 3
   maxRadarDistance: 150
@@ -1355,15 +1346,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 1b896a2fe6743f849a36c43a9c1786ad, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.00002
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1b896a2fe6743f849a36c43a9c1786ad, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.51317
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1b896a2fe6743f849a36c43a9c1786ad, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.7882
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1b896a2fe6743f849a36c43a9c1786ad, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1458,6 +1449,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 594896065}
+  - component: {fileID: 594896066}
+  - component: {fileID: 594896067}
   m_Layer: 0
   m_Name: SphereCollider
   m_TagString: Untagged
@@ -1480,6 +1473,40 @@ Transform:
   m_Children: []
   m_Father: {fileID: 480617694}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &594896066
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 594896064}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 50
+  m_Center: {x: 0, y: 0, z: -14.856202}
+--- !u!114 &594896067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 594896064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de6d191383520404eb11d5f9f1b3b6bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TriggerProxy
+  parentScript: {fileID: 480617695}
 --- !u!1 &708000480
 GameObject:
   m_ObjectHideFlags: 0
@@ -2557,6 +2584,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89b0a5f04112b50498704556331eea8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpaceshipDamage
+  spaceship: {fileID: 60033867}
   gameOverMenu: {fileID: 1617551419}
   cursorCanvas: {fileID: 889884848}
   damageFlash: {fileID: 728335390}
@@ -2597,8 +2625,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34181b5e1099fb14e9179cb9ac18d0e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HUDUIController
-  hudDocument: {fileID: 0}
-  player: {fileID: 60033876}
+  hudDocument: {fileID: 1580774561}
+  player: {fileID: 1294839365}
   legacyHudCanvasRoot: {fileID: 1780026797}
   maxLives: 3
   zeroPad: 6

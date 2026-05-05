@@ -26,7 +26,7 @@ public class TradeShowMode : MonoBehaviour
     {
         spawnEquationM = (spawnTimerMin - initSpawnTimer) / reachSpawnTimerMin;
 
-        asteroidSpawner.SpawnXAsteroids(initSpawnAmount - spawnNumber);
+        asteroidSpawner.SpawnXAsteroidsNotTowardOrigin(initSpawnAmount - spawnNumber);
     }
 
     void Update()
