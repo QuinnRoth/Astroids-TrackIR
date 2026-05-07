@@ -92,7 +92,7 @@ public class SpaceshipDamage : MonoBehaviour
     IEnumerator Die()
     {
         SoundManager.PlaySound(SoundType.DEATH, 0.75f);
-        GetComponent<SpaceshipDeathAnimation>().TriggerDeath();
+        GetComponentInParent<SpaceshipDeathAnimation>().TriggerDeath();
 
         var camera = transform.Find("CameraHolder");
         if (camera)
@@ -102,7 +102,7 @@ public class SpaceshipDamage : MonoBehaviour
 
         Destroy(gameObject, 3f);
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
 
         gameOverMenu.SetActive(true);
         cursorCanvas.SetActive(true);
