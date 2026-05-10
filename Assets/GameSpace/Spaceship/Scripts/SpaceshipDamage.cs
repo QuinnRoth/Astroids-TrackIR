@@ -37,14 +37,25 @@ public class SpaceshipDamage : MonoBehaviour
     public Image fadeScreenImage;
     private bool canTakeDamage = true;
 
+    [SerializeField] private float bounceForce = 10f;
+
+    private Rigidbody rb;
+
     // private void Start()
     // {
     //     startTime = Time.time;
     // }
 
-    public void HandleTriggerEnter(Collider collider)
+    private void Awake()
     {
-        if (collider.CompareTag("Asteroid"))
+        rb = GetComponent<Rigidbody>();
+    }
+
+    // public void HandleTriggerEnter(Collider collider)
+    public void OnCollisionEnter(Collision collision)
+    {
+        // if (collider.CompareTag("Asteroid"))
+        if(collision.collider.CompareTag("Asteroid"))
         {
             //** On damage cooldown method **//
             // // Only take damage if enough time has passed
@@ -67,6 +78,16 @@ public class SpaceshipDamage : MonoBehaviour
                 // During this time, the spaceship cannot be damaged
                 StartCoroutine(TakeDamageReorientation());
             }
+
+            // bounce the asteroid and spaceship
+            
+            // get the contact normal
+            ContactPoint contact = collision.GetContact(0);
+            Vector3 reflectDir = Vector3.Reflect(rb.linearVelocity.normalized, contact.normal);
+
+            // stop and then bounce
+            rb.linearVelocity = Vector3.zero;
+            rb.AddForce(reflectDir * bounceForce, ForceMode.Impulse);
         }
 
         if (playerHealth <= 0)
@@ -92,7 +113,8 @@ public class SpaceshipDamage : MonoBehaviour
     IEnumerator Die()
     {
         SoundManager.PlaySound(SoundType.DEATH, 0.75f);
-        GetComponentInParent<SpaceshipDeathAnimation>().TriggerDeath();
+        GetComponent<SpaceshipDeathAnimation>().TriggerDeath();
+        // GetComponentInParent<SpaceshipDeathAnimation>().TriggerDeath();
 
         var camera = transform.Find("CameraHolder");
         if (camera)
