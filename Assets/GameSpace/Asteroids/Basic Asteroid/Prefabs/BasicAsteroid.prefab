@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3090465002017071069}
   - component: {fileID: -1854093367213875424}
   - component: {fileID: 1335870249678665103}
+  - component: {fileID: 1185464393321160817}
   - component: {fileID: 675305367671045526}
   - component: {fileID: 6402413159391817270}
   - component: {fileID: 2310456284434743995}
@@ -63,7 +64,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8123916397191553103}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: de58fdeeb816c7545833fd56b2de64ed, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -77,6 +78,33 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &1185464393321160817
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8123916397191553103}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!114 &675305367671045526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,8 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87b365ee1526411418f11b4037506757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GhostBoundary
-  ghostCount: 1
-  renderDistance: 550
+  renderDistance: 625
   wrapLayers: 1
 --- !u!1001 &519535639084456999
 PrefabInstance:
@@ -173,9 +200,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: efdf37692e7810f40a776ce5bfdba0cf, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: efdf37692e7810f40a776ce5bfdba0cf, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: efdf37692e7810f40a776ce5bfdba0cf, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 419275df9d2f38a40bd66ddd19724db2, type: 2}
+    - target: {fileID: -7511558181221131132, guid: efdf37692e7810f40a776ce5bfdba0cf, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 419275df9d2f38a40bd66ddd19724db2, type: 2}
     - target: {fileID: 919132149155446097, guid: efdf37692e7810f40a776ce5bfdba0cf, type: 3}
       propertyPath: m_Name
       value: asteroid_test_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: efdf37692e7810f40a776ce5bfdba0cf, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: efdf37692e7810f40a776ce5bfdba0cf, type: 3}
+      propertyPath: m_TagString
+      value: Asteroid
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

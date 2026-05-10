@@ -137,7 +137,8 @@ GameObject:
   - component: {fileID: 60033878}
   - component: {fileID: 60033879}
   - component: {fileID: 60033880}
-  m_Layer: 0
+  - component: {fileID: 60033882}
+  m_Layer: 7
   m_Name: Spaceship
   m_TagString: Spaceship
   m_Icon: {fileID: 0}
@@ -167,6 +168,7 @@ Transform:
   - {fileID: 1904302474}
   - {fileID: 1294839364}
   - {fileID: 480617694}
+  - {fileID: 353723675}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &60033870
@@ -194,8 +196,8 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  m_Constraints: 112
+  m_CollisionDetection: 1
 --- !u!23 &60033872
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -447,6 +449,29 @@ MonoBehaviour:
   gameplayMusic: {fileID: 8300000, guid: c4c178453828bc64fb7ea99f4b57184d, type: 3}
   gameplayMusicVolume: 0.2
   explosionReplayDelay: 0.08
+--- !u!114 &60033882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 60033867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89b0a5f04112b50498704556331eea8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpaceshipDamage
+  gameOverMenu: {fileID: 1617551419}
+  cursorCanvas: {fileID: 889884848}
+  damageFlash: {fileID: 728335390}
+  damageCooldown: 1
+  damageBlinkDuration: 0.8
+  damageBlinkTime: 0.1
+  screenFadingDuration: 1
+  screenIsBlackDuration: 1
+  shipModelRenderer: {fileID: 519351342}
+  fadeScreenImage: {fileID: 2122161153}
+  bounceForce: 10
 --- !u!1 &115963254 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 17b4583417a828f4a94dd97df97fc516, type: 3}
@@ -580,13 +605,13 @@ GameObject:
   - component: {fileID: 310084676}
   - component: {fileID: 310084677}
   - component: {fileID: 310084678}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BoxCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &310084676
 Transform:
   m_ObjectHideFlags: 0
@@ -617,7 +642,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 3
@@ -635,7 +660,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d696c236254a164449f780f65afb4ef5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  parentScript: {fileID: 1294839365}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -651,7 +675,7 @@ GameObject:
   - component: {fileID: 330585549}
   - component: {fileID: 330585548}
   - component: {fileID: 330585550}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -819,6 +843,60 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1b896a2fe6743f849a36c43a9c1786ad, type: 3}
   m_PrefabInstance: {fileID: 519351340}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &353723674
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 353723675}
+  - component: {fileID: 353723676}
+  m_Layer: 7
+  m_Name: Mesh
+  m_TagString: Spaceship
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &353723675
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 353723674}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 60033868}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!64 &353723676
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 353723674}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7687367282950845239, guid: 1b896a2fe6743f849a36c43a9c1786ad, type: 3}
 --- !u!1 &354861982
 GameObject:
   m_ObjectHideFlags: 0
@@ -1178,7 +1256,7 @@ GameObject:
   m_Component:
   - component: {fileID: 456537967}
   - component: {fileID: 456537966}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: AsteroidSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1238,7 +1316,7 @@ GameObject:
   m_Component:
   - component: {fileID: 480617694}
   - component: {fileID: 480617695}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SpaceshipRadar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1298,7 +1376,7 @@ GameObject:
   m_Component:
   - component: {fileID: 485049512}
   - component: {fileID: 485049511}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: EndlessMode
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1402,6 +1480,10 @@ PrefabInstance:
       value: ShipModel
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 1b896a2fe6743f849a36c43a9c1786ad, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1b896a2fe6743f849a36c43a9c1786ad, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -1452,8 +1534,8 @@ GameObject:
   - component: {fileID: 594896065}
   - component: {fileID: 594896066}
   - component: {fileID: 594896067}
-  m_Layer: 0
-  m_Name: SphereCollider
+  m_Layer: 6
+  m_Name: RadarCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1493,7 +1575,7 @@ SphereCollider:
   m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 50
+  m_Radius: 0.1
   m_Center: {x: 0, y: 0, z: -14.856202}
 --- !u!114 &594896067
 MonoBehaviour:
@@ -2091,7 +2173,7 @@ GameObject:
   m_Component:
   - component: {fileID: 970893456}
   - component: {fileID: 970893457}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SpaceshipShoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2139,7 +2221,7 @@ GameObject:
   - component: {fileID: 1034675647}
   - component: {fileID: 1034675648}
   - component: {fileID: 1034675649}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ShipTrailPointR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2302,7 +2384,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1151369644}
   - component: {fileID: 1151369643}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TradeShowMode
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2493,6 +2575,10 @@ PrefabInstance:
       value: cockpit-export-1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 17b4583417a828f4a94dd97df97fc516, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 17b4583417a828f4a94dd97df97fc516, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -2550,13 +2636,13 @@ GameObject:
   m_Component:
   - component: {fileID: 1294839364}
   - component: {fileID: 1294839365}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SpaceshipDamage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1294839364
 Transform:
   m_ObjectHideFlags: 0
@@ -2595,6 +2681,7 @@ MonoBehaviour:
   screenIsBlackDuration: 1
   shipModelRenderer: {fileID: 519351342}
   fadeScreenImage: {fileID: 2122161153}
+  bounceForce: 10
 --- !u!1 &1580774559
 GameObject:
   m_ObjectHideFlags: 0
@@ -2626,7 +2713,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HUDUIController
   hudDocument: {fileID: 1580774561}
-  player: {fileID: 1294839365}
+  player: {fileID: 60033882}
   legacyHudCanvasRoot: {fileID: 1780026797}
   maxLives: 3
   zeroPad: 6
@@ -2748,7 +2835,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1764617320}
   - component: {fileID: 1764617319}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: WaveMode
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2897,7 +2984,7 @@ GameObject:
   - component: {fileID: 1904302474}
   - component: {fileID: 1904302475}
   - component: {fileID: 1904302476}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ShipTrailPointL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3059,7 +3146,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1925770278}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CameraPivotThirdPerson
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3090,7 +3177,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1939948137}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CameraPivotFirstPerson
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3121,7 +3208,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1954084523}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CameraHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}

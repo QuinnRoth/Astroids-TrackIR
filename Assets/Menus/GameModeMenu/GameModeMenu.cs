@@ -43,33 +43,33 @@ public class GameModeMenu : MonoBehaviour
 
         // Hover and Exit
         tradeShowButton.RegisterCallback<PointerEnterEvent>(evt => {
-            Debug.Log("Mouse entered tradeShow button!");
+            // Debug.Log("Mouse entered tradeShow button!");
             tradeShowButtonHover.Invoke();
         });
-        tradeShowButton.RegisterCallback<PointerLeaveEvent>(evt => {
-            Debug.Log("Mouse exited tradeShow button!");
-        });
+        // tradeShowButton.RegisterCallback<PointerLeaveEvent>(evt => {
+        //     Debug.Log("Mouse exited tradeShow button!");
+        // });
         endlessButton.RegisterCallback<PointerEnterEvent>(evt => {
-            Debug.Log("Mouse entered endless button!");
+            // Debug.Log("Mouse entered endless button!");
             endlessButtonHover.Invoke();
         });
-        endlessButton.RegisterCallback<PointerLeaveEvent>(evt => {
-            Debug.Log("Mouse exited endless button!");
-        });
+        // endlessButton.RegisterCallback<PointerLeaveEvent>(evt => {
+        //     Debug.Log("Mouse exited endless button!");
+        // });
         waveButton.RegisterCallback<PointerEnterEvent>(evt => {
-            Debug.Log("Mouse entered wave button!");
+            // Debug.Log("Mouse entered wave button!");
             waveButtonHover.Invoke();
         });
-        waveButton.RegisterCallback<PointerLeaveEvent>(evt => {
-            Debug.Log("Mouse exited wave button!");
-        });
+        // waveButton.RegisterCallback<PointerLeaveEvent>(evt => {
+        //     Debug.Log("Mouse exited wave button!");
+        // });
         backButton.RegisterCallback<PointerEnterEvent>(evt => {
-            Debug.Log("Mouse entered back button!");
+            // Debug.Log("Mouse entered back button!");
             backButtonHover.Invoke();
         });
-        backButton.RegisterCallback<PointerLeaveEvent>(evt => {
-            Debug.Log("Mouse exited back button!");
-        });
+        // backButton.RegisterCallback<PointerLeaveEvent>(evt => {
+        //     Debug.Log("Mouse exited back button!");
+        // });
     }
 
     private void OnDisable()

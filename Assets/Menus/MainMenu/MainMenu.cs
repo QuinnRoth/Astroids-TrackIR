@@ -58,44 +58,44 @@ public class MainMenu : MonoBehaviour
 
         // Hover and Exit
         playButton.RegisterCallback<PointerEnterEvent>(evt => {
-            Debug.Log("Mouse entered play button!");
+            // Debug.Log("Mouse entered play button!");
             playButtonHover.Invoke();
         });
-        playButton.RegisterCallback<PointerLeaveEvent>(evt => {
-            Debug.Log("Mouse exited play button!");
-        });
+        // playButton.RegisterCallback<PointerLeaveEvent>(evt => {
+        //     Debug.Log("Mouse exited play button!");
+        // });
         settingsButton.RegisterCallback<PointerEnterEvent>(evt => {
-            Debug.Log("Mouse entered settings button!");
+            // Debug.Log("Mouse entered settings button!");
             settingsButtonHover.Invoke();
         });
-        settingsButton.RegisterCallback<PointerLeaveEvent>(evt => {
-            Debug.Log("Mouse exited settings button!");
-        });
+        // settingsButton.RegisterCallback<PointerLeaveEvent>(evt => {
+        //     Debug.Log("Mouse exited settings button!");
+        // });
         leaderboardButton.RegisterCallback<PointerEnterEvent>(evt => {
-            Debug.Log("Mouse entered leaderboard button!");
+            // Debug.Log("Mouse entered leaderboard button!");
             leaderboardButtonHover.Invoke();
         });
-        leaderboardButton.RegisterCallback<PointerLeaveEvent>(evt => {
-            Debug.Log("Mouse exited leaderboard button!");
-        });
+        // leaderboardButton.RegisterCallback<PointerLeaveEvent>(evt => {
+        //     Debug.Log("Mouse exited leaderboard button!");
+        // });
         exitButton.RegisterCallback<PointerEnterEvent>(evt => {
-            Debug.Log("Mouse entered exit button!");
+            // Debug.Log("Mouse entered exit button!");
             exitButtonHover.Invoke();
         });
-        exitButton.RegisterCallback<PointerLeaveEvent>(evt => {
-            Debug.Log("Mouse exited exit button!");
-        });
+        // exitButton.RegisterCallback<PointerLeaveEvent>(evt => {
+        //     Debug.Log("Mouse exited exit button!");
+        // });
 
         if (colorsButton != null)
         {
             colorsButton.clicked += DisplayColorsMenu;
             colorsButton.RegisterCallback<PointerEnterEvent>(evt => {
-                Debug.Log("Mouse entered colors button!");
+                // Debug.Log("Mouse entered colors button!");
                 colorsButtonHover.Invoke();
             });
-            colorsButton.RegisterCallback<PointerLeaveEvent>(evt => {
-                Debug.Log("Mouse exited colors button!");
-            });
+            // colorsButton.RegisterCallback<PointerLeaveEvent>(evt => {
+            //     Debug.Log("Mouse exited colors button!");
+            // });
         }
     }
 
@@ -107,44 +107,44 @@ public class MainMenu : MonoBehaviour
         exitButton.clicked -= ExitGame;
 
         playButton.UnregisterCallback<PointerEnterEvent>(evt => {
-            Debug.Log("Mouse entered play button!");
+            // Debug.Log("Mouse entered play button!");
             playButtonHover.Invoke();
         });
-        playButton.UnregisterCallback<PointerLeaveEvent>(evt => {
-            Debug.Log("Mouse exited play button!");
-        });
+        // playButton.UnregisterCallback<PointerLeaveEvent>(evt => {
+        //     Debug.Log("Mouse exited play button!");
+        // });
         settingsButton.UnregisterCallback<PointerEnterEvent>(evt => {
-            Debug.Log("Mouse entered settings button!");
+            // Debug.Log("Mouse entered settings button!");
             settingsButtonHover.Invoke();
         });
-        settingsButton.UnregisterCallback<PointerLeaveEvent>(evt => {
-            Debug.Log("Mouse exited settings button!");
-        });
+        // settingsButton.UnregisterCallback<PointerLeaveEvent>(evt => {
+        //     Debug.Log("Mouse exited settings button!");
+        // });
         leaderboardButton.UnregisterCallback<PointerEnterEvent>(evt => {
-            Debug.Log("Mouse entered leaderbaord button!");
+            // Debug.Log("Mouse entered leaderbaord button!");
             leaderboardButtonHover.Invoke();
         });
-        leaderboardButton.UnregisterCallback<PointerLeaveEvent>(evt => {
-            Debug.Log("Mouse exited leaderboard button!");
-        });
+        // leaderboardButton.UnregisterCallback<PointerLeaveEvent>(evt => {
+        //     Debug.Log("Mouse exited leaderboard button!");
+        // });
         exitButton.UnregisterCallback<PointerEnterEvent>(evt => {
-            Debug.Log("Mouse entered exit button!");
+            // Debug.Log("Mouse entered exit button!");
             exitButtonHover.Invoke();
         });
-        exitButton.UnregisterCallback<PointerLeaveEvent>(evt => {
-            Debug.Log("Mouse exited exit button!");
-        });
+        // exitButton.UnregisterCallback<PointerLeaveEvent>(evt => {
+        //     Debug.Log("Mouse exited exit button!");
+        // });
 
         if (colorsButton != null)
         {
             colorsButton.clicked -= DisplayColorsMenu;
             colorsButton.UnregisterCallback<PointerEnterEvent>(evt => {
-                Debug.Log("Mouse entered colors button!");
+                // Debug.Log("Mouse entered colors button!");
                 colorsButtonHover.Invoke();
             });
-            colorsButton.UnregisterCallback<PointerLeaveEvent>(evt => {
-                Debug.Log("Mouse exited colors button!");
-            });
+            // colorsButton.UnregisterCallback<PointerLeaveEvent>(evt => {
+            //     Debug.Log("Mouse exited colors button!");
+            // });
         }
 
     }
