@@ -91,6 +91,14 @@ public class MainMenuAsteroidSpawner : MonoBehaviour
                     break;
                 default: // Basic asteroid, 90% of the time
                     asteroid = Instantiate(basicAsteroidPrefab, randomPosition, Quaternion.identity, parentOfAsteroids);
+
+                    // Apply the saved color scheme to the newly spawned asteroid
+                    var apply = asteroid.GetComponent<ApplySavedColors>();
+                    if (apply != null && asteroid.GetComponent<AsteroidClass>().GetAsteroidType() == AsteroidClass.InheritanceType.Basic)
+                        apply.ApplyNow();
+                    else
+                        Debug.LogError("Cannot find ApplySavedColors component on " + asteroid);
+
                     break;
             }
 
@@ -101,13 +109,6 @@ public class MainMenuAsteroidSpawner : MonoBehaviour
                 /* iMoveDir = */    moveDir,
                 /* iRotDir = */     randomRotDir
             );
-
-            // Apply the saved color scheme to the newly spawned asteroid
-            var apply = asteroid.GetComponent<ApplySavedColors>();
-            if (apply != null && asteroid.GetComponent<AsteroidClass>().GetAsteroidType() == AsteroidClass.InheritanceType.Basic)
-                apply.ApplyNow();
-            else
-                Debug.LogError("Cannot find ApplySavedColors component on " + asteroid);
 
             // Disable ghost asteroids and boundary script in main menu
             asteroid.GetComponent<GhostBoundary>().enabled = false;

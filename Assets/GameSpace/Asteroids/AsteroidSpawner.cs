@@ -119,7 +119,7 @@ public class AsteroidSpawner : MonoBehaviour
                 randomPosition /= 2;
 
             // Generate a random number [0-20) and use that number for chance calculations
-            int randChance = UnityEngine.Random.Range(0, 10);
+            int randChance = UnityEngine.Random.Range(0, 20);
 
             // Spawn asteroids based on chance variable, set their position and rotation, and add them as a child of the chosen parent
             switch (randChance)
@@ -234,6 +234,14 @@ public class AsteroidSpawner : MonoBehaviour
                     break;
                 default: // Basic asteroid, 90% of the time
                     asteroid = Instantiate(basicAsteroidPrefab, randomPosition, Quaternion.identity, parentOfAsteroids);
+
+                    // Apply the saved color scheme to the newly spawned asteroid
+                    var apply = asteroid.GetComponent<ApplySavedColors>();
+                    if (apply != null && asteroid.GetComponent<AsteroidClass>().GetAsteroidType() == AsteroidClass.InheritanceType.Basic)
+                        apply.ApplyNow();
+                    else
+                        Debug.LogError("Cannot find ApplySavedColors component on " + asteroid);
+
                     break;
             }
 
@@ -245,13 +253,6 @@ public class AsteroidSpawner : MonoBehaviour
                 /* iRotDir = */     randomRotDir
             );
 
-            // Apply the saved color scheme to the newly spawned asteroid
-            var apply = asteroid.GetComponent<ApplySavedColors>();
-            if (apply != null && asteroid.GetComponent<AsteroidClass>().GetAsteroidType() == AsteroidClass.InheritanceType.Basic)
-                apply.ApplyNow();
-            else
-                Debug.LogError("Cannot find ApplySavedColors component on " + asteroid);
-            
             // Debug.Log(asteroid.GetComponent<AsteroidClass>().GetAsteroidType());
 
             asteroidCount++;
