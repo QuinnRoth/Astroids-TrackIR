@@ -22,7 +22,7 @@ public class AsteroidClass : MonoBehaviour
     public bool hitByLaser = false;
 
     private float lifetime = 0.0f;
-    private float maxLifetime = 240.0f; // four minutes
+    private readonly float maxLifetime = 240.0f; // four minutes
 
     public void Init(int iSize, 
                      float iMoveSpeed, 
@@ -69,6 +69,11 @@ public class AsteroidClass : MonoBehaviour
         Vector3 worldCenter = transform.TransformPoint(collider.center);
         float worldRadius = collider.radius * transform.lossyScale.x;
         Gizmos.DrawWireSphere(worldCenter, worldRadius);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        // Debug.Log(gameObject.name + " collided with " + collision.gameObject.name);
     }
 
     /*=== Virtual functions for inheritence ===*/

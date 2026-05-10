@@ -114,7 +114,8 @@ public class AsteroidSpawner : MonoBehaviour
                     randomPosition = new Vector3(Random.Range(-half, half), Random.Range(-half, half), -half);
                     break;
             }
-            if (GameModeMenu.gameModeSetting == 0)
+
+            if (gameModeSetting == 0)
                 randomPosition /= 2;
 
             // Generate a random number [0-20) and use that number for chance calculations
@@ -214,7 +215,8 @@ public class AsteroidSpawner : MonoBehaviour
                     randomPosition = new Vector3(Random.Range(-half, half), Random.Range(-half, half), -half);
                     break;
             }
-            if (GameModeMenu.gameModeSetting == 0)
+            
+            if (gameModeSetting == 0)
                 randomPosition /= 2;
 
             // Generate a random number [0-20) and use that number for chance calculations
