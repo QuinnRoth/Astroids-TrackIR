@@ -173,28 +173,6 @@ public class AsteroidSpawner : MonoBehaviour
             
             Vector3 randomPosition = Vector3.zero;
             
-            /* Detect if movement direction is intersecting origin of scene */
-            Vector3 toOrigin = Vector3.zero - asteroid.transform.position;          // problem here: asteroid is null so it has not .transform.position?
-            float thresholdAngle = 5.0f; // Tolerance for angle
-            Vector3 randomMoveDir = new Vector3(UnityEngine.Random.Range(-1.0f, 1.0f), UnityEngine.Random.Range(-1.0f, 1.0f), UnityEngine.Random.Range(-1.0f, 1.0f)).normalized;
-            float asteroidAngle = Vector3.Angle(randomMoveDir, toOrigin);
-            if (asteroidAngle <= thresholdAngle)
-            {
-                int whichMoveDirToChange = Random.Range(0, 3);
-                switch (whichMoveDirToChange)
-                {
-                    case 0:
-                        randomMoveDir.x = -randomMoveDir.x;
-                        break;
-                    case 1:
-                        randomMoveDir.y = -randomMoveDir.y;
-                        break;
-                    case 2:
-                        randomMoveDir.z = -randomMoveDir.z;
-                        break;
-                }
-            }
-
             switch (face)
             {
                 case 0: // +X face
@@ -243,6 +221,30 @@ public class AsteroidSpawner : MonoBehaviour
                         Debug.LogError("Cannot find ApplySavedColors component on " + asteroid);
 
                     break;
+            }
+            
+            /* Detect if movement direction is intersecting origin of scene */
+            Vector3 toOrigin = Vector3.zero - randomPosition;
+            float thresholdAngle = 5.0f; // Tolerance for angle
+            Vector3 randomMoveDir = new Vector3(UnityEngine.Random.Range(-1.0f, 1.0f), 
+                                                UnityEngine.Random.Range(-1.0f, 1.0f),
+                                                UnityEngine.Random.Range(-1.0f, 1.0f)).normalized;
+            float asteroidAngle = Vector3.Angle(randomMoveDir, toOrigin);
+            if (asteroidAngle <= thresholdAngle)
+            {
+                int whichMoveDirToChange = Random.Range(0, 3);
+                switch (whichMoveDirToChange)
+                {
+                    case 0:
+                        randomMoveDir.x = -randomMoveDir.x;
+                        break;
+                    case 1:
+                        randomMoveDir.y = -randomMoveDir.y;
+                        break;
+                    case 2:
+                        randomMoveDir.z = -randomMoveDir.z;
+                        break;
+                }
             }
 
             // Initialize asteroid, which is the same process for all asteroid types

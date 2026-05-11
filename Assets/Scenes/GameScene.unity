@@ -2790,7 +2790,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.dll::UnityEngine.UIElements.UIDocument
   m_PanelSettings: {fileID: 11400000, guid: 722fa41b38b6a6b448db7d07f7b3b473, type: 2}
   m_ParentUI: {fileID: 0}
-  sourceAsset: {fileID: 9197481963319205126, guid: 854dc143b9fc13649bcce08265e3035f, type: 3}
+  sourceAsset: {fileID: 9197481963319205126, guid: 52c155d77187c5642b121a4afaa60e00, type: 3}
   m_SortingOrder: 0
   m_Position: 0
   m_WorldSpaceSizeMode: 1

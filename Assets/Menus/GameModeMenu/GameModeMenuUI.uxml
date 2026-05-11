@@ -1,30 +1,30 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
     <Style src="project://database/Assets/Menus/MenuStyle.uss?fileID=7433441132597879392&amp;guid=1bda5f1b0a660b842850d9bec8f30d82&amp;type=3#MenuStyle"/>
-    <ui:VisualElement name="MenuContainer" style="flex-grow: 1; align-content: center; justify-content: space-evenly; align-self: center; align-items: stretch; width: 50%; height: 75%;">
+    <ui:VisualElement name="MenuContainer" style="flex-grow: 1; align-content: center; justify-content: space-evenly; align-self: center; align-items: stretch; width: 50%; height: 75%; -unity-font-definition: url(&quot;project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&amp;guid=4665f3a764435ab458073afb5589a827&amp;type=3#Spaceport_2006&quot;);">
         <ui:VisualElement name="root" style="width: auto; height: 662px; display: flex; flex-direction: column; background-size: 100% 100%; align-self: center; justify-content: center; align-content: center; align-items: flex-start; bottom: auto; top: 5%;">
             <ui:VisualElement name="header" style="width: 100%; height: 80px; display: flex; justify-content: center; align-items: center; align-self: center; align-content: center;">
-                <ui:Label text="Game Modes" name="Label" class="TitleLabel" style="font-size: 130px; -unity-font-style: bold; color: rgb(240, 250, 255); -unity-font-definition: url(&quot;project://database/Assets/Fonts/Evil_Empire.otf?fileID=12800000&amp;guid=0e60124b4f87b0d46ab6b79b77c270d9&amp;type=3#Evil_Empire&quot;); align-self: auto; align-items: auto; width: auto; flex-shrink: 1; flex-direction: column; flex-wrap: nowrap; align-content: auto;"/>
+                <ui:Label text="Game Modes" name="Label" class="TitleLabel" style="font-size: 130px; -unity-font-style: bold; color: rgb(240, 250, 255); -unity-font-definition: url(&quot;project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&amp;guid=4665f3a764435ab458073afb5589a827&amp;type=3#Spaceport_2006&quot;); align-self: auto; align-items: auto; width: auto; flex-shrink: 1; flex-direction: column; flex-wrap: nowrap; align-content: auto;"/>
             </ui:VisualElement>
             <ui:VisualElement name="buttonPanel" class="ButtonPanel" style="flex-grow: 1; width: 100%; display: flex; flex-direction: column; justify-content: space-evenly; align-items: center; align-self: stretch; transform-origin: center; scale: 1 1; -unity-font-definition: url(&quot;project://database/Assets/Fonts/Evil_Empire.otf?fileID=12800000&amp;guid=0e60124b4f87b0d46ab6b79b77c270d9&amp;type=3#Evil_Empire&quot;); translate: 0 50px; top: 5%;">
                 <ui:Button name="tradeShowButton" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 480px; height: 72px;">
                     <ui:VisualElement class="ButtonFill"/>
                     <ui:VisualElement class="ButtonSheen"/>
-                    <ui:Label text="Trade Show" class="ButtonText" style="font-size: 60px;"/>
+                    <ui:Label text="Trade Show" class="ButtonText" style="font-size: 40px; -unity-font-definition: url(&quot;project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&amp;guid=4665f3a764435ab458073afb5589a827&amp;type=3#Spaceport_2006&quot;);"/>
                 </ui:Button>
                 <ui:Button name="endlessButton" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 480px; height: 72px;">
                     <ui:VisualElement class="ButtonFill"/>
                     <ui:VisualElement class="ButtonSheen"/>
-                    <ui:Label text="Endless" class="ButtonText" style="font-size: 60px;"/>
+                    <ui:Label text="Endless" class="ButtonText" style="font-size: 40px; -unity-font-definition: url(&quot;project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&amp;guid=4665f3a764435ab458073afb5589a827&amp;type=3#Spaceport_2006&quot;);"/>
                 </ui:Button>
                 <ui:Button name="waveButton" class="MainMenuButton" style="width: 480px; height: 72px;">
                     <ui:VisualElement class="ButtonFill"/>
                     <ui:VisualElement class="ButtonSheen"/>
-                    <ui:Label text="Waves" class="ButtonText" style="font-size: 60px;"/>
+                    <ui:Label text="Waves" class="ButtonText" style="font-size: 40px; -unity-font-definition: url(&quot;project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&amp;guid=4665f3a764435ab458073afb5589a827&amp;type=3#Spaceport_2006&quot;);"/>
                 </ui:Button>
                 <ui:Button name="backButton" class="MainMenuButton" style="width: 480px; height: 72px;">
                     <ui:VisualElement class="ButtonFill"/>
                     <ui:VisualElement class="ButtonSheen"/>
-                    <ui:Label text="Back" class="ButtonText" style="font-size: 60px;"/>
+                    <ui:Label text="Back" class="ButtonText" style="font-size: 40px; -unity-font-definition: url(&quot;project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&amp;guid=4665f3a764435ab458073afb5589a827&amp;type=3#Spaceport_2006&quot;);"/>
                 </ui:Button>
             </ui:VisualElement>
         </ui:VisualElement>

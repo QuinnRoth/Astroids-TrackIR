@@ -1,80 +1,66 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
-    <Style src="project://database/Assets/Menus/MenuStyle.uss?fileID=7433441132597879392&amp;guid=1bda5f1b0a660b842850d9bec8f30d82&amp;type=3#MenuStyle" />
-
+    <Style src="project://database/Assets/Menus/MenuStyle.uss?fileID=7433441132597879392&amp;guid=1bda5f1b0a660b842850d9bec8f30d82&amp;type=3#MenuStyle"/>
     <ui:VisualElement name="MenuContainer" class="MenuContainer" style="flex-grow: 1; justify-content: center; align-items: center;">
         <ui:VisualElement name="root" class="SettingsPanel">
-
             <ui:VisualElement name="header" style="width: 100%; height: 80px; justify-content: center; align-items: center;">
-                <ui:Label text="COLORS" class="SettingsTitle" />
+                <ui:Label text="Colors" class="SettingsTitle" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&amp;guid=4665f3a764435ab458073afb5589a827&amp;type=3#Spaceport_2006&quot;);"/>
             </ui:VisualElement>
-
             <ui:VisualElement name="content" class="ColorPaletteContent">
-
-                <!-- SPACESHIP -->
                 <ui:VisualElement name="shipSection" class="ColorPaletteSection">
-                    <ui:Label text="SPACESHIP COLOR" class="ColorSectionTitle" />
+                    <ui:Label text="Spaceship Color" class="ColorSectionTitle" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&amp;guid=4665f3a764435ab458073afb5589a827&amp;type=3#Spaceport_2006&quot;);"/>
                     <ui:VisualElement name="shipSwatches" class="SwatchRow">
-                        <ui:Button name="shipSwatch0" class="ColorSwatch ShipSwatch" />
-                        <ui:Button name="shipSwatch1" class="ColorSwatch ShipSwatch" />
-                        <ui:Button name="shipSwatch2" class="ColorSwatch ShipSwatch" />
-                        <ui:Button name="shipSwatch3" class="ColorSwatch ShipSwatch" />
-                        <ui:Button name="shipSwatch4" class="ColorSwatch ShipSwatch" />
-                        <ui:Button name="shipSwatch5" class="ColorSwatch ShipSwatch" />
-                        <ui:Button name="shipSwatch6" class="ColorSwatch ShipSwatch" />
-                        <ui:Button name="shipSwatch7" class="ColorSwatch ShipSwatch" />
-                        <ui:Button name="shipSwatch8" class="ColorSwatch ShipSwatch" />
-                        <ui:Button name="shipSwatch9" class="ColorSwatch ShipSwatch" />
-                        <ui:Button name="shipSwatch10" class="ColorSwatch ShipSwatch" />
-                        <ui:Button name="shipSwatch11" class="ColorSwatch ShipSwatch" />
+                        <ui:Button name="shipSwatch0" class="ColorSwatch ShipSwatch"/>
+                        <ui:Button name="shipSwatch1" class="ColorSwatch ShipSwatch"/>
+                        <ui:Button name="shipSwatch2" class="ColorSwatch ShipSwatch"/>
+                        <ui:Button name="shipSwatch3" class="ColorSwatch ShipSwatch"/>
+                        <ui:Button name="shipSwatch4" class="ColorSwatch ShipSwatch"/>
+                        <ui:Button name="shipSwatch5" class="ColorSwatch ShipSwatch"/>
+                        <ui:Button name="shipSwatch6" class="ColorSwatch ShipSwatch"/>
+                        <ui:Button name="shipSwatch7" class="ColorSwatch ShipSwatch"/>
+                        <ui:Button name="shipSwatch8" class="ColorSwatch ShipSwatch"/>
+                        <ui:Button name="shipSwatch9" class="ColorSwatch ShipSwatch"/>
+                        <ui:Button name="shipSwatch10" class="ColorSwatch ShipSwatch"/>
+                        <ui:Button name="shipSwatch11" class="ColorSwatch ShipSwatch"/>
                     </ui:VisualElement>
-
                     <ui:VisualElement class="PreviewRow">
-                        <ui:Label text="Preview:" class="SettingsLabel" />
-                        <ui:VisualElement name="shipPreview" class="ColorPreviewBox" />
+                        <ui:Label text="Preview:" name="Label" class="SettingsLabel" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&amp;guid=4665f3a764435ab458073afb5589a827&amp;type=3#Spaceport_2006&quot;);"/>
+                        <ui:VisualElement name="shipPreview" class="ColorPreviewBox"/>
                     </ui:VisualElement>
                 </ui:VisualElement>
-
-                <!-- ASTEROID -->
                 <ui:VisualElement name="astSection" class="ColorPaletteSection">
-                    <ui:Label text="ASTEROID COLOR" class="ColorSectionTitle" />
+                    <ui:Label text="Asteroid Color" class="ColorSectionTitle" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&amp;guid=4665f3a764435ab458073afb5589a827&amp;type=3#Spaceport_2006&quot;);"/>
                     <ui:VisualElement name="astSwatches" class="SwatchRow">
-                        <ui:Button name="astSwatch0" class="ColorSwatch AstSwatch" />
-                        <ui:Button name="astSwatch1" class="ColorSwatch AstSwatch" />
-                        <ui:Button name="astSwatch2" class="ColorSwatch AstSwatch" />
-                        <ui:Button name="astSwatch3" class="ColorSwatch AstSwatch" />
-                        <ui:Button name="astSwatch4" class="ColorSwatch AstSwatch" />
-                        <ui:Button name="astSwatch5" class="ColorSwatch AstSwatch" />
-                        <ui:Button name="astSwatch6" class="ColorSwatch AstSwatch" />
-                        <ui:Button name="astSwatch7" class="ColorSwatch AstSwatch" />
-                        <ui:Button name="astSwatch8" class="ColorSwatch AstSwatch" />
-                        <ui:Button name="astSwatch9" class="ColorSwatch AstSwatch" />
-                        <ui:Button name="astSwatch10" class="ColorSwatch AstSwatch" />
-                        <ui:Button name="astSwatch11" class="ColorSwatch AstSwatch" />
+                        <ui:Button name="astSwatch0" class="ColorSwatch AstSwatch"/>
+                        <ui:Button name="astSwatch1" class="ColorSwatch AstSwatch"/>
+                        <ui:Button name="astSwatch2" class="ColorSwatch AstSwatch"/>
+                        <ui:Button name="astSwatch3" class="ColorSwatch AstSwatch"/>
+                        <ui:Button name="astSwatch4" class="ColorSwatch AstSwatch"/>
+                        <ui:Button name="astSwatch5" class="ColorSwatch AstSwatch"/>
+                        <ui:Button name="astSwatch6" class="ColorSwatch AstSwatch"/>
+                        <ui:Button name="astSwatch7" class="ColorSwatch AstSwatch"/>
+                        <ui:Button name="astSwatch8" class="ColorSwatch AstSwatch"/>
+                        <ui:Button name="astSwatch9" class="ColorSwatch AstSwatch"/>
+                        <ui:Button name="astSwatch10" class="ColorSwatch AstSwatch"/>
+                        <ui:Button name="astSwatch11" class="ColorSwatch AstSwatch"/>
                     </ui:VisualElement>
-
                     <ui:VisualElement class="PreviewRow">
-                        <ui:Label text="Preview:" class="SettingsLabel" />
-                        <ui:VisualElement name="astPreview" class="ColorPreviewBox" />
+                        <ui:Label text="Preview:" class="SettingsLabel" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&amp;guid=4665f3a764435ab458073afb5589a827&amp;type=3#Spaceport_2006&quot;);"/>
+                        <ui:VisualElement name="astPreview" class="ColorPreviewBox"/>
                     </ui:VisualElement>
                 </ui:VisualElement>
-
             </ui:VisualElement>
-
-            <!-- NAV -->
             <ui:VisualElement name="NavButtons" style="flex-direction: row; justify-content: center; align-items: center; margin-top: 16px;">
                 <ui:Button name="backButton" class="MainMenuButton" style="width: 260px; margin-right: 24px;">
-                    <ui:VisualElement class="ButtonFill" />
-                    <ui:VisualElement class="ButtonSheen" />
-                    <ui:Label text="BACK" class="ButtonText" />
+                    <ui:VisualElement class="ButtonFill"/>
+                    <ui:VisualElement class="ButtonSheen"/>
+                    <ui:Label text="Back" class="ButtonText" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&amp;guid=4665f3a764435ab458073afb5589a827&amp;type=3#Spaceport_2006&quot;); font-size: 34px;"/>
                 </ui:Button>
-
                 <ui:Button name="doneButton" class="MainMenuButton" style="width: 260px; margin-left: 24px;">
-                    <ui:VisualElement class="ButtonFill" />
-                    <ui:VisualElement class="ButtonSheen" />
-                    <ui:Label text="DONE" class="ButtonText" />
+                    <ui:VisualElement class="ButtonFill"/>
+                    <ui:VisualElement class="ButtonSheen"/>
+                    <ui:Label text="Done" class="ButtonText" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&amp;guid=4665f3a764435ab458073afb5589a827&amp;type=3#Spaceport_2006&quot;); font-size: 34px;"/>
                 </ui:Button>
             </ui:VisualElement>
-
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

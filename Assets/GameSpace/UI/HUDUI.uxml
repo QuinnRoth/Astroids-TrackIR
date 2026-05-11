@@ -1,20 +1,14 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements">
-    <Style src="HUDUI.uss" />
-
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/GameSpace/UI/HUDUI.uss?fileID=7433441132597879392&amp;guid=d78692d4fd6eb8d43936ad90e23c5979&amp;type=3#HUDUI"/>
     <ui:VisualElement class="hud-root">
-
-        <!-- Left: Lives -->
         <ui:VisualElement class="hud-plate">
-            <ui:VisualElement class="plate-fill" />
-            <ui:Label text="HEALTH" class="hud-title" />
-            <ui:VisualElement name="healthSegments" class="hud-segments" />
+            <ui:VisualElement class="plate-fill"/>
+            <ui:Label text="Health" class="hud-title" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&amp;guid=4665f3a764435ab458073afb5589a827&amp;type=3#Spaceport_2006&quot;); height: 23px;"/>
+            <ui:VisualElement name="healthSegments" class="hud-segments"/>
         </ui:VisualElement>
-
-        <!-- Right: Score -->
         <ui:VisualElement class="hud-plate hud-scorePlate">
-            <ui:VisualElement class="plate-fill" />
-            <ui:Label name="scoreLabel" text="SCORE 000000" class="hud-score" />
+            <ui:VisualElement class="plate-fill"/>
+            <ui:Label name="scoreLabel" text="Score 000000" class="hud-score" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&amp;guid=4665f3a764435ab458073afb5589a827&amp;type=3#Spaceport_2006&quot;); font-size: 22px;"/>
         </ui:VisualElement>
-
     </ui:VisualElement>
 </ui:UXML>
