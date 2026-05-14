@@ -13,7 +13,7 @@ public class HealthPickupItem : MonoBehaviour
     {
         if (collider.CompareTag("Spaceship"))
         {
-            collider.GetComponent<SpaceshipDamage>().GainHealth();
+            collider.GetComponentInParent<SpaceshipDamage>().GainHealth();
             Destroy(gameObject);
         }
     }

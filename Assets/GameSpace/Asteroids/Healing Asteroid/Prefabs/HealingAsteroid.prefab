@@ -157,7 +157,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: efdf37692e7810f40a776ce5bfdba0cf, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 419275df9d2f38a40bd66ddd19724db2, type: 2}
+      objectReference: {fileID: 2100000, guid: c430837628591e04dbfef78e6325d82f, type: 2}
     - target: {fileID: 919132149155446097, guid: efdf37692e7810f40a776ce5bfdba0cf, type: 3}
       propertyPath: m_Name
       value: asteroid_test_1
