@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c35417321ce6fd74da6dadd9c978b587, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewHealingAsteroid
-  explosionVFX: {fileID: 5333558933292897161, guid: bad5b1ece507efa4c9be534747f28554, type: 3}
+  explosionVFX: {fileID: 6823083477521692194, guid: 6c6e1ea32c8a4d9a94c7b167f61f0a37, type: 3}
   type: 1
   hitByLaser: 0
   healthPickupItemPrefab: {fileID: 774652636181222043, guid: 9ac3faa22cafe9f45b65c0404a326a07, type: 3}

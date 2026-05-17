@@ -21,7 +21,7 @@ public class BasicAsteroid : AsteroidClass
     // Override the die method to fit the asteroid type (basic)
     public override void Die(bool diedByBomb)
     {
-        if (hitByLaser)
+        if (!TryBeginDeath())
             return;
         
         // Debug.Log("Basic Asteroid Hit!");
@@ -39,8 +39,7 @@ public class BasicAsteroid : AsteroidClass
     // Override the fx method to fit the asteroid type (basic)
     public override void PlayDeathFX()
     {
-        ExplosionParticleVFX explosion = Instantiate(explosionVFX);
-        explosion.transform.position = gameObject.transform.position;
+        SpawnDeathExplosion();
         SoundManager.PlaySound(SoundType.EXPLOSION);
     }
 

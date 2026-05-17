@@ -65,13 +65,14 @@ public class Laser : MonoBehaviour
                 forwardDirection,
                 out hitData,
                 moveDistance,
-                layerMask)
-            && hitData.transform.CompareTag("Asteroid"))
+                layerMask))
         {
-            GameObject asteroid = hitData.transform.gameObject;
+            AsteroidClass asteroid = hitData.collider.GetComponentInParent<AsteroidClass>();
+            if (asteroid == null)
+                return;
 
-            asteroid.GetComponent<AsteroidClass>().Die(false);
-            asteroid.GetComponent<AsteroidClass>().hitByLaser = true;
+            asteroid.hitByLaser = true;
+            asteroid.Die(false);
 
             Destroy(gameObject);
         }

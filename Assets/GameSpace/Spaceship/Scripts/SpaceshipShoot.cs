@@ -31,11 +31,14 @@ public class SpaceshipShoot : MonoBehaviour
         // Declare the container for hit data
         RaycastHit hitData;
 
-        if (Physics.Raycast(ray, out hitData) && hitData.collider.tag == "Asteroid")
+        if (Physics.Raycast(ray, out hitData))
         {
-            // The ray hit an asteroid!
-            GameObject asteroid = hitData.transform.gameObject;
-            asteroid.GetComponent<AsteroidClass>().Die(false);
+            AsteroidClass asteroid = hitData.collider.GetComponentInParent<AsteroidClass>();
+            if (asteroid != null)
+            {
+                asteroid.hitByLaser = true;
+                asteroid.Die(false);
+            }
         }
     }
 

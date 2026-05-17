@@ -14,6 +14,9 @@ public class HealingAsteroid : AsteroidClass
     // Override the die method to fit the asteroid type (healing)
     public override void Die(bool diedByBomb)
     {
+        if (!TryBeginDeath())
+            return;
+
         Debug.Log("Healing Asteroid Hit!");
         ScoreManager.Instance.AddScore(1);
         AsteroidSpawner.asteroidCount--;
@@ -27,8 +30,7 @@ public class HealingAsteroid : AsteroidClass
     // Override the fx method to fit the asteroid type (healing)
     public override void PlayDeathFX()
     {
-        ExplosionParticleVFX explosion = Instantiate(explosionVFX);
-        explosion.transform.position = gameObject.transform.position;
+        SpawnDeathExplosion();
         SoundManager.PlaySound(SoundType.EXPLOSION);
     }
 

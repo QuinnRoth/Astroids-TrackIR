@@ -20,6 +20,7 @@ public class AsteroidClass : MonoBehaviour
     protected Vector3 rotDir;
 
     public bool hitByLaser = false;
+    private bool isDying = false;
 
     private float lifetime = 0.0f;
     private float maxLifetime = 240.0f; // four minutes
@@ -56,6 +57,29 @@ public class AsteroidClass : MonoBehaviour
     public InheritanceType GetAsteroidType()
     {
         return type;
+    }
+
+    protected bool TryBeginDeath()
+    {
+        if (isDying)
+            return false;
+
+        isDying = true;
+        return true;
+    }
+
+    protected void SpawnDeathExplosion()
+    {
+        if (explosionVFX == null)
+        {
+            Debug.LogWarning($"{name} has no explosion VFX assigned.", this);
+            return;
+        }
+
+        ExplosionParticleVFX explosion = Instantiate(explosionVFX, transform.position, Quaternion.identity);
+        float explosionScale = Mathf.Clamp(transform.lossyScale.x * 0.08f, 1f, 5f);
+        explosion.transform.localScale = Vector3.one * explosionScale;
+        explosion.PlayVFX();
     }
 
     // Displays the asteroid hitbox when Gimozs are turned on

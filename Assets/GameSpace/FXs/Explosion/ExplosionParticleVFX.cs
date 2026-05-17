@@ -2,41 +2,89 @@ using UnityEngine;
 
 public class ExplosionParticleVFX : MonoBehaviour
 {
-    // Get particles systems
+    // Legacy particle system slots used by the older prefab.
     [SerializeField] private ParticleSystem flashVFX;
     [SerializeField] private ParticleSystem sparksVFX;
     [SerializeField] private ParticleSystem fireVFX;
     [SerializeField] private ParticleSystem smokeVFX;
 
-    public void PlayVFX()
+    [SerializeField] private float destroyPadding = 0.2f;
+    [SerializeField] private bool playOnStart = true;
+
+    private ParticleSystem[] particleSystems;
+    private bool hasPlayed;
+
+    private void Awake()
     {
-        flashVFX.Play();
-        sparksVFX.Play();
-        fireVFX.Play();
-        smokeVFX.Play();
-
-        // destory the game object after the FX lifetime + some padding
-        float life = Mathf.Max(flashVFX.main.duration,
-                            sparksVFX.main.duration,
-                            fireVFX.main.duration,
-                            smokeVFX.main.duration);
-
-        Destroy(gameObject, life + 0.2f);
+        CacheParticleSystems();
     }
 
-    private void Update()
+    private void Start()
     {
-        float flashDuration = flashVFX.main.duration + flashVFX.main.startLifetime.Evaluate(1);
-        float sparksDuration = sparksVFX.main.duration + sparksVFX.main.startLifetime.Evaluate(1);
-        float fireDuration = fireVFX.main.duration + fireVFX.main.startLifetime.Evaluate(1);
-        float smokeDuration = smokeVFX.main.duration + smokeVFX.main.startLifetime.Evaluate(1);
+        if (playOnStart)
+            PlayVFX();
+    }
 
-        Destroy(flashVFX, flashDuration);
-        Destroy(sparksVFX, sparksDuration);
-        Destroy(fireVFX, fireDuration);
-        Destroy(smokeVFX, smokeDuration);
+    public void PlayVFX()
+    {
+        if (hasPlayed)
+            return;
 
-        if (!flashVFX && !sparksVFX && !fireVFX && !smokeVFX)
-            Destroy(gameObject);
+        hasPlayed = true;
+        CacheParticleSystems();
+
+        float life = 0f;
+        foreach (ParticleSystem particleSystem in particleSystems)
+        {
+            if (particleSystem == null)
+                continue;
+
+            particleSystem.Play(true);
+            life = Mathf.Max(life, GetTotalLifetime(particleSystem));
+        }
+
+        Destroy(gameObject, life + destroyPadding);
+    }
+
+    private void CacheParticleSystems()
+    {
+        particleSystems = GetComponentsInChildren<ParticleSystem>(true);
+    }
+
+    private float GetTotalLifetime(ParticleSystem particleSystem)
+    {
+        ParticleSystem.MainModule main = particleSystem.main;
+        return GetMaxCurveValue(main.startDelay) + main.duration + GetMaxCurveValue(main.startLifetime);
+    }
+
+    private float GetMaxCurveValue(ParticleSystem.MinMaxCurve curve)
+    {
+        switch (curve.mode)
+        {
+            case ParticleSystemCurveMode.Constant:
+                return curve.constant;
+            case ParticleSystemCurveMode.TwoConstants:
+                return curve.constantMax;
+            case ParticleSystemCurveMode.Curve:
+                return GetMaxAnimationCurveValue(curve.curve, curve.curveMultiplier);
+            case ParticleSystemCurveMode.TwoCurves:
+                return Mathf.Max(
+                    GetMaxAnimationCurveValue(curve.curveMin, curve.curveMultiplier),
+                    GetMaxAnimationCurveValue(curve.curveMax, curve.curveMultiplier));
+            default:
+                return 0f;
+        }
+    }
+
+    private float GetMaxAnimationCurveValue(AnimationCurve curve, float multiplier)
+    {
+        if (curve == null || curve.length == 0)
+            return 0f;
+
+        float maxValue = 0f;
+        foreach (Keyframe key in curve.keys)
+            maxValue = Mathf.Max(maxValue, key.value * multiplier);
+
+        return maxValue;
     }
 }

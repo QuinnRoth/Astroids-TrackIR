@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class BombAsteroid : AsteroidClass
@@ -14,6 +15,9 @@ public class BombAsteroid : AsteroidClass
     // Override the die method to fit the asteroid type (bomb)
     public override void Die(bool diedByBomb)
     {
+        if (!TryBeginDeath())
+            return;
+
         // Debug.Log("Bomb Asteroid Hit!");
         ScoreManager.Instance.AddScore(1);
         AsteroidSpawner.asteroidCount--;
@@ -29,8 +33,7 @@ public class BombAsteroid : AsteroidClass
     // Override the fx method to fit the asteroid type (bomb)
     public override void PlayDeathFX()
     {
-        ExplosionParticleVFX explosion = Instantiate(explosionVFX);
-        explosion.transform.position = gameObject.transform.position;
+        SpawnDeathExplosion();
         SoundManager.PlaySound(SoundType.EXPLOSION);
     }
 
@@ -38,13 +41,16 @@ public class BombAsteroid : AsteroidClass
     private void Explode()
     {
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, explosionRadius);
+        HashSet<AsteroidClass> hitAsteroids = new HashSet<AsteroidClass>();
         int i = 0;
         foreach (Collider hitCollider in hitColliders)
         {
-            if (hitCollider.tag != "Asteroid") continue;
+            AsteroidClass asteroid = hitCollider.GetComponentInParent<AsteroidClass>();
+            if (asteroid == null) continue;
+            if (!hitAsteroids.Add(asteroid)) continue;
             Debug.Log("DEBUG: Hit collider " + i  + ": " + hitCollider);
-            if (hitCollider.gameObject == this.gameObject) continue;
-            hitCollider.GetComponent<AsteroidClass>().Die(true); // diedByBomb = true
+            if (asteroid.gameObject == this.gameObject) continue;
+            asteroid.Die(true); // diedByBomb = true
             i++;
         }
     }
