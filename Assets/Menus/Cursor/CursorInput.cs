@@ -1,15 +1,30 @@
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.InputSystem;
 
 public class CursorInput : MonoBehaviour
 {
     public RectTransform cursorTransform;
     public UIDocument[] allMenus;
 
+    [SerializeField] private InputActionReference shootAction;
+
     private UIDocument activeUIDocument;
     private VisualElement lastHovered;
     private VisualElement pickedElement;
     private float nullElementTimer = 0.25f;
+
+    private void OnEnable()
+    {
+        if (shootAction != null)
+            shootAction.action.Enable();
+    }
+
+    private void OnDisable()
+    {
+        if (shootAction != null)
+            shootAction.action.Disable();
+    }
 
     void Update()
     {
@@ -48,7 +63,7 @@ public class CursorInput : MonoBehaviour
         HandleHover(pickedElement);
 
         // Click when hitting spacebar
-        if (Input.GetKeyDown(KeyCode.Space) && pickedElement != null)
+        if (shootAction != null && shootAction.action.WasPressedThisFrame() && pickedElement != null)
         {
             using (var submitEvt = NavigationSubmitEvent.GetPooled())
             {
