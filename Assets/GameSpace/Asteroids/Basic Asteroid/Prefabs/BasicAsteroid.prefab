@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85f72ccaff080f84b9de39e7dd864831, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewBasicAsteroid
-  explosionVFX: {fileID: 6823083477521692194, guid: 6c6e1ea32c8a4d9a94c7b167f61f0a37, type: 3}
+  explosionVFX: {fileID: 6823083477521692194, guid: e98702ccd1ca4587a26bae9582050f7f, type: 3}
   type: 0
   hitByLaser: 0
   asteroidPrefab: {fileID: 8123916397191553103}
