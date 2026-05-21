@@ -18,7 +18,7 @@ public class GhostBoundary : MonoBehaviour
 
     void Start()
     {
-        Boundary boundary = FindFirstObjectByType<Boundary>();
+        Boundary boundary = FindAnyObjectByType<Boundary>();
         if (boundary != null)
             boxSize = boundary.boxSize;
         else
