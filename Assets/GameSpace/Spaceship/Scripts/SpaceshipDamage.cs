@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.InputSystem;
+using System.ComponentModel;
 
 public class SpaceshipDamage : MonoBehaviour
 {
@@ -37,10 +39,33 @@ public class SpaceshipDamage : MonoBehaviour
     public Image fadeScreenImage;
     private bool canTakeDamage = true;
 
+    private bool isDying = false;
+
     [SerializeField] private float bounceForce = 10f;
 
     private Rigidbody rb;
 
+
+    // player death occurs after pressing esc
+    private void Update ()
+    {
+        if (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame)
+        {
+            TriggerPlayerDeath();
+        }
+    }
+
+    private void TriggerPlayerDeath ()
+    {
+        if (isDying)
+        {
+            return; // if player is currently diying, do not start death coroutine twice
+        }
+
+        isDying = true;
+        playerHealth = 0;
+        StartCoroutine(Die());
+    }
 
     private void Awake()
     {
@@ -89,7 +114,7 @@ public class SpaceshipDamage : MonoBehaviour
 
         if (playerHealth <= 0)
         {
-            StartCoroutine(Die());
+            TriggerPlayerDeath();
         }
     }
 

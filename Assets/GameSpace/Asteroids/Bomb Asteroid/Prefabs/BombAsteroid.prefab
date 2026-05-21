@@ -253,7 +253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1655ae7e86fd0f1488337b1ffb18a8e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewBombAsteroid
-  explosionVFX: {fileID: 6823083477521692194, guid: 6c6e1ea32c8a4d9a94c7b167f61f0a37, type: 3}
+  explosionVFX: {fileID: 6823083477521692194, guid: e40d070c2e854cc2946b281054b7ee3a, type: 3}
   type: 2
   hitByLaser: 0
   explosionRadius: 25
