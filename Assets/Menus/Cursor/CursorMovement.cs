@@ -33,7 +33,7 @@ public class CursorMovement : MonoBehaviour
         if (Mathf.Abs(vertical) < 0.075f)
             vertical = 0f;
 
-        cursorPos += new Vector2(horizontal, vertical) * Time.unscaledDeltaTime * 1000;
+        cursorPos += new Vector2(horizontal, vertical) * Time.unscaledDeltaTime * 2000;
         
         RectTransform canvas = cursorTransform.root as RectTransform;
 

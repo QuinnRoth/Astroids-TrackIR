@@ -63,6 +63,12 @@ public class SpaceshipRadar : MonoBehaviour
 
     private List<RectTransform> radarIcons = new List<RectTransform>();
 
+    private void Start()
+    {
+        if(GameModeMenu.gameModeSetting == 0)
+            gameObject.SetActive(false); 
+    }
+
     // Update is called once per frame
     void Update()
     {

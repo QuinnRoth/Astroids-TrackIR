@@ -5,9 +5,6 @@ public class MenuRegistry : MonoBehaviour
 {
     [SerializeField] private UIDocument[] menus;
 
-    private void Start()
-    {
-        var cursorInput = FindObjectsByType<CursorInput>(FindObjectsSortMode.None)[0];
-        cursorInput.SetMenus(menus);
-    }
+    // give the cursor input a list of all the menus
+    public UIDocument[] GetMenus() => menus;
 }

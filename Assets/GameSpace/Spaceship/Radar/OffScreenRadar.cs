@@ -31,6 +31,9 @@ public class OffscreenRadar : MonoBehaviour
 
     void Start()
     {
+        if(GameModeMenu.gameModeSetting == 0)
+            this.enabled = false;
+                    
         if (player == null)
             player = transform;
 

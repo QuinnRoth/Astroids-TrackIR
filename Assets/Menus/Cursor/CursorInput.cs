@@ -19,7 +19,7 @@ public class CursorInput : MonoBehaviour
     private bool shootPressedThisFrame = false;
 
 
-    public static CursorInput Instance { get; private set; }
+    public static CursorInput Instance { get; private set; } 
 
 
     private void Awake()
@@ -37,9 +37,6 @@ public class CursorInput : MonoBehaviour
         shootAction.action.performed += OnShootPerformed;
 
         shootAction.action.Enable();
-
-        // PlayerPrefs.DeleteKey("shootRebind");
-        // PlayerPrefs.Save();
 
         if (PlayerPrefs.HasKey("shootRebind"))
         {
@@ -63,7 +60,9 @@ public class CursorInput : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        allMenus = FindObjectsByType<UIDocument>(FindObjectsSortMode.None);
+        var registry = FindObjectsByType<MenuRegistry>(FindObjectsInactive.Include)[0];
+        if (registry != null)
+            allMenus = registry.GetMenus();
     }
 
     private void OnDestroy()

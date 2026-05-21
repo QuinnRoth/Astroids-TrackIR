@@ -463,7 +463,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpaceshipDamage
   gameOverMenu: {fileID: 1617551419}
-  cursorCanvas: {fileID: 0}
   damageFlash: {fileID: 728335390}
   damageCooldown: 1
   damageBlinkDuration: 0.8
@@ -1300,7 +1299,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 480617693}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b9f1d9db4f559324692cf50d8fdd7fe0, type: 3}
   m_Name: 
@@ -2473,7 +2472,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpaceshipDamage
   gameOverMenu: {fileID: 1617551419}
-  cursorCanvas: {fileID: 0}
   damageFlash: {fileID: 728335390}
   damageCooldown: 1
   damageBlinkDuration: 0.8
