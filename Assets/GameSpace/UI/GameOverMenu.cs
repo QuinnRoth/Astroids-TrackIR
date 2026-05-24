@@ -71,7 +71,8 @@ public class GameOverMenu : MonoBehaviour
 
     private void AppendCharacter(string chara)
     {
-        nameField.text = (nameField.text ?? string.Empty) + chara;
+        if (nameField.text.Length < 6)
+            nameField.text = (nameField.text ?? string.Empty) + chara;
     }
 
     private void ToMainMenu()
