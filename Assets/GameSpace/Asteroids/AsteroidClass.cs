@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class AsteroidClass : MonoBehaviour
 {
@@ -24,6 +25,9 @@ public class AsteroidClass : MonoBehaviour
 
     private float lifetime = 0.0f;
     private float maxLifetime = 240.0f; // four minutes
+
+    private bool useCustomExplosionPosition = false;
+    private Vector3 customExplosionPosition;
 
     public void Init(int iSize, 
                      float iMoveSpeed, 
@@ -76,10 +80,19 @@ public class AsteroidClass : MonoBehaviour
             return;
         }
 
-        ExplosionParticleVFX explosion = Instantiate(explosionVFX, transform.position, Quaternion.identity);
+        Vector3 explosionPosition = useCustomExplosionPosition ? customExplosionPosition : transform.position;
+        useCustomExplosionPosition = false;
+        
+        ExplosionParticleVFX explosion = Instantiate(explosionVFX, explosionPosition, Quaternion.identity);
         float explosionScale = Mathf.Clamp(transform.lossyScale.x * 0.08f, 1f, 5f);
         explosion.transform.localScale = Vector3.one * explosionScale;
         explosion.PlayVFX();
+    }
+
+    public void SetExplosionPosition(Vector3 position)
+    {
+        useCustomExplosionPosition = true;
+        customExplosionPosition = position;
     }
 
     // Displays the asteroid hitbox when Gimozs are turned on

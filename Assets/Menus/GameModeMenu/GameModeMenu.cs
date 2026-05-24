@@ -80,33 +80,33 @@ public class GameModeMenu : MonoBehaviour
         backButton.clicked -= MenuBack;
 
         tradeShowButton.UnregisterCallback<PointerEnterEvent>(evt => {
-            Debug.Log("Mouse entered tradeShow button!");
+            // Debug.Log("Mouse entered tradeShow button!");
             tradeShowButtonHover.Invoke();
         });
-        tradeShowButton.UnregisterCallback<PointerLeaveEvent>(evt => {
-            Debug.Log("Mouse exited tradeShow button!");
-        });
+        // tradeShowButton.UnregisterCallback<PointerLeaveEvent>(evt => {
+        //     Debug.Log("Mouse exited tradeShow button!");
+        // });
         endlessButton.UnregisterCallback<PointerEnterEvent>(evt => {
-            Debug.Log("Mouse entered endless button!");
+            // Debug.Log("Mouse entered endless button!");
             endlessButtonHover.Invoke();
         });
-        endlessButton.UnregisterCallback<PointerLeaveEvent>(evt => {
-            Debug.Log("Mouse exited endless button!");
-        });
+        // endlessButton.UnregisterCallback<PointerLeaveEvent>(evt => {
+        //     Debug.Log("Mouse exited endless button!");
+        // });
         waveButton.UnregisterCallback<PointerEnterEvent>(evt => {
-            Debug.Log("Mouse entered wave button!");
+            // Debug.Log("Mouse entered wave button!");
             waveButtonHover.Invoke();
         });
-        waveButton.UnregisterCallback<PointerLeaveEvent>(evt => {
-            Debug.Log("Mouse exited wave button!");
-        });
+        // waveButton.UnregisterCallback<PointerLeaveEvent>(evt => {
+        //     Debug.Log("Mouse exited wave button!");
+        // });
         backButton.UnregisterCallback<PointerEnterEvent>(evt => {
-            Debug.Log("Mouse entered back button!");
+            // Debug.Log("Mouse entered back button!");
             backButtonHover.Invoke();
         });
-        backButton.UnregisterCallback<PointerLeaveEvent>(evt => {
-            Debug.Log("Mouse exited back button!");
-        });
+        // backButton.UnregisterCallback<PointerLeaveEvent>(evt => {
+        //     Debug.Log("Mouse exited back button!");
+        // });
     }
 
     private void TradeShowMode()

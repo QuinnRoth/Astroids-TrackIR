@@ -2,7 +2,7 @@
 }
 
 .TitleLabel {
-    -unity-font-definition: url("project://database/Assets/Fonts/Evil_Empire.otf?fileID=12800000&guid=0e60124b4f87b0d46ab6b79b77c270d9&type=3#Evil_Empire");
+    -unity-font-definition: url("project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&guid=4665f3a764435ab458073afb5589a827&type=3#Spaceport_2006");
     font-size: 100px;
     color: rgb(240, 250, 255);
     -unity-text-outline-color: rgba(110, 220, 255, 0.9);
@@ -60,7 +60,7 @@
 .ButtonText {
     position: relative;
     z-index: 3;
-    -unity-font-definition: url("project://database/Assets/Fonts/Evil_Empire.otf?fileID=12800000&guid=0e60124b4f87b0d46ab6b79b77c270d9&type=3#Evil_Empire");
+    -unity-font-definition: url("project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&guid=4665f3a764435ab458073afb5589a827&type=3#Spaceport_2006");
     font-size: 42px;
     -unity-font-style: bold;
     color: rgb(230, 245, 255);
@@ -117,7 +117,7 @@
     -unity-text-outline-color: rgba(110, 220, 255, 0.7);
     -unity-text-outline-width: 0.18;
     -unity-font-style: normal;
-    -unity-font-definition: url("project://database/Assets/Fonts/Evil_Empire.otf?fileID=12800000&guid=0e60124b4f87b0d46ab6b79b77c270d9&type=3#Evil_Empire");
+    -unity-font-definition: url("project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&guid=4665f3a764435ab458073afb5589a827&type=3#Spaceport_2006");
 }
 
 .SettingsPanel {
@@ -149,7 +149,7 @@
 }
 
 .SettingsTitle {
-    -unity-font-definition: url("project://database/Assets/Fonts/Evil_Empire.otf?fileID=12800000&guid=0e60124b4f87b0d46ab6b79b77c270d9&type=3#Evil_Empire");
+    -unity-font-definition: url("project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&guid=4665f3a764435ab458073afb5589a827&type=3#Spaceport_2006");
     font-size: 80px;
     -unity-font-style: bold;
     color: rgb(240, 250, 255);
@@ -161,7 +161,7 @@
 .SmallNeonButton {
     width: 70px;
     height: 56px;
-    -unity-font-definition: url("project://database/Assets/Fonts/Evil_Empire.otf?fileID=12800000&guid=0e60124b4f87b0d46ab6b79b77c270d9&type=3#Evil_Empire");
+    -unity-font-definition: url("project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&guid=4665f3a764435ab458073afb5589a827&type=3#Spaceport_2006");
     font-size: 48px;
     -unity-font-style: bold;
     color: rgb(230, 245, 255);
@@ -212,7 +212,7 @@
     flex-grow: 1;
     text-align: left;
     white-space: nowrap;
-    -unity-font-definition: url("project://database/Assets/Fonts/Evil_Empire.otf?fileID=12800000&guid=0e60124b4f87b0d46ab6b79b77c270d9&type=3#Evil_Empire");
+    -unity-font-definition: url("project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&guid=4665f3a764435ab458073afb5589a827&type=3#Spaceport_2006");
     font-size: 56px;
     -unity-font-style: normal;
     color: rgb(220, 245, 255);
@@ -299,7 +299,7 @@
 }
 
 .ColorSectionTitle {
-    -unity-font-definition: url("project://database/Assets/Fonts/Evil_Empire.otf?fileID=12800000&guid=0e60124b4f87b0d46ab6b79b77c270d9&type=3#Evil_Empire");
+    -unity-font-definition: url("project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&guid=4665f3a764435ab458073afb5589a827&type=3#Spaceport_2006");
     font-size: 34px;
     -unity-font-style: bold;
     color: rgb(230, 245, 255);
@@ -374,7 +374,7 @@
 }
 
 .PreviewLabel {
-    -unity-font-definition: url("project://database/Assets/Fonts/Evil_Empire.otf?fileID=12800000&guid=0e60124b4f87b0d46ab6b79b77c270d9&type=3#Evil_Empire");
+    -unity-font-definition: url("project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&guid=4665f3a764435ab458073afb5589a827&type=3#Spaceport_2006");
     font-size: 24px;
     color: rgb(220, 245, 255);
     margin-right: 10px;
@@ -400,7 +400,7 @@
 }
 
 .ColorSectionTitle {
-    -unity-font-definition: url("project://database/Assets/Fonts/Evil_Empire.otf?fileID=12800000&guid=0e60124b4f87b0d46ab6b79b77c270d9&type=3#Evil_Empire");
+    -unity-font-definition: url("project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&guid=4665f3a764435ab458073afb5589a827&type=3#Spaceport_2006");
     font-size: 56px;
     color: rgb(220, 245, 255);
     -unity-text-outline-color: rgba(110, 220, 255, 0.7);

@@ -24,7 +24,6 @@ public class Laser : MonoBehaviour
     {
         lastPosition = transform.position;
         rend = GetComponent<Renderer>();
-
     }
 
     void Update()
@@ -70,6 +69,15 @@ public class Laser : MonoBehaviour
             AsteroidClass asteroid = hitData.collider.GetComponentInParent<AsteroidClass>();
             if (asteroid == null)
                 return;
+
+            var ghostBoundary = asteroid.GetComponent<GhostBoundary>();
+            if (ghostBoundary != null)
+            {
+                Camera cam = Camera.main;
+                Vector2 screenCenter = new Vector2(Screen.width * 0.5f, Screen.height * 0.5f);
+                Vector3 explosionPosition = ghostBoundary.ClosestGhostToLaser(cam, screenCenter);
+                asteroid.SetExplosionPosition(explosionPosition);
+            }
 
             asteroid.hitByLaser = true;
             asteroid.Die(false);

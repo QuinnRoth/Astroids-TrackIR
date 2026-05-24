@@ -71,13 +71,81 @@ public class GhostBoundary : MonoBehaviour
 
                     MeshRenderer ghostMR = ghost.AddComponent<MeshRenderer>();
                     ghostMR.material = new Material(asteroidMaterial);
-                    // ghostMR.material.color = Color.red;         // for testing ghosts
 
                     ghosts.Add(new GhostData { obj = ghost, offset = offset });
                 }
-            }
-            
+            } 
         }
+    }
+
+    private bool IsGhostVisible(GhostData ghost)
+    {
+        Vector3 halfSize = boxSize * 0.5f;
+        Vector3 pos = transform.position;
+
+        // which boundary(s) is the asteroid close to
+        bool nearRight = halfSize.x - pos.x < renderDistance;
+        bool nearLeft = pos.x + halfSize.x < renderDistance;
+        bool nearUp = halfSize.y - pos.y < renderDistance;
+        bool nearDown = pos.y + halfSize.y < renderDistance;
+        bool nearForward = halfSize.z - pos.z < renderDistance;
+        bool nearBack = pos.z + halfSize.z < renderDistance;
+
+        bool visible = true;
+
+        if (ghost.offset.x > 0)
+            visible &= nearRight;
+        else if (ghost.offset.x < 0)
+            visible &= nearLeft;
+
+        if (ghost.offset.y > 0)
+            visible &= nearUp;
+        else if (ghost.offset.y < 0)
+            visible &= nearDown;
+    
+        if (ghost.offset.z > 0)
+            visible &= nearForward;
+        else if (ghost.offset.z < 0)
+            visible &= nearBack;
+
+        return visible;
+    }
+
+    public Vector3 ClosestGhostToLaser(Camera cam, Vector2 screenPoint)
+    {
+        Vector3 bestPos = transform.position;
+        float bestDistSq = float.MaxValue;
+        float distToCamera = Vector3.Distance(transform.position, cam.transform.position);
+
+        // If asteroid is extremely close to camera, just return main asteroid
+        // (screen-space math is unreliable up close)
+        if (distToCamera < 20f)
+            return transform.position;
+
+        Vector3 mainScreen = cam.WorldToScreenPoint(transform.position);
+        if (mainScreen.z > 0f)
+            bestDistSq = (new Vector2(mainScreen.x, mainScreen.y) - screenPoint).sqrMagnitude;
+
+        foreach (var ghost in ghosts)
+        {
+            if (!IsGhostVisible(ghost))
+                continue;
+
+            Vector3 ghostCenter = transform.position + Vector3.Scale(ghost.offset, boxSize);
+            Vector3 ghostScreen = cam.WorldToScreenPoint(ghostCenter);
+
+            if (ghostScreen.z <= 0f)
+                continue;   // behind camera
+
+            float distSq = (new Vector2(ghostScreen.x, ghostScreen.y) - screenPoint).sqrMagnitude;
+            if (distSq < bestDistSq)
+            {
+                bestDistSq = distSq;
+                bestPos = ghostCenter;
+            }
+        }
+
+        return bestPos;
     }
 
     void Update()
@@ -89,14 +157,6 @@ public class GhostBoundary : MonoBehaviour
 
         Quaternion rotationOffset = Quaternion.Euler(270, 0, 0);
 
-        // which boundary(s) is the asteroid close to
-        bool nearRight = halfSize.x - pos.x < renderDistance;
-        bool nearLeft = pos.x + halfSize.x < renderDistance;
-        bool nearUp = halfSize.y - pos.y < renderDistance;
-        bool nearDown = pos.y + halfSize.y < renderDistance;
-        bool nearForward = halfSize.z - pos.z < renderDistance;
-        bool nearBack = pos.z + halfSize.z < renderDistance;
-
         foreach (var ghost in ghosts)
         {
             ghost.obj.transform.rotation = rot * rotationOffset;
@@ -105,20 +165,8 @@ public class GhostBoundary : MonoBehaviour
 
             bool visible = true;
 
-            if (ghost.offset.x > 0)
-                visible &= nearRight;
-            else if (ghost.offset.x < 0)
-                visible &= nearLeft;
-
-            if (ghost.offset.y > 0)
-                visible &= nearUp;
-            else if (ghost.offset.y < 0)
-                visible &= nearDown;
-
-            if (ghost.offset.z > 0)
-                visible &= nearForward;
-            else if (ghost.offset.z < 0)
-                visible &= nearBack;
+            if (!IsGhostVisible(ghost))
+                visible = false;
 
             ghost.obj.SetActive(visible);
         }
