@@ -19,6 +19,19 @@ public class GameOverMenu : MonoBehaviour
 
     private readonly Dictionary<Button, Action> keyboardHandlers = new();
 
+    private const float KeyWidth = 112f;
+    private const float KeyHeight = 100f;
+    private const float KeyHorizontalMargin = 18f;
+    private const float KeyVerticalMargin = 4f;
+    private const float KeyFontSize = 68f;
+    private const float DeleteKeyWidth = 300f;
+    private const float DeleteKeyFontSize = 52f;
+
+    private static readonly string[] keyboardRowIds =
+    {
+        "numbersRow", "topRow", "middleRow", "bottomRow"
+    };
+
     private static readonly string[] keyIds = new[]
     {
         "1","2","3","4","5","6","7","8","9","0",
@@ -30,6 +43,8 @@ public class GameOverMenu : MonoBehaviour
 
     void OnEnable()
     {
+        CursorMovement.SetGameOverTuning(true);
+
         VisualElement root = gameOverMenuDocument.rootVisualElement;
 
         scoreField = root.Q<Label>("ScoreField");
@@ -40,13 +55,16 @@ public class GameOverMenu : MonoBehaviour
         backButton.clicked += ToMainMenu;
         deleteButton.clicked += DeleteChar;
 
-        RegisterKeyboardButtons(root);        
+        RegisterKeyboardButtons(root);
+        ApplyKeyboardSizing(root);
 
         scoreField.text = ScoreManager.Instance.GetScore().ToString();
     }
 
     void OnDisable()
     {
+        CursorMovement.SetGameOverTuning(false);
+
         backButton.clicked -= ToMainMenu;
         deleteButton.clicked -= DeleteChar;
 
@@ -56,6 +74,56 @@ public class GameOverMenu : MonoBehaviour
         }
 
         keyboardHandlers.Clear();
+    }
+
+    void OnDestroy()
+    {
+        CursorMovement.SetGameOverTuning(false);
+    }
+
+    private void ApplyKeyboardSizing(VisualElement root)
+    {
+        var keyboard = root.Q<VisualElement>("Keyboard");
+        keyboard.style.width = Length.Percent(100);
+        keyboard.style.alignSelf = Align.Stretch;
+
+        foreach (string rowId in keyboardRowIds)
+        {
+            var row = root.Q<VisualElement>(rowId);
+            row.style.justifyContent = Justify.Center;
+            row.style.marginLeft = 0;
+            row.style.marginRight = 0;
+            row.style.marginTop = 4;
+            row.style.marginBottom = 4;
+        }
+
+        root.Q<VisualElement>("numbersRow").style.marginTop = 16;
+
+        foreach (string keyId in keyIds)
+            StyleKeyboardButton(root.Q<Button>(keyId), KeyWidth, KeyFontSize);
+
+        StyleKeyboardButton(deleteButton, DeleteKeyWidth, DeleteKeyFontSize);
+    }
+
+    private static void StyleKeyboardButton(Button button, float width, float labelFontSize)
+    {
+        if (button == null) return;
+
+        button.style.width = width;
+        button.style.height = KeyHeight;
+        button.style.marginLeft = KeyHorizontalMargin;
+        button.style.marginRight = KeyHorizontalMargin;
+        button.style.marginTop = KeyVerticalMargin;
+        button.style.marginBottom = KeyVerticalMargin;
+        button.style.paddingLeft = 16;
+        button.style.paddingRight = 16;
+
+        var label = button.Q<Label>("label");
+        if (label != null)
+        {
+            label.style.fontSize = labelFontSize;
+            label.style.unityTextAlign = TextAnchor.MiddleCenter;
+        }
     }
 
     private void RegisterKeyboardButtons(VisualElement root)
