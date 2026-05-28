@@ -9,6 +9,7 @@ using System.Collections.Generic;
 public class GameOverMenu : MonoBehaviour
 {
     [SerializeField] UIDocument gameOverMenuDocument;
+    [SerializeField] UIDocument gameOverLeaderboard;
 
     public GameObject gameOverMenu;
 
@@ -46,6 +47,7 @@ public class GameOverMenu : MonoBehaviour
         CursorMovement.SetGameOverTuning(true);
 
         VisualElement root = gameOverMenuDocument.rootVisualElement;
+        gameOverLeaderboard.gameObject.SetActive(true);
 
         scoreField = root.Q<Label>("ScoreField");
         nameField = root.Q<Label>("NameField");
@@ -64,6 +66,8 @@ public class GameOverMenu : MonoBehaviour
     void OnDisable()
     {
         CursorMovement.SetGameOverTuning(false);
+
+        gameOverLeaderboard.gameObject.SetActive(false);
 
         backButton.clicked -= ToMainMenu;
         deleteButton.clicked -= DeleteChar;
