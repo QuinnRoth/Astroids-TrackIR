@@ -9,9 +9,6 @@ public class LeaderboardGameOver : MonoBehaviour
     private Label firstName, firstScore;
     private Label secondName, secondScore;
     private Label thirdName, thirdScore;
-    private Label fourthName, fourthScore;
-    private Label fifthName, fifthScore;
-    private Label sixthName, sixthScore;
 
     private readonly Color activeColor = new(0.4f, 0.8f, 1f, 0.4f);
     
@@ -25,16 +22,10 @@ public class LeaderboardGameOver : MonoBehaviour
         firstName = root.Q<Label>("firstNameLabel");
         secondName = root.Q<Label>("secondNameLabel");
         thirdName = root.Q<Label>("thirdNameLabel");
-        fourthName = root.Q<Label>("fourthNameLabel");
-        fifthName = root.Q<Label>("fifthNameLabel");
-        sixthName = root.Q<Label>("sixthNameLabel");
 
         firstScore = root.Q<Label>("firstScoreLabel");
         secondScore = root.Q<Label>("secondScoreLabel");
         thirdScore = root.Q<Label>("thirdScoreLabel");
-        fourthScore = root.Q<Label>("fourthScoreLabel");
-        fifthScore = root.Q<Label>("fifthScoreLabel");
-        sixthScore = root.Q<Label>("sixthScoreLabel");
 
         TradeShowMode();    // Default to show trade show mode scores
     }
@@ -67,11 +58,11 @@ public class LeaderboardGameOver : MonoBehaviour
 
         Label[] nameLabels =
         {
-            firstName, secondName, thirdName, fourthName, fifthName, sixthName
+            firstName, secondName, thirdName
         };
         Label[] scoreLabels =
         {
-            firstScore, secondScore, thirdScore, fourthScore, fifthScore, sixthScore
+            firstScore, secondScore, thirdScore
         };
 
         for (int i = 0; i < nameLabels.Length; i++)

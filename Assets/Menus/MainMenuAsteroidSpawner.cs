@@ -32,6 +32,12 @@ public class MainMenuAsteroidSpawner : MonoBehaviour
     [SerializeField] private float minAsteroidRotSpeed = 1.0f;
     [SerializeField] private float maxAsteroidRotSpeed = 100.0f;
 
+    [Header("Asteroid Materials")]
+    [SerializeField] private Material basicMaterial;
+    [SerializeField] private Material bombMaterial;
+    [SerializeField] private Material bombFuseMaterial;
+    [SerializeField] private Material healMaterial;
+
     [Header("Spawn Timer")]
     private float time = 0.0f;
     [SerializeField] private float spawnTime = 10.0f;
@@ -85,12 +91,16 @@ public class MainMenuAsteroidSpawner : MonoBehaviour
             {
                 case 1: // Healing Asteroid, 5% of the time
                     asteroid = Instantiate(healingAsteroidPrefab, randomPosition, Quaternion.identity, parentOfAsteroids);
+                    asteroid.transform.GetChild(0).GetComponent<MeshRenderer>().material = healMaterial;
                     break;
                 case 2: // Bomb asteroid, 5% of the time
                     asteroid = Instantiate(bombAsteroidPrefab, randomPosition, Quaternion.identity, parentOfAsteroids);
+                    asteroid.transform.GetChild(0).GetComponent<MeshRenderer>().material = bombMaterial;
+                    asteroid.transform.GetChild(1).GetComponent<MeshRenderer>().material = bombFuseMaterial;
                     break;
                 default: // Basic asteroid, 90% of the time
                     asteroid = Instantiate(basicAsteroidPrefab, randomPosition, Quaternion.identity, parentOfAsteroids);
+                    asteroid.transform.GetChild(0).GetComponent<MeshRenderer>().material = basicMaterial;
 
                     // Apply the saved color scheme to the newly spawned asteroid
                     var apply = asteroid.GetComponent<ApplySavedColors>();

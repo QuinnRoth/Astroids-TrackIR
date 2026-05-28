@@ -47,7 +47,8 @@ public class GameOverMenu : MonoBehaviour
         CursorMovement.SetGameOverTuning(true);
 
         VisualElement root = gameOverMenuDocument.rootVisualElement;
-        gameOverLeaderboard.gameObject.SetActive(true);
+        if (gameOverLeaderboard != null)
+            gameOverLeaderboard.gameObject.SetActive(true);
 
         scoreField = root.Q<Label>("ScoreField");
         nameField = root.Q<Label>("NameField");
@@ -67,7 +68,8 @@ public class GameOverMenu : MonoBehaviour
     {
         CursorMovement.SetGameOverTuning(false);
 
-        gameOverLeaderboard.gameObject.SetActive(false);
+        if (gameOverLeaderboard != null)
+            gameOverLeaderboard.gameObject.SetActive(false);
 
         backButton.clicked -= ToMainMenu;
         deleteButton.clicked -= DeleteChar;
