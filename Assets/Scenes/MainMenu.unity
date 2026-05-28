@@ -361,6 +361,10 @@ MonoBehaviour:
   maxAsteroidMoveSpeed: 60
   minAsteroidRotSpeed: 1
   maxAsteroidRotSpeed: 100
+  basicMaterial: {fileID: 2100000, guid: bf433d2284260a74ba172fe3b9c3bc55, type: 2}
+  bombMaterial: {fileID: 2100000, guid: 77d7631c4fae90a4f9e193a082411e21, type: 2}
+  bombFuseMaterial: {fileID: 2100000, guid: dd87e2027f74808489974a669a85c9b8, type: 2}
+  healMaterial: {fileID: 2100000, guid: 2eb87eaae735c494187ea4724b43fffa, type: 2}
   spawnTime: 5
 --- !u!4 &837854502
 Transform:
@@ -602,13 +606,34 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1b896a2fe6743f849a36c43a9c1786ad, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 895720268}
   m_SourcePrefab: {fileID: 100100000, guid: 1b896a2fe6743f849a36c43a9c1786ad, type: 3}
 --- !u!4 &895720265 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1b896a2fe6743f849a36c43a9c1786ad, type: 3}
   m_PrefabInstance: {fileID: 895720264}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &895720268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 110633393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cb0a10539241964293ad07af1bd91b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ApplySavedColors
+  target: {fileID: 110633393}
+  renderers: []
+  materialNameContains: 
+  useSharedMaterial: 1
+  applySpaceshipColor: 1
+  applyAsteroidColor: 0
 --- !u!1 &926992810
 GameObject:
   m_ObjectHideFlags: 0
