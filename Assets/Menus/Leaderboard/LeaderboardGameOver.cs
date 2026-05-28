@@ -27,7 +27,18 @@ public class LeaderboardGameOver : MonoBehaviour
         secondScore = root.Q<Label>("secondScoreLabel");
         thirdScore = root.Q<Label>("thirdScoreLabel");
 
-        TradeShowMode();    // Default to show trade show mode scores
+        switch (GameModeMenu.gameModeSetting)
+        {
+            case 0:
+                TradeShowMode();
+                break;
+            case 1:
+                EndlessMode();
+                break;
+            case 2:
+                WaveMode();
+                break;
+        }
     }
 
     private void TradeShowMode()
