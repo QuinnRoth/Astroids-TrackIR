@@ -44,8 +44,6 @@ public class GameOverMenu : MonoBehaviour
 
     void OnEnable()
     {
-        CursorMovement.SetGameOverTuning(true);
-
         VisualElement root = gameOverMenuDocument.rootVisualElement;
         if (gameOverLeaderboard != null)
             gameOverLeaderboard.gameObject.SetActive(true);
@@ -66,8 +64,6 @@ public class GameOverMenu : MonoBehaviour
 
     void OnDisable()
     {
-        CursorMovement.SetGameOverTuning(false);
-
         if (gameOverLeaderboard != null)
             gameOverLeaderboard.gameObject.SetActive(false);
 
@@ -80,11 +76,6 @@ public class GameOverMenu : MonoBehaviour
         }
 
         keyboardHandlers.Clear();
-    }
-
-    void OnDestroy()
-    {
-        CursorMovement.SetGameOverTuning(false);
     }
 
     private void ApplyKeyboardSizing(VisualElement root)
