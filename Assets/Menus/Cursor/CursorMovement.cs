@@ -5,20 +5,12 @@ public class CursorMovement : MonoBehaviour
 {
     public RectTransform cursorTransform;
 
-    private const float CursorSpeed = 2000f;
-    private const float GameOverCursorSpeed = 3200f;
-    private const float DeadZone = 0.075f;
-    private const float GameOverDeadZone = 0.05f;
+    private const float CursorSpeed = 3200f;
+    private const float DeadZone = 0.05f;
 
-    private static bool useGameOverTuning;
     private Vector2 cursorPos;
     private float vertical = 0f;
     private float horizontal = 0f;
-
-    public static void SetGameOverTuning(bool enabled)
-    {
-        useGameOverTuning = enabled;
-    }
 
     void Start()
     {
@@ -38,15 +30,12 @@ public class CursorMovement : MonoBehaviour
             vertical = -TrackIRManager.Instance.HeadPitch;
         }
 
-        float currentDeadZone = useGameOverTuning ? GameOverDeadZone : DeadZone;
-        float currentSpeed = useGameOverTuning ? GameOverCursorSpeed : CursorSpeed;
-
-        if (Mathf.Abs(horizontal) < currentDeadZone)
+        if (Mathf.Abs(horizontal) < DeadZone)
             horizontal = 0f;
-        if (Mathf.Abs(vertical) < currentDeadZone)
+        if (Mathf.Abs(vertical) < DeadZone)
             vertical = 0f;
 
-        cursorPos += new Vector2(horizontal, vertical) * Time.unscaledDeltaTime * currentSpeed;
+        cursorPos += new Vector2(horizontal, vertical) * Time.unscaledDeltaTime * CursorSpeed;
         
         RectTransform canvas = cursorTransform.root as RectTransform;
 

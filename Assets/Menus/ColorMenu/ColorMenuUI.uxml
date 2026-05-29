@@ -18,9 +18,6 @@
                         <ui:Button name="shipSwatch6" class="ColorSwatch ShipSwatch"/>
                         <ui:Button name="shipSwatch7" class="ColorSwatch ShipSwatch"/>
                         <ui:Button name="shipSwatch8" class="ColorSwatch ShipSwatch"/>
-                        <ui:Button name="shipSwatch9" class="ColorSwatch ShipSwatch"/>
-                        <ui:Button name="shipSwatch10" class="ColorSwatch ShipSwatch"/>
-                        <ui:Button name="shipSwatch11" class="ColorSwatch ShipSwatch"/>
                     </ui:VisualElement>
                     <ui:VisualElement class="PreviewRow">
                         <ui:Label text="Preview:" name="Label" class="SettingsLabel" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&amp;guid=4665f3a764435ab458073afb5589a827&amp;type=3#Spaceport_2006&quot;);"/>
@@ -39,9 +36,6 @@
                         <ui:Button name="astSwatch6" class="ColorSwatch AstSwatch"/>
                         <ui:Button name="astSwatch7" class="ColorSwatch AstSwatch"/>
                         <ui:Button name="astSwatch8" class="ColorSwatch AstSwatch"/>
-                        <ui:Button name="astSwatch9" class="ColorSwatch AstSwatch"/>
-                        <ui:Button name="astSwatch10" class="ColorSwatch AstSwatch"/>
-                        <ui:Button name="astSwatch11" class="ColorSwatch AstSwatch"/>
                     </ui:VisualElement>
                     <ui:VisualElement class="PreviewRow">
                         <ui:Label text="Preview:" class="SettingsLabel" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&amp;guid=4665f3a764435ab458073afb5589a827&amp;type=3#Spaceport_2006&quot;);"/>
@@ -49,13 +43,13 @@
                     </ui:VisualElement>
                 </ui:VisualElement>
             </ui:VisualElement>
-            <ui:VisualElement name="NavButtons" style="flex-direction: row; justify-content: center; align-items: center; margin-top: 16px;">
-                <ui:Button name="backButton" class="MainMenuButton" style="width: 260px; margin-right: 24px;">
+            <ui:VisualElement name="NavButtons" style="width: 100%; flex-direction: row; justify-content: space-between; align-items: center; margin-top: 16px;">
+                <ui:Button name="backButton" class="MainMenuButton" style="width: 260px;">
                     <ui:VisualElement class="ButtonFill"/>
                     <ui:VisualElement class="ButtonSheen"/>
                     <ui:Label text="Back" class="ButtonText" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&amp;guid=4665f3a764435ab458073afb5589a827&amp;type=3#Spaceport_2006&quot;); font-size: 34px;"/>
                 </ui:Button>
-                <ui:Button name="doneButton" class="MainMenuButton" style="width: 260px; margin-left: 24px;">
+                <ui:Button name="doneButton" class="MainMenuButton" style="width: 260px;">
                     <ui:VisualElement class="ButtonFill"/>
                     <ui:VisualElement class="ButtonSheen"/>
                     <ui:Label text="Done" class="ButtonText" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&amp;guid=4665f3a764435ab458073afb5589a827&amp;type=3#Spaceport_2006&quot;); font-size: 34px;"/>
