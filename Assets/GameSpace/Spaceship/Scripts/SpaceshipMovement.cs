@@ -73,7 +73,7 @@ public class SpaceshipMovement : MonoBehaviour
     }
 
 
-    void Start()
+    void Awake()
     {
         rb = GetComponent<Rigidbody>();
         if (rb != null)
