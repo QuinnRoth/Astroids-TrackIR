@@ -80,7 +80,6 @@ public class SpaceshipDamage : MonoBehaviour
 
     private void UpdateRotationConstraint()
     {
-        Debug.Log(SpaceshipMovement.angMomentum);
         // get current positional contraints
         var posConstraints = rb.constraints & (RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ);
 
