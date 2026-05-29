@@ -11,11 +11,11 @@ public class SpaceshipMainMenuButtonHover : MonoBehaviour
 
     // Y Values of the spaceship position for each button
     [Header("Main Menu")]
-    [SerializeField] private float playButtonPos = 2f;
-    [SerializeField] private float settingsButtonPos = -2.9f;
-    [SerializeField] private float leaderboardButtonPos = -7.8f;
-    [SerializeField] private float colorsButtonPos = -12.7f;
-    [SerializeField] private float exitButtonPos = -17f;
+    [SerializeField] private float playButtonPos = 0.85f;
+    [SerializeField] private float settingsButtonPos = -3.7f;
+    [SerializeField] private float leaderboardButtonPos = -8.8f;
+    [SerializeField] private float colorsButtonPos = -13.0f;
+    [SerializeField] private float exitButtonPos = -18.2f;
 
     [Header("Gamemode Menu")]
     [SerializeField] private float tradeShowButtonPos = 0.9f;

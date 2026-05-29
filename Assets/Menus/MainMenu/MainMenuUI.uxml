@@ -1,36 +1,42 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
     <Style src="project://database/Assets/Menus/MenuStyle.uss?fileID=7433441132597879392&amp;guid=1bda5f1b0a660b842850d9bec8f30d82&amp;type=3#MenuStyle"/>
     <ui:VisualElement name="MenuContainer" style="flex-grow: 1; align-content: center; justify-content: space-evenly; align-self: auto; align-items: stretch;">
-        <ui:VisualElement name="root" style="width: auto; height: 662px; display: flex; flex-direction: column; background-size: 100% 100%; align-self: center; justify-content: center; align-content: center; align-items: flex-start; bottom: auto; top: 5%;">
-            <ui:VisualElement name="header" style="width: 100%; height: 80px; display: flex; justify-content: center; align-items: center; align-self: center; align-content: center;">
-                <ui:Label text="AsteroidsIR" name="Label" class="TitleLabel" style="font-size: 140px; -unity-font-style: bold; color: rgb(240, 250, 255); -unity-font-definition: url(&quot;project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&amp;guid=4665f3a764435ab458073afb5589a827&amp;type=3#Spaceport_2006&quot;); align-self: auto; align-items: auto; width: auto; flex-shrink: 1; flex-direction: column; flex-wrap: nowrap; align-content: auto;"/>
+        <ui:VisualElement name="root" style="width: 100%; height: 100%; display: flex; flex-direction: row; background-size: 100% 100%; align-self: center; justify-content: center; align-content: center; align-items: center; bottom: auto; top: auto;">
+            <ui:VisualElement name="LeftArea" style="flex-grow: 1; width: 20%;"/>
+            <ui:VisualElement name="CenterArea" style="flex-grow: 1; width: 50%; height: 100%;">
+                <ui:VisualElement name="header" style="width: 87%; height: 37%; display: flex; justify-content: center; align-items: center; align-self: center; align-content: center; top: 5%;">
+                    <ui:Image source="project://database/Assets/Menus/MainMenu/asteroidsIR.png?fileID=2800000&amp;guid=cc96e97eb3e23cb44b9445b3608005a9&amp;type=3#asteroidsIR" scale-mode="ScaleAndCrop" name="TitleImage" style="height: auto; bottom: 2%; width: 80%;"/>
+                </ui:VisualElement>
+                <ui:VisualElement name="buttonPanel" class="ButtonPanel" style="flex-grow: 1; width: auto; display: flex; flex-direction: column; justify-content: space-evenly; align-items: center; align-self: stretch; transform-origin: center; scale: 1 1; -unity-font-definition: url(&quot;project://database/Assets/Fonts/Evil_Empire.otf?fileID=12800000&amp;guid=0e60124b4f87b0d46ab6b79b77c270d9&amp;type=3#Evil_Empire&quot;); translate: 0 50px; top: auto; height: auto; max-height: 54%;">
+                    <ui:Button name="playButton" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton">
+                        <ui:VisualElement class="ButtonFill"/>
+                        <ui:VisualElement class="ButtonSheen"/>
+                        <ui:Label text="Play" name="playLabel" class="ButtonText" style="font-size: 40px; -unity-font-definition: url(&quot;project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&amp;guid=4665f3a764435ab458073afb5589a827&amp;type=3#Spaceport_2006&quot;);"/>
+                    </ui:Button>
+                    <ui:Button name="settingButton" class="MainMenuButton">
+                        <ui:VisualElement class="ButtonFill"/>
+                        <ui:VisualElement class="ButtonSheen"/>
+                        <ui:Label text="Settings" class="ButtonText" style="font-size: 40px; -unity-font-definition: url(&quot;project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&amp;guid=4665f3a764435ab458073afb5589a827&amp;type=3#Spaceport_2006&quot;);"/>
+                    </ui:Button>
+                    <ui:Button name="leaderboardButton" class="MainMenuButton">
+                        <ui:VisualElement class="ButtonFill"/>
+                        <ui:VisualElement class="ButtonSheen"/>
+                        <ui:Label text="Leaderboard" class="ButtonText" style="font-size: 40px; -unity-font-definition: url(&quot;project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&amp;guid=4665f3a764435ab458073afb5589a827&amp;type=3#Spaceport_2006&quot;);"/>
+                    </ui:Button>
+                    <ui:Button name="colorsButton" class="MainMenuButton">
+                        <ui:VisualElement class="ButtonFill"/>
+                        <ui:VisualElement class="ButtonSheen"/>
+                        <ui:Label text="Colors" class="ButtonText" style="font-size: 40px; -unity-font-definition: url(&quot;project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&amp;guid=4665f3a764435ab458073afb5589a827&amp;type=3#Spaceport_2006&quot;);"/>
+                    </ui:Button>
+                    <ui:Button name="exitButton" class="MainMenuButton">
+                        <ui:VisualElement class="ButtonFill"/>
+                        <ui:VisualElement class="ButtonSheen"/>
+                        <ui:Label text="Exit Game" class="ButtonText" style="font-size: 40px; -unity-font-definition: url(&quot;project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&amp;guid=4665f3a764435ab458073afb5589a827&amp;type=3#Spaceport_2006&quot;);"/>
+                    </ui:Button>
+                </ui:VisualElement>
             </ui:VisualElement>
-            <ui:VisualElement name="buttonPanel" class="ButtonPanel" style="flex-grow: 1; width: 100%; display: flex; flex-direction: column; justify-content: space-evenly; align-items: center; align-self: stretch; transform-origin: center; scale: 1 1; -unity-font-definition: url(&quot;project://database/Assets/Fonts/Evil_Empire.otf?fileID=12800000&amp;guid=0e60124b4f87b0d46ab6b79b77c270d9&amp;type=3#Evil_Empire&quot;); translate: 0 50px; top: 5%;">
-                <ui:Button name="playButton" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton">
-                    <ui:VisualElement class="ButtonFill"/>
-                    <ui:VisualElement class="ButtonSheen"/>
-                    <ui:Label text="Play" name="playLabel" class="ButtonText" style="font-size: 40px; -unity-font-definition: url(&quot;project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&amp;guid=4665f3a764435ab458073afb5589a827&amp;type=3#Spaceport_2006&quot;);"/>
-                </ui:Button>
-                <ui:Button name="settingButton" class="MainMenuButton">
-                    <ui:VisualElement class="ButtonFill"/>
-                    <ui:VisualElement class="ButtonSheen"/>
-                    <ui:Label text="Settings" class="ButtonText" style="font-size: 40px; -unity-font-definition: url(&quot;project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&amp;guid=4665f3a764435ab458073afb5589a827&amp;type=3#Spaceport_2006&quot;);"/>
-                </ui:Button>
-                <ui:Button name="leaderboardButton" class="MainMenuButton">
-                    <ui:VisualElement class="ButtonFill"/>
-                    <ui:VisualElement class="ButtonSheen"/>
-                    <ui:Label text="Leaderboard" class="ButtonText" style="font-size: 40px; -unity-font-definition: url(&quot;project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&amp;guid=4665f3a764435ab458073afb5589a827&amp;type=3#Spaceport_2006&quot;);"/>
-                </ui:Button>
-                <ui:Button name="colorsButton" class="MainMenuButton">
-                    <ui:VisualElement class="ButtonFill"/>
-                    <ui:VisualElement class="ButtonSheen"/>
-                    <ui:Label text="Colors" class="ButtonText" style="font-size: 40px; -unity-font-definition: url(&quot;project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&amp;guid=4665f3a764435ab458073afb5589a827&amp;type=3#Spaceport_2006&quot;);"/>
-                </ui:Button>
-                <ui:Button name="exitButton" class="MainMenuButton">
-                    <ui:VisualElement class="ButtonFill"/>
-                    <ui:VisualElement class="ButtonSheen"/>
-                    <ui:Label text="Exit Game" class="ButtonText" style="font-size: 40px; -unity-font-definition: url(&quot;project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&amp;guid=4665f3a764435ab458073afb5589a827&amp;type=3#Spaceport_2006&quot;);"/>
-                </ui:Button>
+            <ui:VisualElement name="RightArea" style="flex-grow: 1; width: 20%;">
+                <ui:Label text="Open Mouth to Reset Tracking" class="ButtonText" style="font-size: 40px; -unity-font-definition: url(&quot;project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&amp;guid=4665f3a764435ab458073afb5589a827&amp;type=3#Spaceport_2006&quot;); padding-left: 2px; margin-bottom: 4px; margin-right: 2px; white-space: normal; width: 75%; left: -30%; rotate: 15deg; -unity-text-outline-width: 2px; -unity-text-outline-color: rgba(22, 120, 159, 0.75);"/>
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>

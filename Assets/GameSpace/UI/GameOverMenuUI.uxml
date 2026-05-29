@@ -46,9 +46,6 @@
                 <ui:Button name="0" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; align-self: center; margin-right: 12px; margin-left: 12px; background-color: rgb(5, 10, 18);">
                     <ui:Label text="0" name="label" class="ButtonText" style="font-size: 54px; padding-left: 2px; margin-right: 2px; -unity-font-definition: url(&quot;project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&amp;guid=4665f3a764435ab458073afb5589a827&amp;type=3#Spaceport_2006&quot;);"/>
                 </ui:Button>
-                <ui:Button name="Delete" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: auto; height: 84px; align-self: center; margin-right: 12px; margin-left: 12px; background-color: rgb(5, 10, 18); padding-right: 16px; padding-left: 16px;">
-                    <ui:Label text="Delete" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px; -unity-font-definition: url(&quot;project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&amp;guid=4665f3a764435ab458073afb5589a827&amp;type=3#Spaceport_2006&quot;);"/>
-                </ui:Button>
             </ui:VisualElement>
             <ui:VisualElement name="topRow" style="flex-grow: initial; flex-direction: row; align-self: auto; justify-content: center; height: auto; margin-top: 12px; margin-right: 12px; margin-bottom: 12px; margin-left: 12px;">
                 <ui:Button name="Q" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; align-self: center; margin-left: 12px; margin-right: 12px; background-color: rgb(5, 10, 18);">
@@ -132,6 +129,9 @@
                 </ui:Button>
                 <ui:Button name="M" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; margin-left: 12px; margin-right: 12px; align-self: center; background-color: rgb(5, 10, 18);">
                     <ui:Label text="M" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px; align-self: auto; align-content: auto; justify-content: center;"/>
+                </ui:Button>
+                <ui:Button name="Delete" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: auto; height: 84px; align-self: center; margin-right: 12px; margin-left: 12px; background-color: rgb(5, 10, 18); padding-right: 16px; padding-left: 16px;">
+                    <ui:Label text="Del" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px; -unity-font-definition: url(&quot;project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&amp;guid=4665f3a764435ab458073afb5589a827&amp;type=3#Spaceport_2006&quot;);"/>
                 </ui:Button>
             </ui:VisualElement>
         </ui:VisualElement>
