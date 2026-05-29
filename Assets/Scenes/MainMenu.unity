@@ -681,11 +681,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   spaceship: {fileID: 110633393}
   animationTime: 0.25
-  playButtonPos: -1.8
-  settingsButtonPos: -6.4
-  leaderboardButtonPos: -11.2
-  colorsButtonPos: -15.7
-  exitButtonPos: -20
+  playButtonPos: 0.85
+  settingsButtonPos: -3.7
+  leaderboardButtonPos: -8.8
+  colorsButtonPos: -13
+  exitButtonPos: -18.2
   tradeShowButtonPos: 0.9
   endlessButtonPos: -4.8
   wavesButtonPos: -10.5

@@ -17,7 +17,6 @@ public class SpaceshipDamage : MonoBehaviour
 
     //private SpaceshipDeathAnimation deathAnimation;
     public GameObject gameOverMenu;
-    // public GameObject cursorCanvas;
 
     public DamageFlashEffect damageFlash;
     // private SpaceshipMovement spaceshipMovement; 
@@ -81,7 +80,6 @@ public class SpaceshipDamage : MonoBehaviour
 
     private void UpdateRotationConstraint()
     {
-        Debug.Log(SpaceshipMovement.angMomentum);
         // get current positional contraints
         var posConstraints = rb.constraints & (RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ);
 

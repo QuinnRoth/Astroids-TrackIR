@@ -1,138 +1,172 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/Menus/MenuStyle.uss?fileID=7433441132597879392&amp;guid=1bda5f1b0a660b842850d9bec8f30d82&amp;type=3#MenuStyle"/>
-    <ui:VisualElement name="root" style="flex-grow: 1; align-content: auto; align-self: auto; justify-content: center; align-items: stretch; right: auto; left: auto; width: auto;">
-        <ui:VisualElement name="VisualElement" style="flex-grow: initial; flex-shrink: initial; height: 8%;"/>
-        <ui:VisualElement name="Menu" class="SettingsPanel" style="width: 772px; height: 525px; display: flex; flex-direction: column; background-size: 100% 100%; align-self: center; justify-content: flex-start; align-content: center; align-items: center; border-left-color: rgb(110, 220, 255); border-right-color: rgb(110, 220, 255); border-top-color: rgb(110, 220, 255); border-bottom-color: rgb(110, 220, 255); border-top-width: 4px; border-right-width: 4px; border-bottom-width: 4px; border-left-width: 4px; background-color: rgb(0, 0, 0); padding-top: 25px; padding-bottom: 15px; padding-left: 10px; padding-right: 10px;">
-            <ui:Label text="GAME OVER" name="GameOverLabel" class="SettingName" style="font-size: 72px; -unity-font-style: bold; color: rgb(220, 245, 255); -unity-font-definition: url(&quot;project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&amp;guid=4665f3a764435ab458073afb5589a827&amp;type=3#Spaceport_2006&quot;); align-self: center; margin-bottom: 4px; margin-right: 2px; margin-top: 24px; -unity-text-align: upper-center;"/>
-            <ui:VisualElement name="Score" style="flex-grow: 1; flex-direction: row; align-items: center; justify-content: center; align-self: center; width: 50%;">
-                <ui:Label text="Score:" name="ScoreLabel" class="SettingsLabel" style="font-size: 48px; -unity-font-style: bold; color: rgb(230, 245, 255); -unity-font-definition: url(&quot;project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&amp;guid=4665f3a764435ab458073afb5589a827&amp;type=3#Spaceport_2006&quot;); align-self: center; margin-right: 32px;"/>
-                <ui:Label text="0" name="ScoreField" class="SettingsLabel" style="font-size: 50px; -unity-font-style: bold; color: rgb(83, 94, 99); -unity-font-definition: url(&quot;project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&amp;guid=4665f3a764435ab458073afb5589a827&amp;type=3#Spaceport_2006&quot;); align-self: center; margin-right: 4px; width: auto; height: 75%; background-color: rgb(255, 255, 255); -unity-text-outline-color: rgba(0, 0, 0, 0.7); -unity-text-align: middle-center; margin-top: 2px; padding-left: 0; margin-left: 4px; padding-top: 0; padding-right: 0; padding-bottom: 0; min-width: 25%;"/>
+    <ui:VisualElement name="root" style="flex-grow: 1; align-content: auto; align-self: auto; justify-content: center; align-items: stretch; right: auto; left: auto; width: 100%; height: 100%; flex-direction: row;">
+        <ui:VisualElement name="Leaderboard" style="flex-grow: 1; width: 20%; align-items: center; left: 1.5%;">
+            <ui:VisualElement name="VisualElement" style="flex-grow: initial; flex-shrink: initial; height: 15%;"/>
+            <ui:VisualElement name="header" class="header" style="width: 100%; height: 80px; display: flex; justify-content: center; align-items: center; padding-bottom: 0; align-content: flex-start; left: auto; margin-left: 0; margin-right: 0; background-color: rgb(5, 10, 18);">
+                <ui:Label text="Leaderboard" name="Label" enable-rich-text="true" class="SettingsTitle" style="align-content: flex-start; align-self: center; justify-content: flex-start; align-items: center; margin-top: 0; padding-top: 0; margin-right: 2px; padding-right: 1px; padding-bottom: 0; margin-bottom: 0; -unity-text-align: middle-left; -unity-font-definition: url(&quot;project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&amp;guid=4665f3a764435ab458073afb5589a827&amp;type=3#Spaceport_2006&quot;); font-size: 40px;"/>
             </ui:VisualElement>
-            <ui:VisualElement name="Name" style="flex-grow: 1; flex-direction: row; align-items: center; justify-content: center; align-self: center; width: 75%;">
-                <ui:Label text="Name:" name="NameLabel" class="SettingsLabel" style="font-size: 48px; -unity-font-style: bold; color: rgb(230, 245, 255); -unity-font-definition: url(&quot;project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&amp;guid=4665f3a764435ab458073afb5589a827&amp;type=3#Spaceport_2006&quot;); align-self: center; margin-right: 32px;"/>
-                <ui:Label text="" name="NameField" class="SettingsLabel" style="font-size: 48px; -unity-font-style: bold; color: rgb(83, 94, 99); -unity-font-definition: url(&quot;project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&amp;guid=4665f3a764435ab458073afb5589a827&amp;type=3#Spaceport_2006&quot;); align-self: center; margin-right: 2px; width: 60%; height: 75%; background-color: rgb(255, 255, 255); -unity-text-outline-color: rgba(0, 0, 0, 0.7); -unity-text-align: middle-center; margin-top: 2px; padding-left: 2px;"/>
+            <ui:VisualElement name="leaderboardList" class="SettingsArea" style="margin-top: 25px; margin-right: 25px; margin-bottom: 25px; margin-left: 25px;">
+                <ui:VisualElement name="First" class="SettingsPanel" style="width: 80%; height: auto; padding-top: 5px; padding-bottom: 5px; margin-top: 15px; margin-bottom: 15px; align-content: flex-start; flex-direction: row; justify-content: space-between; white-space: normal; -unity-text-align: upper-left; align-self: center; align-items: center; padding-left: 25px; padding-right: 25px; background-color: rgb(5, 10, 18);">
+                    <ui:Label text="&lt;First&gt;" name="firstNameLabel" parse-escape-sequences="false" class="SettingName" style="margin-top: 0; padding-left: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; align-self: auto; white-space: nowrap; flex-direction: column; align-items: stretch; align-content: flex-start; width: 40%; -unity-font-definition: url(&quot;project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&amp;guid=4665f3a764435ab458073afb5589a827&amp;type=3#Spaceport_2006&quot;); font-size: 30px;"/>
+                    <ui:Label text="&lt;42&gt;" name="firstScoreLabel" parse-escape-sequences="false" class="SettingName" style="margin-top: 0; padding-left: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; align-self: auto; -unity-text-align: upper-right; width: 50%; -unity-font-definition: url(&quot;project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&amp;guid=4665f3a764435ab458073afb5589a827&amp;type=3#Spaceport_2006&quot;); font-size: 30px;"/>
+                </ui:VisualElement>
+                <ui:VisualElement name="Second" class="SettingsPanel" style="width: 80%; height: auto; padding-top: 5px; padding-bottom: 5px; margin-top: 15px; margin-bottom: 15px; flex-direction: row; padding-left: 25px; padding-right: 25px; background-color: rgb(5, 10, 18);">
+                    <ui:Label text="&lt;Second&gt;" name="secondNameLabel" parse-escape-sequences="false" class="SettingName" style="margin-top: 0; padding-left: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; align-self: auto; white-space: nowrap; flex-direction: column; align-items: stretch; align-content: flex-start; width: 40%; -unity-font-definition: url(&quot;project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&amp;guid=4665f3a764435ab458073afb5589a827&amp;type=3#Spaceport_2006&quot;); font-size: 30px;"/>
+                    <ui:Label text="&lt;42&gt;" name="secondScoreLabel" parse-escape-sequences="false" class="SettingName" style="margin-top: 0; padding-left: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; align-self: flex-end; -unity-text-align: upper-right; width: 50%; -unity-font-definition: url(&quot;project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&amp;guid=4665f3a764435ab458073afb5589a827&amp;type=3#Spaceport_2006&quot;); font-size: 30px;"/>
+                </ui:VisualElement>
+                <ui:VisualElement name="Third" class="SettingsPanel" style="width: 80%; height: auto; padding-top: 5px; padding-bottom: 5px; margin-bottom: 15px; margin-top: 15px; flex-direction: row; padding-right: 25px; padding-left: 25px; background-color: rgb(5, 10, 18);">
+                    <ui:Label text="&lt;Third&gt;" name="thirdNameLabel" parse-escape-sequences="false" class="SettingName" style="margin-top: 0; padding-left: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; align-self: auto; white-space: nowrap; flex-direction: column; align-items: stretch; align-content: flex-start; width: 40%; -unity-font-definition: url(&quot;project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&amp;guid=4665f3a764435ab458073afb5589a827&amp;type=3#Spaceport_2006&quot;); font-size: 30px;"/>
+                    <ui:Label text="&lt;42&gt;" name="thirdScoreLabel" parse-escape-sequences="false" class="SettingName" style="margin-top: 0; padding-left: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; align-self: auto; -unity-text-align: upper-right; width: 50%; -unity-font-definition: url(&quot;project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&amp;guid=4665f3a764435ab458073afb5589a827&amp;type=3#Spaceport_2006&quot;); font-size: 30px;"/>
+                </ui:VisualElement>
+                <ui:VisualElement name="Fourth" class="SettingsPanel" style="width: 80%; height: auto; padding-top: 5px; padding-bottom: 5px; margin-top: 15px; margin-bottom: 15px; align-content: flex-start; flex-direction: row; justify-content: space-between; white-space: normal; -unity-text-align: upper-left; align-self: center; align-items: center; padding-left: 25px; padding-right: 25px; background-color: rgb(5, 10, 18);">
+                    <ui:Label text="&lt;Fourth&gt;" name="fourthNameLabel" parse-escape-sequences="false" class="SettingName" style="margin-top: 0; padding-left: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; align-self: auto; white-space: nowrap; flex-direction: column; align-items: stretch; align-content: flex-start; width: 40%; -unity-font-definition: url(&quot;project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&amp;guid=4665f3a764435ab458073afb5589a827&amp;type=3#Spaceport_2006&quot;); font-size: 30px;"/>
+                    <ui:Label text="&lt;42&gt;" name="fourthScoreLabel" parse-escape-sequences="false" class="SettingName" style="margin-top: 0; padding-left: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; align-self: auto; -unity-text-align: upper-right; width: 50%; -unity-font-definition: url(&quot;project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&amp;guid=4665f3a764435ab458073afb5589a827&amp;type=3#Spaceport_2006&quot;); font-size: 30px;"/>
+                </ui:VisualElement>
+                <ui:VisualElement name="Fifth" class="SettingsPanel" style="width: 80%; height: auto; padding-top: 5px; padding-bottom: 5px; margin-top: 15px; margin-bottom: 15px; flex-direction: row; padding-left: 25px; padding-right: 25px; background-color: rgb(5, 10, 18);">
+                    <ui:Label text="&lt;Fifth&gt;" name="fifthNameLabel" parse-escape-sequences="false" class="SettingName" style="margin-top: 0; padding-left: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; align-self: auto; white-space: nowrap; flex-direction: column; align-items: stretch; align-content: flex-start; width: 40%; -unity-font-definition: url(&quot;project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&amp;guid=4665f3a764435ab458073afb5589a827&amp;type=3#Spaceport_2006&quot;); font-size: 30px;"/>
+                    <ui:Label text="&lt;42&gt;" name="fifthScoreLabel" parse-escape-sequences="false" class="SettingName" style="margin-top: 0; padding-left: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; align-self: flex-end; -unity-text-align: upper-right; width: 50%; -unity-font-definition: url(&quot;project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&amp;guid=4665f3a764435ab458073afb5589a827&amp;type=3#Spaceport_2006&quot;); font-size: 30px;"/>
+                </ui:VisualElement>
+                <ui:VisualElement name="Sixth" class="SettingsPanel" style="width: 80%; height: auto; padding-top: 5px; padding-bottom: 5px; margin-bottom: 15px; margin-top: 15px; flex-direction: row; padding-right: 25px; padding-left: 25px; background-color: rgb(5, 10, 18);">
+                    <ui:Label text="&lt;Sixth&gt;" name="sixthNameLabel" parse-escape-sequences="false" class="SettingName" style="margin-top: 0; padding-left: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; align-self: auto; white-space: nowrap; flex-direction: column; align-items: stretch; align-content: flex-start; width: 40%; -unity-font-definition: url(&quot;project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&amp;guid=4665f3a764435ab458073afb5589a827&amp;type=3#Spaceport_2006&quot;); font-size: 30px;"/>
+                    <ui:Label text="&lt;42&gt;" name="sixthScoreLabel" parse-escape-sequences="false" class="SettingName" style="margin-top: 0; padding-left: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; align-self: auto; -unity-text-align: upper-right; width: 50%; -unity-font-definition: url(&quot;project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&amp;guid=4665f3a764435ab458073afb5589a827&amp;type=3#Spaceport_2006&quot;); font-size: 30px;"/>
+                </ui:VisualElement>
             </ui:VisualElement>
-            <ui:Button text="Back to Main Menu" name="BackButton" class="MainMenuButton" style="width: auto; height: auto; font-size: 54px; padding-top: 20px; padding-left: 24px; padding-right: 24px; padding-bottom: 20px; border-top-width: 4px; border-right-width: 4px; border-bottom-width: 4px; border-left-width: 2px; border-top-left-radius: 14px; border-top-right-radius: 14px; border-bottom-right-radius: 14px; border-bottom-left-radius: 14px; margin-bottom: 4px; margin-top: 4px;"/>
         </ui:VisualElement>
-        <ui:VisualElement name="Keyboard" style="flex-grow: initial; height: auto; flex-shrink: initial;">
-            <ui:VisualElement name="numbersRow" style="flex-grow: initial; flex-direction: row; justify-content: center; align-self: auto; height: auto; margin-top: 48px; flex-shrink: 1; margin-bottom: 12px; margin-right: 12px; margin-left: 12px;">
-                <ui:Button name="1" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; margin-left: 12px; margin-right: 12px; align-self: center; background-color: rgb(5, 10, 18);">
-                    <ui:Label text="1" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px;"/>
-                </ui:Button>
-                <ui:Button name="2" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; margin-left: 12px; margin-right: 12px; align-self: center; background-color: rgb(5, 10, 18);">
-                    <ui:Label text="2" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px;"/>
-                </ui:Button>
-                <ui:Button name="3" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" text="" class="MainMenuButton" style="width: 72px; height: 84px; margin-left: 12px; margin-right: 12px; align-self: center; background-color: rgb(5, 10, 18);">
-                    <ui:Label text="3" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px;"/>
-                </ui:Button>
-                <ui:Button name="4" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; margin-left: 12px; margin-right: 12px; align-self: center; background-color: rgb(5, 10, 18);">
-                    <ui:Label text="4" name="label" emoji-fallback-support="true" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px;"/>
-                </ui:Button>
-                <ui:Button name="5" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; margin-left: 12px; margin-right: 12px; align-self: center; background-color: rgb(5, 10, 18);">
-                    <ui:Label text="5" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px;"/>
-                </ui:Button>
-                <ui:Button name="6" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; align-self: center; margin-left: 12px; margin-right: 12px; background-color: rgb(5, 10, 18);">
-                    <ui:Label text="6" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px;"/>
-                </ui:Button>
-                <ui:Button name="7" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; margin-left: 12px; margin-right: 12px; align-self: center; background-color: rgb(5, 10, 18);">
-                    <ui:Label text="7" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px;"/>
-                </ui:Button>
-                <ui:Button name="8" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; margin-left: 12px; margin-right: 12px; align-self: center; background-color: rgb(5, 10, 18);">
-                    <ui:Label text="8" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px;"/>
-                </ui:Button>
-                <ui:Button name="9" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; margin-left: 12px; margin-right: 12px; align-self: center; background-color: rgb(5, 10, 18);">
-                    <ui:Label text="9" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px;"/>
-                </ui:Button>
-                <ui:Button name="0" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; align-self: center; margin-right: 12px; margin-left: 12px; background-color: rgb(5, 10, 18);">
-                    <ui:Label text="0" name="label" class="ButtonText" style="font-size: 54px; padding-left: 2px; margin-right: 2px; -unity-font-definition: url(&quot;project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&amp;guid=4665f3a764435ab458073afb5589a827&amp;type=3#Spaceport_2006&quot;);"/>
-                </ui:Button>
+        <ui:VisualElement name="PlayerScore" style="flex-grow: 1; width: 80%;">
+            <ui:VisualElement name="VisualElement" style="flex-grow: initial; flex-shrink: initial; height: 5%;"/>
+            <ui:VisualElement name="Menu" class="SettingsPanel" style="width: 772px; height: 525px; display: flex; flex-direction: column; background-size: 100% 100%; align-self: center; justify-content: flex-start; align-content: center; align-items: center; border-left-color: rgb(110, 220, 255); border-right-color: rgb(110, 220, 255); border-top-color: rgb(110, 220, 255); border-bottom-color: rgb(110, 220, 255); border-top-width: 4px; border-right-width: 4px; border-bottom-width: 4px; border-left-width: 4px; background-color: rgb(0, 0, 0); padding-top: 25px; padding-bottom: 15px; padding-left: 10px; padding-right: 10px;">
+                <ui:Label text="GAME OVER" name="GameOverLabel" class="SettingName" style="font-size: 72px; -unity-font-style: bold; color: rgb(220, 245, 255); -unity-font-definition: url(&quot;project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&amp;guid=4665f3a764435ab458073afb5589a827&amp;type=3#Spaceport_2006&quot;); align-self: center; margin-bottom: 4px; margin-right: 2px; margin-top: 24px; -unity-text-align: upper-center;"/>
+                <ui:VisualElement name="Score" style="flex-grow: 1; flex-direction: row; align-items: center; justify-content: center; align-self: center; width: 50%;">
+                    <ui:Label text="Score:" name="ScoreLabel" class="SettingsLabel" style="font-size: 48px; -unity-font-style: bold; color: rgb(230, 245, 255); -unity-font-definition: url(&quot;project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&amp;guid=4665f3a764435ab458073afb5589a827&amp;type=3#Spaceport_2006&quot;); align-self: center; margin-right: 32px;"/>
+                    <ui:Label text="0" name="ScoreField" class="SettingsLabel" style="font-size: 50px; -unity-font-style: bold; color: rgb(83, 94, 99); -unity-font-definition: url(&quot;project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&amp;guid=4665f3a764435ab458073afb5589a827&amp;type=3#Spaceport_2006&quot;); align-self: center; margin-right: 4px; width: auto; height: 75%; background-color: rgb(255, 255, 255); -unity-text-outline-color: rgba(0, 0, 0, 0.7); -unity-text-align: middle-center; margin-top: 2px; padding-left: 2px; margin-left: 4px; padding-top: 0; padding-right: 2px; padding-bottom: 0; min-width: 25%;"/>
+                </ui:VisualElement>
+                <ui:VisualElement name="Name" style="flex-grow: 1; flex-direction: row; align-items: center; justify-content: center; align-self: center; width: 75%;">
+                    <ui:Label text="Name:" name="NameLabel" class="SettingsLabel" style="font-size: 48px; -unity-font-style: bold; color: rgb(230, 245, 255); -unity-font-definition: url(&quot;project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&amp;guid=4665f3a764435ab458073afb5589a827&amp;type=3#Spaceport_2006&quot;); align-self: center; margin-right: 32px;"/>
+                    <ui:Label text="" name="NameField" class="SettingsLabel" style="font-size: 48px; -unity-font-style: bold; color: rgb(83, 94, 99); -unity-font-definition: url(&quot;project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&amp;guid=4665f3a764435ab458073afb5589a827&amp;type=3#Spaceport_2006&quot;); align-self: center; margin-right: 2px; width: 60%; height: 75%; background-color: rgb(255, 255, 255); -unity-text-outline-color: rgba(0, 0, 0, 0.7); -unity-text-align: middle-center; margin-top: 2px; padding-left: 2px;"/>
+                </ui:VisualElement>
+                <ui:Button text="Back to Main Menu" name="BackButton" class="MainMenuButton" style="width: auto; height: auto; font-size: 54px; padding-top: 20px; padding-left: 24px; padding-right: 24px; padding-bottom: 20px; border-top-width: 4px; border-right-width: 4px; border-bottom-width: 4px; border-left-width: 2px; border-top-left-radius: 14px; border-top-right-radius: 14px; border-bottom-right-radius: 14px; border-bottom-left-radius: 14px; margin-bottom: 4px; margin-top: 4px;"/>
             </ui:VisualElement>
-            <ui:VisualElement name="topRow" style="flex-grow: initial; flex-direction: row; align-self: auto; justify-content: center; height: auto; margin-top: 12px; margin-right: 12px; margin-bottom: 12px; margin-left: 12px;">
-                <ui:Button name="Q" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; align-self: center; margin-left: 12px; margin-right: 12px; background-color: rgb(5, 10, 18);">
-                    <ui:Label text="Q" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px;"/>
-                </ui:Button>
-                <ui:Button name="W" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; align-self: center; margin-left: 12px; margin-right: 12px; background-color: rgb(5, 10, 18);">
-                    <ui:Label text="W" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px;"/>
-                </ui:Button>
-                <ui:Button name="E" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; margin-left: 12px; margin-right: 12px; align-self: center; background-color: rgb(5, 10, 18);">
-                    <ui:Label text="E" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px;"/>
-                </ui:Button>
-                <ui:Button name="R" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; margin-left: 12px; margin-right: 12px; align-self: center; background-color: rgb(5, 10, 18);">
-                    <ui:Label text="R" name="label" emoji-fallback-support="true" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px;"/>
-                </ui:Button>
-                <ui:Button name="T" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; margin-left: 12px; margin-right: 12px; align-self: center; background-color: rgb(5, 10, 18);">
-                    <ui:Label text="T" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px;"/>
-                </ui:Button>
-                <ui:Button name="Y" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; margin-left: 12px; margin-right: 12px; align-self: center; background-color: rgb(5, 10, 18);">
-                    <ui:Label text="Y" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px;"/>
-                </ui:Button>
-                <ui:Button name="U" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; margin-left: 12px; margin-right: 12px; align-self: center; background-color: rgb(5, 10, 18);">
-                    <ui:Label text="U" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px;"/>
-                </ui:Button>
-                <ui:Button name="I" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; margin-left: 12px; margin-right: 12px; align-self: center; background-color: rgb(5, 10, 18);">
-                    <ui:Label text="I" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px;"/>
-                </ui:Button>
-                <ui:Button name="O" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; align-self: center; margin-left: 12px; margin-right: 12px; background-color: rgb(5, 10, 18);">
-                    <ui:Label text="O" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px; -unity-text-align: middle-center; white-space: nowrap; align-self: auto;"/>
-                </ui:Button>
-                <ui:Button name="P" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; margin-left: 12px; margin-right: 12px; align-self: center; background-color: rgb(5, 10, 18);">
-                    <ui:Label text="P" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px;"/>
-                </ui:Button>
-            </ui:VisualElement>
-            <ui:VisualElement name="middleRow" style="flex-grow: initial; flex-direction: row; justify-content: center; height: auto; flex-shrink: 1; margin-top: 12px; margin-right: 12px; margin-bottom: 12px; margin-left: 12px;">
-                <ui:Button name="A" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; margin-left: 12px; margin-right: 12px; align-self: center; background-color: rgb(5, 10, 18);">
-                    <ui:Label text="A" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px;"/>
-                </ui:Button>
-                <ui:Button name="S" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; margin-left: 12px; margin-right: 12px; align-self: center; background-color: rgb(5, 10, 18);">
-                    <ui:Label text="S" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px;"/>
-                </ui:Button>
-                <ui:Button name="D" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; margin-left: 12px; margin-right: 12px; align-self: center; background-color: rgb(5, 10, 18);">
-                    <ui:Label text="D" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px;"/>
-                </ui:Button>
-                <ui:Button name="F" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; margin-left: 12px; margin-right: 12px; align-self: center; background-color: rgb(5, 10, 18);">
-                    <ui:Label text="F" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px;"/>
-                </ui:Button>
-                <ui:Button name="G" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; margin-left: 12px; margin-right: 12px; align-self: center; background-color: rgb(5, 10, 18);">
-                    <ui:Label text="G" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px;"/>
-                </ui:Button>
-                <ui:Button name="H" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; margin-left: 12px; margin-right: 12px; align-self: center; background-color: rgb(5, 10, 18);">
-                    <ui:Label text="H" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px;"/>
-                </ui:Button>
-                <ui:Button name="J" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; margin-left: 12px; margin-right: 12px; align-self: center; background-color: rgb(5, 10, 18);">
-                    <ui:Label text="J" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px;"/>
-                </ui:Button>
-                <ui:Button name="K" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; margin-left: 12px; margin-right: 12px; align-self: center; background-color: rgb(5, 10, 18);">
-                    <ui:Label text="K" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px;"/>
-                </ui:Button>
-                <ui:Button name="L" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; margin-left: 12px; margin-right: 12px; align-self: center; background-color: rgb(5, 10, 18);">
-                    <ui:Label text="L" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px;"/>
-                </ui:Button>
-            </ui:VisualElement>
-            <ui:VisualElement name="bottomRow" style="flex-grow: initial; flex-direction: row; justify-content: center; height: auto; margin-top: 12px; margin-right: 12px; margin-bottom: 12px; margin-left: 12px;">
-                <ui:Button name="Z" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; margin-right: 12px; margin-left: 12px; align-self: center; background-color: rgb(5, 10, 18);">
-                    <ui:Label text="Z" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px;"/>
-                </ui:Button>
-                <ui:Button name="X" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; margin-left: 12px; margin-right: 12px; align-self: center; background-color: rgb(5, 10, 18);">
-                    <ui:Label text="X" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px; align-self: auto;"/>
-                </ui:Button>
-                <ui:Button name="C" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; margin-left: 12px; margin-right: 12px; align-self: center; background-color: rgb(5, 10, 18);">
-                    <ui:Label text="C" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px; align-self: auto;"/>
-                </ui:Button>
-                <ui:Button name="V" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; margin-left: 12px; margin-right: 12px; align-self: center; background-color: rgb(5, 10, 18);">
-                    <ui:Label text="V" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px; align-self: auto;"/>
-                </ui:Button>
-                <ui:Button name="B" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; margin-left: 12px; margin-right: 12px; align-self: center; background-color: rgb(5, 10, 18);">
-                    <ui:Label text="B" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px; align-self: auto;"/>
-                </ui:Button>
-                <ui:Button name="N" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; margin-left: 12px; margin-right: 12px; align-self: center; background-color: rgb(5, 10, 18);">
-                    <ui:Label text="N" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px;"/>
-                </ui:Button>
-                <ui:Button name="M" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; margin-left: 12px; margin-right: 12px; align-self: center; background-color: rgb(5, 10, 18);">
-                    <ui:Label text="M" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px; align-self: auto; align-content: auto; justify-content: center;"/>
-                </ui:Button>
-                <ui:Button name="Delete" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: auto; height: 84px; align-self: center; margin-right: 12px; margin-left: 12px; background-color: rgb(5, 10, 18); padding-right: 16px; padding-left: 16px;">
-                    <ui:Label text="Del" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px; -unity-font-definition: url(&quot;project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&amp;guid=4665f3a764435ab458073afb5589a827&amp;type=3#Spaceport_2006&quot;);"/>
-                </ui:Button>
+            <ui:VisualElement name="Keyboard" style="flex-grow: initial; height: auto; flex-shrink: initial; margin-right: 25px; margin-left: 25px;">
+                <ui:VisualElement name="numbersRow" style="flex-grow: initial; flex-direction: row; justify-content: center; align-self: auto; height: auto; margin-top: 48px; flex-shrink: 1; margin-bottom: 12px; margin-right: 12px; margin-left: 12px;">
+                    <ui:Button name="1" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; margin-left: 12px; margin-right: 12px; align-self: center; background-color: rgb(5, 10, 18);">
+                        <ui:Label text="1" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px; background-color: rgb(0, 0, 0);"/>
+                    </ui:Button>
+                    <ui:Button name="2" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; margin-left: 12px; margin-right: 12px; align-self: center; background-color: rgb(5, 10, 18);">
+                        <ui:Label text="2" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px;"/>
+                    </ui:Button>
+                    <ui:Button name="3" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" text="" class="MainMenuButton" style="width: 72px; height: 84px; margin-left: 12px; margin-right: 12px; align-self: center; background-color: rgb(5, 10, 18);">
+                        <ui:Label text="3" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px;"/>
+                    </ui:Button>
+                    <ui:Button name="4" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; margin-left: 12px; margin-right: 12px; align-self: center; background-color: rgb(5, 10, 18);">
+                        <ui:Label text="4" name="label" emoji-fallback-support="true" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px;"/>
+                    </ui:Button>
+                    <ui:Button name="5" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; margin-left: 12px; margin-right: 12px; align-self: center; background-color: rgb(5, 10, 18);">
+                        <ui:Label text="5" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px;"/>
+                    </ui:Button>
+                    <ui:Button name="6" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; align-self: center; margin-left: 12px; margin-right: 12px; background-color: rgb(5, 10, 18);">
+                        <ui:Label text="6" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px;"/>
+                    </ui:Button>
+                    <ui:Button name="7" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; margin-left: 12px; margin-right: 12px; align-self: center; background-color: rgb(5, 10, 18);">
+                        <ui:Label text="7" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px;"/>
+                    </ui:Button>
+                    <ui:Button name="8" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; margin-left: 12px; margin-right: 12px; align-self: center; background-color: rgb(5, 10, 18);">
+                        <ui:Label text="8" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px;"/>
+                    </ui:Button>
+                    <ui:Button name="9" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; margin-left: 12px; margin-right: 12px; align-self: center; background-color: rgb(5, 10, 18);">
+                        <ui:Label text="9" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px;"/>
+                    </ui:Button>
+                    <ui:Button name="0" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; align-self: center; margin-right: 12px; margin-left: 12px; background-color: rgb(5, 10, 18);">
+                        <ui:Label text="0" name="label" class="ButtonText" style="font-size: 54px; padding-left: 2px; margin-right: 2px; -unity-font-definition: url(&quot;project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&amp;guid=4665f3a764435ab458073afb5589a827&amp;type=3#Spaceport_2006&quot;);"/>
+                    </ui:Button>
+                </ui:VisualElement>
+                <ui:VisualElement name="topRow" style="flex-grow: initial; flex-direction: row; align-self: auto; justify-content: center; height: auto; margin-top: 12px; margin-right: 12px; margin-bottom: 12px; margin-left: 12px;">
+                    <ui:Button name="Q" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; align-self: center; margin-left: 12px; margin-right: 12px; background-color: rgb(5, 10, 18);">
+                        <ui:Label text="Q" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px;"/>
+                    </ui:Button>
+                    <ui:Button name="W" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; align-self: center; margin-left: 12px; margin-right: 12px; background-color: rgb(5, 10, 18);">
+                        <ui:Label text="W" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px;"/>
+                    </ui:Button>
+                    <ui:Button name="E" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; margin-left: 12px; margin-right: 12px; align-self: center; background-color: rgb(5, 10, 18);">
+                        <ui:Label text="E" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px;"/>
+                    </ui:Button>
+                    <ui:Button name="R" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; margin-left: 12px; margin-right: 12px; align-self: center; background-color: rgb(5, 10, 18);">
+                        <ui:Label text="R" name="label" emoji-fallback-support="true" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px;"/>
+                    </ui:Button>
+                    <ui:Button name="T" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; margin-left: 12px; margin-right: 12px; align-self: center; background-color: rgb(5, 10, 18);">
+                        <ui:Label text="T" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px;"/>
+                    </ui:Button>
+                    <ui:Button name="Y" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; margin-left: 12px; margin-right: 12px; align-self: center; background-color: rgb(5, 10, 18);">
+                        <ui:Label text="Y" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px;"/>
+                    </ui:Button>
+                    <ui:Button name="U" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; margin-left: 12px; margin-right: 12px; align-self: center; background-color: rgb(5, 10, 18);">
+                        <ui:Label text="U" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px;"/>
+                    </ui:Button>
+                    <ui:Button name="I" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; margin-left: 12px; margin-right: 12px; align-self: center; background-color: rgb(5, 10, 18);">
+                        <ui:Label text="I" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px;"/>
+                    </ui:Button>
+                    <ui:Button name="O" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; align-self: center; margin-left: 12px; margin-right: 12px; background-color: rgb(5, 10, 18);">
+                        <ui:Label text="O" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px; -unity-text-align: middle-center; white-space: nowrap; align-self: auto;"/>
+                    </ui:Button>
+                    <ui:Button name="P" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; margin-left: 12px; margin-right: 12px; align-self: center; background-color: rgb(5, 10, 18);">
+                        <ui:Label text="P" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px;"/>
+                    </ui:Button>
+                </ui:VisualElement>
+                <ui:VisualElement name="middleRow" style="flex-grow: initial; flex-direction: row; justify-content: center; height: auto; flex-shrink: 1; margin-top: 12px; margin-right: 12px; margin-bottom: 12px; margin-left: 12px;">
+                    <ui:Button name="A" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; margin-left: 12px; margin-right: 12px; align-self: center; background-color: rgb(5, 10, 18);">
+                        <ui:Label text="A" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px;"/>
+                    </ui:Button>
+                    <ui:Button name="S" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; margin-left: 12px; margin-right: 12px; align-self: center; background-color: rgb(5, 10, 18);">
+                        <ui:Label text="S" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px;"/>
+                    </ui:Button>
+                    <ui:Button name="D" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; margin-left: 12px; margin-right: 12px; align-self: center; background-color: rgb(5, 10, 18);">
+                        <ui:Label text="D" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px;"/>
+                    </ui:Button>
+                    <ui:Button name="F" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; margin-left: 12px; margin-right: 12px; align-self: center; background-color: rgb(5, 10, 18);">
+                        <ui:Label text="F" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px;"/>
+                    </ui:Button>
+                    <ui:Button name="G" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; margin-left: 12px; margin-right: 12px; align-self: center; background-color: rgb(5, 10, 18);">
+                        <ui:Label text="G" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px;"/>
+                    </ui:Button>
+                    <ui:Button name="H" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; margin-left: 12px; margin-right: 12px; align-self: center; background-color: rgb(5, 10, 18);">
+                        <ui:Label text="H" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px;"/>
+                    </ui:Button>
+                    <ui:Button name="J" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; margin-left: 12px; margin-right: 12px; align-self: center; background-color: rgb(5, 10, 18);">
+                        <ui:Label text="J" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px;"/>
+                    </ui:Button>
+                    <ui:Button name="K" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; margin-left: 12px; margin-right: 12px; align-self: center; background-color: rgb(5, 10, 18);">
+                        <ui:Label text="K" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px;"/>
+                    </ui:Button>
+                    <ui:Button name="L" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; margin-left: 12px; margin-right: 12px; align-self: center; background-color: rgb(5, 10, 18);">
+                        <ui:Label text="L" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px;"/>
+                    </ui:Button>
+                </ui:VisualElement>
+                <ui:VisualElement name="bottomRow" style="flex-grow: initial; flex-direction: row; justify-content: center; height: auto; margin-top: 12px; margin-right: 12px; margin-bottom: 12px; margin-left: 12px;">
+                    <ui:Button name="Z" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; margin-right: 12px; margin-left: 12px; align-self: center; background-color: rgb(5, 10, 18);">
+                        <ui:Label text="Z" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px;"/>
+                    </ui:Button>
+                    <ui:Button name="X" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; margin-left: 12px; margin-right: 12px; align-self: center; background-color: rgb(5, 10, 18);">
+                        <ui:Label text="X" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px; align-self: auto;"/>
+                    </ui:Button>
+                    <ui:Button name="C" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; margin-left: 12px; margin-right: 12px; align-self: center; background-color: rgb(5, 10, 18);">
+                        <ui:Label text="C" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px; align-self: auto;"/>
+                    </ui:Button>
+                    <ui:Button name="V" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; margin-left: 12px; margin-right: 12px; align-self: center; background-color: rgb(5, 10, 18);">
+                        <ui:Label text="V" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px; align-self: auto;"/>
+                    </ui:Button>
+                    <ui:Button name="B" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; margin-left: 12px; margin-right: 12px; align-self: center; background-color: rgb(5, 10, 18);">
+                        <ui:Label text="B" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px; align-self: auto;"/>
+                    </ui:Button>
+                    <ui:Button name="N" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; margin-left: 12px; margin-right: 12px; align-self: center; background-color: rgb(5, 10, 18);">
+                        <ui:Label text="N" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px;"/>
+                    </ui:Button>
+                    <ui:Button name="M" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 72px; height: 84px; margin-left: 12px; margin-right: 12px; align-self: center; background-color: rgb(5, 10, 18);">
+                        <ui:Label text="M" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px; align-self: auto; align-content: auto; justify-content: center;"/>
+                    </ui:Button>
+                    <ui:Button name="Delete" selectable="false" focusable="false" parse-escape-sequences="false" enabled="true" class="MainMenuButton" style="width: 144px; height: 84px; align-self: center; margin-right: 12px; margin-left: 12px; background-color: rgb(5, 10, 18); padding-right: 12px; padding-left: 12px;">
+                        <ui:Label text="Del" name="label" class="ButtonText" style="font-size: 60px; padding-left: 2px; margin-right: 2px; -unity-font-definition: url(&quot;project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&amp;guid=4665f3a764435ab458073afb5589a827&amp;type=3#Spaceport_2006&quot;);"/>
+                    </ui:Button>
+                </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>

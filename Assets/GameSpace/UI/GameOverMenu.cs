@@ -9,7 +9,6 @@ using System.Collections.Generic;
 public class GameOverMenu : MonoBehaviour
 {
     [SerializeField] UIDocument gameOverMenuDocument;
-    [SerializeField] UIDocument gameOverLeaderboard;
 
     public GameObject gameOverMenu;
 
@@ -20,13 +19,22 @@ public class GameOverMenu : MonoBehaviour
 
     private readonly Dictionary<Button, Action> keyboardHandlers = new();
 
+    private Label firstName, firstScore;
+    private Label secondName, secondScore;
+    private Label thirdName, thirdScore;
+    private Label fourthName, fourthScore;
+    private Label fifthName, fifthScore;
+    private Label sixthName, sixthScore;
+
+    List<LeaderboardEntry> list = new List<LeaderboardEntry>();
+
     private const float KeyWidth = 112f;
     private const float KeyHeight = 100f;
     private const float KeyHorizontalMargin = 18f;
     private const float KeyVerticalMargin = 4f;
     private const float KeyFontSize = 68f;
-    private const float DeleteKeyWidth = 300f;
-    private const float DeleteKeyFontSize = 52f;
+    private const float DeleteKeyWidth = 224f;
+    private const float DeleteKeyFontSize = 68f;
 
     private static readonly string[] keyboardRowIds =
     {
@@ -45,8 +53,6 @@ public class GameOverMenu : MonoBehaviour
     void OnEnable()
     {
         VisualElement root = gameOverMenuDocument.rootVisualElement;
-        if (gameOverLeaderboard != null)
-            gameOverLeaderboard.gameObject.SetActive(true);
 
         scoreField = root.Q<Label>("ScoreField");
         nameField = root.Q<Label>("NameField");
@@ -60,13 +66,37 @@ public class GameOverMenu : MonoBehaviour
         ApplyKeyboardSizing(root);
 
         scoreField.text = ScoreManager.Instance.GetScore().ToString();
+
+        firstName = root.Q<Label>("firstNameLabel");
+        secondName = root.Q<Label>("secondNameLabel");
+        thirdName = root.Q<Label>("thirdNameLabel");
+        fourthName = root.Q<Label>("fourthNameLabel");
+        fifthName = root.Q<Label>("fifthNameLabel");
+        sixthName = root.Q<Label>("sixthNameLabel");
+
+        firstScore = root.Q<Label>("firstScoreLabel");
+        secondScore = root.Q<Label>("secondScoreLabel");
+        thirdScore = root.Q<Label>("thirdScoreLabel");
+        fourthScore = root.Q<Label>("fourthScoreLabel");
+        fifthScore = root.Q<Label>("fifthScoreLabel");
+        sixthScore = root.Q<Label>("sixthScoreLabel");
+
+        switch (GameModeMenu.gameModeSetting)
+        {
+            case 0:
+                TradeShowMode();
+                break;
+            case 1:
+                EndlessMode();
+                break;
+            case 2:
+                WaveMode();
+                break;
+        }
     }
 
     void OnDisable()
     {
-        if (gameOverLeaderboard != null)
-            gameOverLeaderboard.gameObject.SetActive(false);
-
         backButton.clicked -= ToMainMenu;
         deleteButton.clicked -= DeleteChar;
 
@@ -152,5 +182,52 @@ public class GameOverMenu : MonoBehaviour
     {
         if (nameField.text != "")
             nameField.text = nameField.text[..^1];
+    }
+
+    // leaderboard function
+    private void TradeShowMode()
+    {
+        list = LeaderboardManager.Instance.tsEntries;
+        PopulateLeaderboard();
+    }
+
+    private void EndlessMode()
+    {
+        list = LeaderboardManager.Instance.endEntries;
+        PopulateLeaderboard();
+    }
+
+    private void WaveMode()
+    {
+        list = LeaderboardManager.Instance.waveEntries;
+        PopulateLeaderboard();
+    }
+
+    private void PopulateLeaderboard()
+    {
+        list.Sort((a, b) => b.score.CompareTo(a.score));
+
+        Label[] nameLabels =
+        {
+            firstName, secondName, thirdName, fourthName, fifthName, sixthName
+        };
+        Label[] scoreLabels =
+        {
+            firstScore, secondScore, thirdScore, fourthScore, fifthScore, sixthScore
+        };
+
+        for (int i = 0; i < nameLabels.Length; i++)
+        {
+            if (i < list.Count)
+            {
+                nameLabels[i].text = list[i].playerName;
+                scoreLabels[i].text = $"{list[i].score}";
+            }
+            else
+            {
+                nameLabels[i].text = "----";
+                scoreLabels[i].text = "--";
+            }
+        }
     }
 }
