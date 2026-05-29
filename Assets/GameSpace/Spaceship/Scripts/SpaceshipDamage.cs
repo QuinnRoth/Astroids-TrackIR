@@ -17,7 +17,6 @@ public class SpaceshipDamage : MonoBehaviour
 
     //private SpaceshipDeathAnimation deathAnimation;
     public GameObject gameOverMenu;
-    // public GameObject cursorCanvas;
 
     public DamageFlashEffect damageFlash;
     // private SpaceshipMovement spaceshipMovement; 
@@ -74,6 +73,22 @@ public class SpaceshipDamage : MonoBehaviour
         CursorInput.Instance.SetCursorVisible(false);
     }
 
+    private void Start()
+    {
+        UpdateRotationConstraint();
+    }
+
+    private void UpdateRotationConstraint()
+    {
+        // get current positional contraints
+        var posConstraints = rb.constraints & (RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ);
+
+        if (SpaceshipMovement.angMomentum)
+            rb.constraints = posConstraints;    // allows rotation
+        else
+            rb.constraints = posConstraints | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
+    }
+
     // public void HandleTriggerEnter(Collider collider)
     public void OnCollisionEnter(Collision collision)
     {
@@ -110,6 +125,9 @@ public class SpaceshipDamage : MonoBehaviour
             // stop and then bounce
             rb.linearVelocity = Vector3.zero;
             rb.AddForce(reflectDir * bounceForce, ForceMode.Impulse);
+
+            rb.angularVelocity = Vector3.ClampMagnitude(rb.angularVelocity, 1.0f);
+
         }
 
         if (playerHealth <= 0)

@@ -36,17 +36,14 @@ public class ColorMenu : MonoBehaviour
     private static readonly Color32[] Palette =
     {
         new Color32(240, 250, 255, 255), // white
-        new Color32(110, 220, 255, 255), // cyan
-        new Color32( 80, 255, 255, 255), // bright cyan
+        new Color32(100, 182, 238, 255), // bright blue
+        new Color32(255,   0,   0, 255), // intense red
         new Color32(170, 120, 255, 255), // purple
         new Color32(255,  80, 200, 255), // pink
         new Color32(255,  90,  70, 255), // red-ish
         new Color32(255, 166,   0, 255), // orange
         new Color32(255, 216,  74, 255), // yellow
         new Color32( 80, 255, 154, 255), // green
-        new Color32( 13,  41,  53, 255), // deep blue/teal
-        new Color32( 35,  35,  35, 255), // dark gray
-        new Color32(  0,   0,   0, 255), // black
     };
 
     private Color32 currentShip;
@@ -78,7 +75,7 @@ public class ColorMenu : MonoBehaviour
 
 
         currentShip = LoadColor32(ShipPrefix, defaultColor: new Color32(255, 166, 0, 255));
-        currentAst = LoadColor32(AstPrefixA, defaultColor: new Color32(110, 220, 255, 255));
+        currentAst = LoadColor32(AstPrefixA, defaultColor: new Color32(100, 182, 238, 255));
         // If AstColor not present, try AsteroidColor
         if (!HasRGB(AstPrefixA) && HasRGB(AstPrefixB))
             currentAst = LoadColor32(AstPrefixB, currentAst);
