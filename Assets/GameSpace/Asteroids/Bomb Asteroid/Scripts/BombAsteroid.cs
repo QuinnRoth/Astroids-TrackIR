@@ -19,7 +19,11 @@ public class BombAsteroid : AsteroidClass
             return;
 
         // Debug.Log("Bomb Asteroid Hit!");
-        ScoreManager.Instance.AddScore(1);
+        if (GameModeMenu.gameModeSetting == 2)      // scoring works differently in wave mode
+            ScoreManager.Instance.AddExactScore(10);
+        else
+            ScoreManager.Instance.AddScore(1);
+            
         AsteroidSpawner.asteroidCount--;
         PlayDeathFX();
 
@@ -48,7 +52,7 @@ public class BombAsteroid : AsteroidClass
             AsteroidClass asteroid = hitCollider.GetComponentInParent<AsteroidClass>();
             if (asteroid == null) continue;
             if (!hitAsteroids.Add(asteroid)) continue;
-            Debug.Log("DEBUG: Hit collider " + i  + ": " + hitCollider);
+            // Debug.Log("DEBUG: Hit collider " + i  + ": " + hitCollider);
             if (asteroid.gameObject == this.gameObject) continue;
             asteroid.Die(true); // diedByBomb = true
             i++;

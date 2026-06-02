@@ -58,7 +58,7 @@ public class SpaceshipDamage : MonoBehaviour
     {
         if (isDying)
         {
-            return; // if player is currently diying, do not start death coroutine twice
+            return; // if player is currently dying, do not start death coroutine twice
         }
 
         isDying = true;

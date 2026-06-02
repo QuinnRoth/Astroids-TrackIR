@@ -77,7 +77,7 @@ public class SpaceshipShoot : MonoBehaviour
         // laserMiddle.GetComponent<Laser>().forwardDirection = transform.forward;
         // laserMiddle.GetComponent<MeshRenderer>().enabled = false;
 
-        // Shake da camera oh yeah shake shake shake
+        // shake the camera
         StartCoroutine(cameraShake.Shake(.1f, .01f));
 
         // Make a sound when shooting a laser

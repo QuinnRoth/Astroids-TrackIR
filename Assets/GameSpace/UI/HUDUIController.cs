@@ -22,7 +22,6 @@ public class HUDUIController : MonoBehaviour
     private int lastLives = -999;
     private int lastScore = -999;
     private int score = 0;
-    private float floatScore = 100000;      // for time based modes (wave)
 
     void OnEnable()
     {
@@ -42,14 +41,7 @@ public class HUDUIController : MonoBehaviour
 
         int lives = Mathf.Clamp(player.playerHealth, 0, maxLives);
 
-        if (GameModeMenu.gameModeSetting == 2)  // wave mode (time based score)
-        {
-            floatScore -= Time.deltaTime;
-            score = (int) floatScore;
-        }
-        else
-            score = ScoreManager.Instance ? ScoreManager.Instance.GetScore() : 0;
-
+        score = ScoreManager.Instance ? ScoreManager.Instance.GetScore() : 0;
 
         if (lives != lastLives)
         {

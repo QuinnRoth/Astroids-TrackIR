@@ -17,8 +17,12 @@ public class HealingAsteroid : AsteroidClass
         if (!TryBeginDeath())
             return;
 
-        Debug.Log("Healing Asteroid Hit!");
-        ScoreManager.Instance.AddScore(1);
+        // Debug.Log("Healing Asteroid Hit!");
+        if (GameModeMenu.gameModeSetting == 2)      // scoring works differently in wave mode
+            ScoreManager.Instance.AddExactScore(10);
+        else
+            ScoreManager.Instance.AddScore(1);
+
         AsteroidSpawner.asteroidCount--;
         PlayDeathFX();
 

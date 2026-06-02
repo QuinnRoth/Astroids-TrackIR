@@ -41,7 +41,6 @@ public class AsteroidSpawner : MonoBehaviour
 
     void Start()
     {
-
         asteroidCount = 0;
 
         gameModeSetting = GameModeMenu.gameModeSetting;
