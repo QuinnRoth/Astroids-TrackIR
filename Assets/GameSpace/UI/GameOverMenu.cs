@@ -15,6 +15,7 @@ public class GameOverMenu : MonoBehaviour
     private Label scoreField;
     private Label nameField;
     private Button backButton;
+    private Button replayButton;
     private Button deleteButton;
 
     private readonly Dictionary<Button, Action> keyboardHandlers = new();
@@ -57,9 +58,11 @@ public class GameOverMenu : MonoBehaviour
         scoreField = root.Q<Label>("ScoreField");
         nameField = root.Q<Label>("NameField");
         backButton = root.Q<Button>("BackButton");
+        replayButton = root.Q<Button>("ReplayButton");
         deleteButton = root.Q<Button>("Delete");
 
         backButton.clicked += ToMainMenu;
+        replayButton.clicked += ReplayGame;
         deleteButton.clicked += DeleteChar;
 
         RegisterKeyboardButtons(root);
@@ -98,6 +101,7 @@ public class GameOverMenu : MonoBehaviour
     void OnDisable()
     {
         backButton.clicked -= ToMainMenu;
+        replayButton.clicked -= ReplayGame;
         deleteButton.clicked -= DeleteChar;
 
         foreach (var pair in keyboardHandlers)
@@ -169,6 +173,12 @@ public class GameOverMenu : MonoBehaviour
         if (nameField.text.Length < 6)
             nameField.text = (nameField.text ?? string.Empty) + chara;
     }
+    
+    private void DeleteChar()
+    {
+        if (nameField.text != "")
+            nameField.text = nameField.text[..^1];
+    }
 
     private void ToMainMenu()
     {
@@ -178,10 +188,14 @@ public class GameOverMenu : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
-    private void DeleteChar()
+    private void ReplayGame()
     {
-        if (nameField.text != "")
-            nameField.text = nameField.text[..^1];
+        LeaderboardManager.Instance.AddScore(nameField.text, ScoreManager.Instance.GetScore(), GameModeMenu.gameModeSetting);
+
+        Time.timeScale = 1f;
+
+        int currentScene = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentScene);
     }
 
     // leaderboard function
