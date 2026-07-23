@@ -120,7 +120,7 @@ public class TutorialManager : MonoBehaviour
             else if (currentTutorialStep == 1)
             {
                 // increase the progress bar based on player rotating N degrees
-                tutorialProgressBar.value = GetDegreesRotated() / 720f;
+                tutorialProgressBar.value = GetDegreesRotated() / 360f;
             }
             else if (currentTutorialStep == 2)
             {
