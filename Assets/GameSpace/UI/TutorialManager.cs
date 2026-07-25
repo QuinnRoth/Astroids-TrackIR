@@ -12,6 +12,12 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private GameObject legacyHudCanvasRoot;
     [SerializeField] private Label tutorialLabel;
     [SerializeField] private ProgressBar tutorialProgressBar;
+    [SerializeField] private GroupBox toggleGroup;
+    [SerializeField] private Toggle toggle1;
+    [SerializeField] private Toggle toggle2;
+    [SerializeField] private Toggle toggle3;
+    [SerializeField] private Toggle toggle4;
+    [SerializeField] private Toggle toggle5;
 
     public bool tutorialComplete = false;
     private PlayerInputActions spaceshipControls;
@@ -48,6 +54,12 @@ public class TutorialManager : MonoBehaviour
         var root = tutorialDocument.rootVisualElement;
         tutorialLabel = root.Q<Label>("tutorialLabel");
         tutorialProgressBar = root.Q<ProgressBar>("tutorialProgressBar");
+        toggleGroup = root.Q<GroupBox>("ToggleGroup");
+        toggle1 = root.Q<Toggle>("Toggle1");
+        toggle2 = root.Q<Toggle>("Toggle2");
+        toggle3 = root.Q<Toggle>("Toggle3");
+        toggle4 = root.Q<Toggle>("Toggle4");
+        toggle5 = root.Q<Toggle>("Toggle5");
         currentTutorialStep = 0;
         SetTutorialText();
     }
@@ -123,20 +135,30 @@ public class TutorialManager : MonoBehaviour
                 if (tutorialProgressBar.value >= 1f)
                 {
                     AdvanceTutorialStep();
+                    tutorialProgressBar.RemoveFromHierarchy();
                 }
                 break;
 
             case 2:
                 Debug.Log("Tutorial step 2");
+                toggleGroup.visible = true;
+                toggle1.value = GetShotsFired() > 0;
+                toggle2.value = GetShotsFired() > 1;
+                toggle3.value = GetShotsFired() > 2;
+                toggle4.value = GetShotsFired() > 3;
+                toggle5.value = GetShotsFired() > 4;
                 if (!hasSpawnedCurrentStep)
                 {
                     asteroidSpawner.SpawnOneAsteroid(0, new Vector3(player.transform.localPosition.x, player.transform.localPosition.y, player.transform.localPosition.z + 2000));
+                    
                     hasSpawnedCurrentStep = true;
                 }
 
-                if (AsteroidSpawner.asteroidCount == 0)
+                if (GetShotsFired() >= 5)
                 {
+                    asteroidSpawner.RemoveAllAsteroids();
                     AdvanceTutorialStep();
+                    toggleGroup.RemoveFromHierarchy();
                 }
                 break;
 

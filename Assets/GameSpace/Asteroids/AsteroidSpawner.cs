@@ -80,6 +80,17 @@ public class AsteroidSpawner : MonoBehaviour
         WaveMode.SetActive(true);
     }
 
+    public void RemoveAllAsteroids(){
+        foreach (Transform child in parentOfAsteroids)
+        {
+            AsteroidClass asteroid = child.TryGetComponent<AsteroidClass>(out AsteroidClass a) ? a : null;
+            if (asteroid != null)
+            {
+                asteroid.Die(true);
+            }
+        }
+    }
+
     // Generates a random spawn position on a cube face while avoiding a sphere around the spaceship
     private Vector3 RangeWithExclusionZone(float half, float exclusionRadius)
     {

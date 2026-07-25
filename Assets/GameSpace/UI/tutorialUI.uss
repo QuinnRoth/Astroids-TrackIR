@@ -54,3 +54,24 @@
     border-bottom-width: 2px;
     border-left-width: 2px;
 }
+
+VisualElement > #GroupBox > #ToggleGroup > .unity-toggle:checked > .unity-toggle__input > .unity-toggle__checkmark {
+    background-image: none;
+    background-color: rgb(14, 169, 220);
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+}
+
+VisualElement > #GroupBox > #ToggleGroup > .unity-toggle > .unity-toggle__input > #unity-checkmark {
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+    border-bottom-left-radius: 12px;
+    border-left-color: rgb(255, 255, 255);
+    border-right-color: rgb(255, 255, 255);
+    border-top-color: rgb(255, 255, 255);
+    border-bottom-color: rgb(255, 255, 255);
+}
+
+VisualElement > #GroupBox > #ToggleGroup > .unity-toggle > .unity-toggle__label {
+    display: none;
+}
