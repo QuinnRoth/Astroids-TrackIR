@@ -2726,7 +2726,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   tutorialDocument: {fileID: 1766867296}
   player: {fileID: 60033882}
+  asteroidSpawner: {fileID: 456537966}
   legacyHudCanvasRoot: {fileID: 1780026797}
+  tutorialComplete: 0
 --- !u!4 &1766867298
 Transform:
   m_ObjectHideFlags: 0

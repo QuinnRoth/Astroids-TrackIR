@@ -39,8 +39,9 @@ public class AsteroidSpawner : MonoBehaviour
     
     private int gameModeSetting;
 
-    void Start()
+    public void StartGame()
     {
+        Debug.Log("Starting game...");
         asteroidCount = 0;
 
         gameModeSetting = GameModeMenu.gameModeSetting;
@@ -130,13 +131,7 @@ public class AsteroidSpawner : MonoBehaviour
     {
         for (int i = 0; i < x; i++)
         {
-            // Prepare asteroid to be instantiated
-            GameObject asteroid = null;
-            int randomSize = (int)UnityEngine.Random.Range(minAsteroidSize, maxAsteroidSize);
-            float randomMoveSpeed = UnityEngine.Random.Range(minAsteroidMoveSpeed, maxAsteroidMoveSpeed);
-            float randomRotSpeed = UnityEngine.Random.Range(minAsteroidRotSpeed, maxAsteroidRotSpeed);
-            Vector3 randomMoveDir = new Vector3(UnityEngine.Random.Range(-1.0f, 1.0f), UnityEngine.Random.Range(-1.0f, 1.0f), UnityEngine.Random.Range(-1.0f, 1.0f)).normalized;
-            Vector3 randomRotDir = new Vector3(UnityEngine.Random.Range(-1.0f, 1.0f), UnityEngine.Random.Range(-1.0f, 1.0f), UnityEngine.Random.Range(-1.0f, 1.0f)).normalized;
+
             float half = 200f;
             float exclusionRadius = half / 2f;
             Vector3 randomPosition = RangeWithExclusionZone(half, exclusionRadius);
@@ -145,39 +140,75 @@ public class AsteroidSpawner : MonoBehaviour
             int randChance = UnityEngine.Random.Range(0, 20);
 
             // Spawn asteroids based on chance variable, set their position and rotation, and add them as a child of the chosen parent
-            switch (randChance)
-            {
-                case 1: // Healing Asteroid, 5% of the time
-                    asteroid = Instantiate(healingAsteroidPrefab, randomPosition, Quaternion.identity, parentOfAsteroids);
-                    break;
-                case 2: // Bomb asteroid, 5% of the time
-                    asteroid = Instantiate(bombAsteroidPrefab, randomPosition, Quaternion.identity, parentOfAsteroids);
-                    break;
-                default: // Basic asteroid, 90% of the time
-                    asteroid = Instantiate(basicAsteroidPrefab, randomPosition, Quaternion.identity, parentOfAsteroids);
-
-                    // Apply the saved color scheme to the newly spawned asteroid
-                    var apply = asteroid.GetComponent<ApplySavedColors>();
-                    if (apply != null && asteroid.GetComponent<AsteroidClass>().GetAsteroidType() == AsteroidClass.InheritanceType.Basic)
-                        apply.ApplyNow();
-                    else
-                        Debug.LogError("Cannot find ApplySavedColors component on " + asteroid);
-                    
-                    break;
-            }
-
-            // Initialize asteroid, which is the same process for all asteroid types
-            asteroid.GetComponent<AsteroidClass>().Init(
-                /* iSize = */       randomSize,
-                /* iMoveSpeed = */  randomMoveSpeed,
-                /* iMoveDir = */    randomMoveDir,
-                /* iRotDir = */     randomRotDir
-            );
+            SpawnOneAsteroid(randChance, randomPosition);
 
             // Debug.Log(asteroid.GetComponent<AsteroidClass>().GetAsteroidType());
-
-            asteroidCount++;
         }
+    }
+
+    public GameObject SpawnOneAsteroid(int asteroidType, Vector3 position)
+    {
+        GameObject asteroid = null;
+        int randomSize = (int)UnityEngine.Random.Range(minAsteroidSize, maxAsteroidSize);
+        float randomMoveSpeed = UnityEngine.Random.Range(minAsteroidMoveSpeed, maxAsteroidMoveSpeed);
+        float randomRotSpeed = UnityEngine.Random.Range(minAsteroidRotSpeed, maxAsteroidRotSpeed);
+        Vector3 randomMoveDir = new Vector3(UnityEngine.Random.Range(-1.0f, 1.0f), UnityEngine.Random.Range(-1.0f, 1.0f), UnityEngine.Random.Range(-1.0f, 1.0f)).normalized;
+        Vector3 randomRotDir = new Vector3(UnityEngine.Random.Range(-1.0f, 1.0f), UnityEngine.Random.Range(-1.0f, 1.0f), UnityEngine.Random.Range(-1.0f, 1.0f)).normalized;
+
+
+        switch (asteroidType)
+        {
+            case 1: // Healing Asteroid
+                asteroid = SpawnHealingAsteroid(position);
+                break;
+            case 2: // Bomb asteroid
+                asteroid = SpawnBombAsteroid(position);
+                break;
+            default: // Basic asteroid
+                asteroid = SpawnBasicAsteroid(asteroid, position);
+                break;
+        }
+
+        // Initialize asteroid, which is the same process for all asteroid types
+        asteroid.GetComponent<AsteroidClass>().Init(
+            /* iSize = */       randomSize,
+            /* iMoveSpeed = */  randomMoveSpeed,
+            /* iMoveDir = */    randomMoveDir,
+            /* iRotDir = */     randomRotDir
+        );  
+
+        asteroidCount++;
+
+        return asteroid;
+    }
+
+    public GameObject SpawnBasicAsteroid(GameObject asteroid, Vector3 position)
+    {
+        asteroid =Instantiate(basicAsteroidPrefab, position, Quaternion.identity, parentOfAsteroids);
+                            // Apply the saved color scheme to the newly spawned asteroid
+        var apply = asteroid.GetComponent<ApplySavedColors>();
+        if (apply != null && asteroid.GetComponent<AsteroidClass>().GetAsteroidType() == AsteroidClass.InheritanceType.Basic)
+            apply.ApplyNow();
+        else
+            Debug.LogError("Cannot find ApplySavedColors component on " + asteroid);
+        
+        return asteroid;
+    }
+
+    public GameObject SpawnHealingAsteroid(Vector3 position)
+    {
+        return Instantiate(healingAsteroidPrefab, position, Quaternion.identity, parentOfAsteroids);
+    }
+
+    public GameObject SpawnBombAsteroid(Vector3 position)
+    {
+        return Instantiate(bombAsteroidPrefab, position, Quaternion.identity, parentOfAsteroids);
+    }
+
+    // Spawn a set of tutorial asteroids
+    public void SpawnTutorialAstroids()
+    {
+        SpawnXAsteroidsNotTowardOrigin(5);
     }
 
     // Spawn X amount of asteroids in the spawn radius that *do not* target the player when spawned

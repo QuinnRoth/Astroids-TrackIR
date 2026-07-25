@@ -8,10 +8,12 @@ public class TutorialManager : MonoBehaviour
     [Header("Refs")]
     [SerializeField] private UIDocument tutorialDocument;
     [SerializeField] private SpaceshipDamage player;
+    [SerializeField] private AsteroidSpawner asteroidSpawner;
     [SerializeField] private GameObject legacyHudCanvasRoot;
     [SerializeField] private Label tutorialLabel;
     [SerializeField] private ProgressBar tutorialProgressBar;
 
+    public bool tutorialComplete = false;
     private PlayerInputActions spaceshipControls;
     private InputAction shootAction;    
     private InputAction thrustInput;
@@ -25,6 +27,7 @@ public class TutorialManager : MonoBehaviour
     private Quaternion lastRotation = Quaternion.identity;
     private float totalDegreesRotated;
     private float shotsFired = 0f;
+    private bool hasSpawnedCurrentStep = false;
 
 
     // Notes:
@@ -61,6 +64,7 @@ public class TutorialManager : MonoBehaviour
     {
         legacyHudCanvasRoot?.SetActive(false);
         
+        
         // Initialize input actions before using them
         thrustInput = InputSystem.actions.FindAction("Thrust");
         pitchInput = InputSystem.actions.FindAction("Pitch");
@@ -70,7 +74,9 @@ public class TutorialManager : MonoBehaviour
         {
             "Control Thrust:\nLean closer (" + thrustInput.GetBindingDisplayString(2) + ") or farther (" + thrustInput.GetBindingDisplayString(1) + ") from the screen to move forward or backward.",
             "Steer with Your Head:\nLook Left (" + yawInput.GetBindingDisplayString(1) + ") / Right (" + yawInput.GetBindingDisplayString(2) + ") to control Yaw. \nLook Up (" + pitchInput.GetBindingDisplayString(1) + ") / Down (" + pitchInput.GetBindingDisplayString(2) + ") to control Pitch.",
-            "Destroy Astroids by pressing " + shootAction.GetBindingDisplayString(0) + " to shoot."
+            "Destroy Astroids by pressing " + shootAction.GetBindingDisplayString(0) + " to shoot.",
+            "The bomb asteroid will explode when hit. And the healing asteroid will drop a health pack when hit.",
+            "Tutorial complete! Game Start!"
         };
     }
 
@@ -84,18 +90,9 @@ public class TutorialManager : MonoBehaviour
 
     void Update()
     {
-        updateTutorialProgressBar();
-        if (tutorialProgressBar.value >= 1f)
+        if (!tutorialComplete)
         {
-            currentTutorialStep++;
-            if (currentTutorialStep < tutorialTexts.Length)
-            {
-                SetTutorialText();
-            }
-            else
-            {
-                tutorialDocument.gameObject.SetActive(false);
-            }
+            TutorialStep();
         }
     }
 
@@ -108,26 +105,77 @@ public class TutorialManager : MonoBehaviour
         ClearTutorialProgressBar();
     }
 
-    private void updateTutorialProgressBar()
+    private void TutorialStep()
     {
-        if (tutorialProgressBar != null)
+        Debug.Log("Tutorial step: " + currentTutorialStep);
+        switch (currentTutorialStep)
         {
-            if (currentTutorialStep == 0)
-            {
-                // increas the progress bar based on player moving 100 units
+            case 0:
                 tutorialProgressBar.value = GetDistanceMoved() / 100f;
-            }
-            else if (currentTutorialStep == 1)
-            {
-                // increase the progress bar based on player rotating N degrees
-                tutorialProgressBar.value = GetDegreesRotated() / 360f;
-            }
-            else if (currentTutorialStep == 2)
-            {
-                // increase the progress bar based on player shooting 5 shots
-                tutorialProgressBar.value = GetShotsFired() / 5f;
-            }
+                if (tutorialProgressBar.value >= 1f)
+                {
+                    AdvanceTutorialStep();
+                }
+                break;
 
+            case 1:
+                tutorialProgressBar.value = GetDegreesRotated() / 360f;
+                if (tutorialProgressBar.value >= 1f)
+                {
+                    AdvanceTutorialStep();
+                }
+                break;
+
+            case 2:
+                Debug.Log("Tutorial step 2");
+                if (!hasSpawnedCurrentStep)
+                {
+                    asteroidSpawner.SpawnOneAsteroid(0, new Vector3(player.transform.localPosition.x, player.transform.localPosition.y, player.transform.localPosition.z + 2000));
+                    hasSpawnedCurrentStep = true;
+                }
+
+                if (AsteroidSpawner.asteroidCount == 0)
+                {
+                    AdvanceTutorialStep();
+                }
+                break;
+
+            case 3:
+                Debug.Log("Tutorial step 3" + hasSpawnedCurrentStep);
+                if (!hasSpawnedCurrentStep)
+                {
+                    Debug.Log("Spawning asteroids for tutorial step 3");
+                    asteroidSpawner.SpawnOneAsteroid(1, new Vector3(player.transform.localPosition.x - 200, player.transform.localPosition.y, player.transform.localPosition.z + 2000));
+                    asteroidSpawner.SpawnOneAsteroid(2, new Vector3(player.transform.localPosition.x + 200, player.transform.localPosition.y, player.transform.localPosition.z + 2000));
+                    hasSpawnedCurrentStep = true;
+                }
+
+                if (AsteroidSpawner.asteroidCount == 0)
+                {
+                    AdvanceTutorialStep();
+                }
+                break;
+
+            case 4:
+                Debug.Log("Tutorial step 4");
+                tutorialComplete = true;
+                asteroidSpawner.StartGame();
+                break;
+        }
+    }
+
+    private void AdvanceTutorialStep()
+    {
+        currentTutorialStep++;
+        hasSpawnedCurrentStep = false;
+        Debug.Log("Advanced to tutorial step: " + currentTutorialStep);
+        if (currentTutorialStep < tutorialTexts.Length)
+        {
+            SetTutorialText();
+        }
+        else
+        {
+            tutorialDocument.gameObject.SetActive(false);
         }
     }
 
@@ -148,6 +196,10 @@ public class TutorialManager : MonoBehaviour
 
     private float GetDegreesRotated()
     {
+        if(lastRotation == Quaternion.identity)
+        {
+            lastRotation = player.transform.rotation;
+        }
         totalDegreesRotated += Quaternion.Angle(player.transform.rotation, lastRotation);
         lastRotation = player.transform.rotation;
         return totalDegreesRotated;
