@@ -87,7 +87,7 @@ public class TutorialManager : MonoBehaviour
             "Control Thrust:\nLean closer (" + thrustInput.GetBindingDisplayString(2) + ") or farther (" + thrustInput.GetBindingDisplayString(1) + ") from the screen to move forward or backward.",
             "Steer with Your Head:\nLook Left (" + yawInput.GetBindingDisplayString(1) + ") / Right (" + yawInput.GetBindingDisplayString(2) + ") to control Yaw. \nLook Up (" + pitchInput.GetBindingDisplayString(1) + ") / Down (" + pitchInput.GetBindingDisplayString(2) + ") to control Pitch.",
             "Destroy Astroids by pressing " + shootAction.GetBindingDisplayString(0) + " to shoot.",
-            "The bomb asteroid will explode when hit. And the healing asteroid will drop a health pack when hit.",
+            "Bomb asteroids will explode when hit.\nHealing asteroids will drop a health pack when hit.",
             "Tutorial complete! Game Start!"
         };
     }
