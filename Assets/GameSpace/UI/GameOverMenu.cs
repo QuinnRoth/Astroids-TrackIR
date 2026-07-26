@@ -36,6 +36,7 @@ public class GameOverMenu : MonoBehaviour
     private const float KeyFontSize = 68f;
     private const float DeleteKeyWidth = 224f;
     private const float DeleteKeyFontSize = 68f;
+    private const int NAMELENGTH = 4;
 
     private static readonly string[] keyboardRowIds =
     {
@@ -170,7 +171,7 @@ public class GameOverMenu : MonoBehaviour
 
     private void AppendCharacter(string chara)
     {
-        if (nameField.text.Length < 6)
+        if (nameField.text.Length < NAMELENGTH)
             nameField.text = (nameField.text ?? string.Empty) + chara;
     }
     
