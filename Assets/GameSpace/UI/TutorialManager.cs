@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.InputSystem;
@@ -182,7 +183,18 @@ public class TutorialManager : MonoBehaviour
                 Debug.Log("Tutorial step 4");
                 tutorialComplete = true;
                 asteroidSpawner.StartGame();
+                StartCoroutine(HideTutorialCompleteTextAfterDelay());
                 break;
+        }
+    }
+
+    private IEnumerator HideTutorialCompleteTextAfterDelay()
+    {
+        yield return new WaitForSeconds(5f);
+
+        if (tutorialDocument != null)
+        {
+            tutorialDocument.gameObject.SetActive(false);
         }
     }
 
