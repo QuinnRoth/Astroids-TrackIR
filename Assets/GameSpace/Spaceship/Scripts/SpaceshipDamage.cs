@@ -36,7 +36,7 @@ public class SpaceshipDamage : MonoBehaviour
     public float screenIsBlackDuration = 1.0f;
     [SerializeField] private Renderer shipModelRenderer;
     public Image fadeScreenImage;
-    private bool canTakeDamage = true;
+    public bool canTakeDamage = false;
 
     private bool isDying = false;
 

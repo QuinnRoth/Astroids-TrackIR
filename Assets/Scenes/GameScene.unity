@@ -447,6 +447,9 @@ MonoBehaviour:
   - sound: 3
     clip: {fileID: 8300000, guid: 9059c13c6d8963b42935410439064407, type: 3}
     volume: 0.5
+  - sound: 4
+    clip: {fileID: 8300000, guid: 112d1e0c887e7f845891723e4db35595, type: 3}
+    volume: 0.5
   gameplayMusic: {fileID: 8300000, guid: c4c178453828bc64fb7ea99f4b57184d, type: 3}
   gameplayMusicVolume: 0.2
   explosionReplayDelay: 0.08
@@ -471,6 +474,7 @@ MonoBehaviour:
   screenIsBlackDuration: 1
   shipModelRenderer: {fileID: 519351342}
   fadeScreenImage: {fileID: 2122161153}
+  canTakeDamage: 0
   bounceForce: 10
 --- !u!114 &60033883
 MonoBehaviour:
@@ -2481,6 +2485,7 @@ MonoBehaviour:
   screenIsBlackDuration: 1
   shipModelRenderer: {fileID: 519351342}
   fadeScreenImage: {fileID: 2122161153}
+  canTakeDamage: 0
   bounceForce: 10
 --- !u!1 &1580774559
 GameObject:
@@ -2728,6 +2733,7 @@ MonoBehaviour:
   player: {fileID: 60033882}
   asteroidSpawner: {fileID: 456537966}
   legacyHudCanvasRoot: {fileID: 1780026797}
+  soundManager: {fileID: 0}
   tutorialComplete: 0
 --- !u!4 &1766867298
 Transform:

@@ -19,7 +19,10 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private Toggle toggle3;
     [SerializeField] private Toggle toggle4;
     [SerializeField] private Toggle toggle5;
-
+    [SerializeField] private GroupBox toggleGroup2;
+    [SerializeField] private Toggle Bomb;
+    [SerializeField] private Toggle Heal;
+    [SerializeField] private SoundManager soundManager;
     public bool tutorialComplete = false;
     private PlayerInputActions spaceshipControls;
     private InputAction shootAction;    
@@ -61,6 +64,9 @@ public class TutorialManager : MonoBehaviour
         toggle3 = root.Q<Toggle>("Toggle3");
         toggle4 = root.Q<Toggle>("Toggle4");
         toggle5 = root.Q<Toggle>("Toggle5");
+        toggleGroup2 = root.Q<GroupBox>("ToggleGroup2");
+        Bomb = root.Q<Toggle>("Bomb");
+        Heal = root.Q<Toggle>("Heal");
         currentTutorialStep = 0;
         SetTutorialText();
     }
@@ -77,7 +83,7 @@ public class TutorialManager : MonoBehaviour
     {
         legacyHudCanvasRoot?.SetActive(false);
         
-        
+        soundManager = GetComponent<SoundManager>();
         // Initialize input actions before using them
         thrustInput = InputSystem.actions.FindAction("Thrust");
         pitchInput = InputSystem.actions.FindAction("Pitch");
@@ -167,14 +173,19 @@ public class TutorialManager : MonoBehaviour
                 Debug.Log("Tutorial step 3" + hasSpawnedCurrentStep);
                 if (!hasSpawnedCurrentStep)
                 {
+                    toggleGroup2.visible = true;
                     Debug.Log("Spawning asteroids for tutorial step 3");
                     asteroidSpawner.SpawnOneAsteroid(1, new Vector3(player.transform.localPosition.x - 200, player.transform.localPosition.y, player.transform.localPosition.z + 2000));
                     asteroidSpawner.SpawnOneAsteroid(2, new Vector3(player.transform.localPosition.x + 200, player.transform.localPosition.y, player.transform.localPosition.z + 2000));
                     hasSpawnedCurrentStep = true;
                 }
-
+                if (AsteroidSpawner.asteroidCount == 1)
+                {
+                    Bomb.value = true;
+                }
                 if (AsteroidSpawner.asteroidCount == 0)
                 {
+                    toggleGroup2.visible = false;
                     AdvanceTutorialStep();
                 }
                 break;
@@ -182,11 +193,14 @@ public class TutorialManager : MonoBehaviour
             case 4:
                 Debug.Log("Tutorial step 4");
                 tutorialComplete = true;
+                player.GetComponent<SpaceshipDamage>().canTakeDamage = true;
                 asteroidSpawner.StartGame();
                 StartCoroutine(HideTutorialCompleteTextAfterDelay());
                 break;
         }
     }
+
+
 
     private IEnumerator HideTutorialCompleteTextAfterDelay()
     {
@@ -203,6 +217,8 @@ public class TutorialManager : MonoBehaviour
         currentTutorialStep++;
         hasSpawnedCurrentStep = false;
         Debug.Log("Advanced to tutorial step: " + currentTutorialStep);
+        SoundManager.PlaySound(SoundType.TUTORIAL);
+        
         if (currentTutorialStep < tutorialTexts.Length)
         {
             SetTutorialText();

@@ -5,7 +5,8 @@ public enum SoundType
     LASER,
     DAMAGE,
     EXPLOSION,
-    DEATH
+    DEATH,
+    TUTORIAL
 }
 
 [System.Serializable]
