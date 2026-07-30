@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.InputSystem;
@@ -108,8 +110,8 @@ public class CursorInput : MonoBehaviour
 
         Vector2 panelPos = RuntimePanelUtils.ScreenToPanel(panel, screenPos);
 
-        // Find the element under the cursor (and a small radius)
-        VisualElement newPickedElement = PickRadius(panel, panelPos, 30f);
+        // Find the nearest button on the entire menu to the cursor
+        VisualElement newPickedElement = PickNearestButton(activeUIDocument.rootVisualElement, panelPos);
 
         // 0.25 seconds of null elements before clearing selection (helps stability)
         if (newPickedElement != null)
@@ -180,19 +182,64 @@ public class CursorInput : MonoBehaviour
             center + new Vector2(-radius/2f, -radius/2f),
         };
 
+        // Collect unique candidate buttons found by sampling points inside the radius.
+        var candidates = new HashSet<VisualElement>();
+
         foreach (var point in pointsToQuery)
         {
             var element = panel.Pick(point);
-
-            // IMPORTANT: Pick() often returns a child (Label / Fill).
-            // Walk upward until we find a Button parent.
             element = FindParentButton(element);
-
             if (element != null)
-                return element;
+                candidates.Add(element);
         }
 
-        return null;
+        if (candidates.Count == 0)
+            return null;
+
+        // Pick the candidate whose worldBound center is closest to the queried center.
+        VisualElement best = null;
+        float bestDistSq = float.MaxValue;
+
+        foreach (var cand in candidates)
+        {
+            var bound = cand.worldBound;
+            Vector2 candCenter = new Vector2(bound.x + bound.width * 0.5f, bound.y + bound.height * 0.5f);
+            float distSq = (candCenter - center).sqrMagnitude;
+            if (distSq < bestDistSq)
+            {
+                bestDistSq = distSq;
+                best = cand;
+            }
+        }
+
+        return best;
+    }
+
+    private VisualElement PickNearestButton(VisualElement root, Vector2 center)
+    {
+        if (root == null)
+            return null;
+
+        var buttons = root.Query<Button>().ToList();
+        if (buttons == null || buttons.Count == 0)
+            return null;
+
+        VisualElement best = null;
+        float bestDistSq = float.MaxValue;
+
+        foreach (var b in buttons)
+        {
+            var bound = b.worldBound;
+            Vector2 candCenter = new Vector2(bound.x + bound.width * 0.5f, bound.y + bound.height * 0.5f);
+            float distSq = (candCenter - center).sqrMagnitude;
+            if (distSq < bestDistSq)
+            {
+                bestDistSq = distSq;
+                best = b;
+            }
+        }
+
+        return best;
     }
 
     private VisualElement FindParentButton(VisualElement element)
