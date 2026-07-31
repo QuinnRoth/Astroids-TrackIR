@@ -82,7 +82,7 @@ public class TutorialManager : MonoBehaviour
     private void Awake()
     {
         legacyHudCanvasRoot?.SetActive(false);
-        
+        AsteroidSpawner.asteroidCount = 0;
         soundManager = GetComponent<SoundManager>();
         // Initialize input actions before using them
         thrustInput = InputSystem.actions.FindAction("Thrust");
@@ -171,6 +171,7 @@ public class TutorialManager : MonoBehaviour
 
             case 3:
                 Debug.Log("Tutorial step 3" + hasSpawnedCurrentStep);
+                Debug.Log("Asteroids spawned: " + AsteroidSpawner.asteroidCount);
                 if (!hasSpawnedCurrentStep)
                 {
                     toggleGroup2.visible = true;
