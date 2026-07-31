@@ -46,6 +46,8 @@ public class CursorInput : MonoBehaviour
             inputActions.LoadBindingOverridesFromJson(rebinds);
         }
         shootAction.action.actionMap.Enable();
+
+        SetCursorVisible(false);
     }
 
     private void OnEnable()

@@ -40,6 +40,8 @@ public class MainMenu : MonoBehaviour
 
     private void OnEnable()
     {
+        CursorInput.Instance?.SetCursorVisible(false);
+
         MainMenuMusicController.Play(mainMenuMusic, mainMenuMusicVolume);
 
         VisualElement root = mainMenuDocument.rootVisualElement;
@@ -101,6 +103,9 @@ public class MainMenu : MonoBehaviour
 
     private void OnDisable()
     {
+        // During scene unload, serialized references can already be destroyed.
+        CursorInput.Instance?.SetCursorVisible(true);
+
         playButton.clicked -= PlayGame;
         settingsButton.clicked -= DisplaySettingMenu;
         leaderboardButton.clicked -= DisplayLeaderBoard;

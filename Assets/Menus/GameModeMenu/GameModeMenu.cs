@@ -28,6 +28,9 @@ public class GameModeMenu : MonoBehaviour
 
     private void OnEnable()
     {
+
+        CursorInput.Instance?.SetCursorVisible(false);
+
         VisualElement root = gameModeMenuDocument.rootVisualElement;
 
         tradeShowButton = root.Q<Button>("tradeShowButton");
@@ -74,6 +77,9 @@ public class GameModeMenu : MonoBehaviour
 
     private void OnDisable()
     {
+
+        CursorInput.Instance?.SetCursorVisible(true);
+
         tradeShowButton.clicked -= TradeShowMode;
         endlessButton.clicked -= EndlessMode;
         waveButton.clicked -= WaveMode;

@@ -11,7 +11,6 @@ public class GameOverMenu : MonoBehaviour
     [SerializeField] UIDocument gameOverMenuDocument;
 
     public GameObject gameOverMenu;
-
     private Label scoreField;
     private Label nameField;
     private Button backButton;
@@ -51,9 +50,11 @@ public class GameOverMenu : MonoBehaviour
         "Z","X","C","V","B","N","M"
     };
 
-
     void OnEnable()
     {
+
+        CursorInput.Instance?.SetCursorVisible(false);
+
         VisualElement root = gameOverMenuDocument.rootVisualElement;
 
         scoreField = root.Q<Label>("ScoreField");
@@ -101,6 +102,9 @@ public class GameOverMenu : MonoBehaviour
 
     void OnDisable()
     {
+
+
+
         backButton.clicked -= ToMainMenu;
         replayButton.clicked -= ReplayGame;
         deleteButton.clicked -= DeleteChar;
