@@ -30,11 +30,11 @@ public class SpaceshipMovement : MonoBehaviour
     private float roll;
 
     // Spaceship feel values
-    public float MaxSpeed = 6.25f;
-    public float LinearDamping = 0.5f;
-    public float AngularDamping = 0.5f;
+    public float MaxSpeed = 200.0f;
+    public float LinearDamping = 1.0f;
+    public float AngularDamping = 1.0f;
 
-    public static float ThrustScaler = 50.0f;
+    public static float ThrustScaler = 30000.0f;
     public static float PitchScaler = 1.0f;
     public static float YawScaler = 1.5f;
     public static float RollScaler = 1.1f;
@@ -103,9 +103,9 @@ public class SpaceshipMovement : MonoBehaviour
         // trade show mode speed settings
         if (GameModeMenu.gameModeSetting == 0)  // Trade show mode
         {
-            float speedMultiplier = 1.75f;
-            float accelMultiplier = 1.75f;
-            float dampingMultiplier = 0.3f;
+            float speedMultiplier = 1.0f;
+            float accelMultiplier = 1.0f;
+            float dampingMultiplier = 1.0f;
 
             MaxSpeed *= speedMultiplier;
             ThrustScaler *= accelMultiplier;
@@ -135,7 +135,7 @@ public class SpaceshipMovement : MonoBehaviour
             trackirPitch = TrackIRManager.Instance.HeadPitch;
             trackirYaw = TrackIRManager.Instance.HeadYaw;
             trackirRoll = TrackIRManager.Instance.HeadRoll;
-
+            Debug.Log("TrackIR Zpos: " + TrackIRManager.Instance.HeadZPos);
             trackirThrust = (TrackIRManager.Instance.HeadZPos * -1f * ThrustScaler) + 0.2f;
         }
 
