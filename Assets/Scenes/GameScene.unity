@@ -2315,6 +2315,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 60033868}
     m_Modifications:
+    - target: {fileID: -7918335002988649766, guid: bb654381e1083ef42ae744e6767499c9, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: b96f7d0862920c74f8dc2544b1c900f8, type: 2}
+    - target: {fileID: -1071359958148435772, guid: bb654381e1083ef42ae744e6767499c9, type: 3}
+      propertyPath: m_Lightmapping
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4876933053422263863, guid: bb654381e1083ef42ae744e6767499c9, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -462981019419857548, guid: bb654381e1083ef42ae744e6767499c9, type: 3}
     - target: {fileID: -8679921383154817045, guid: 17b4583417a828f4a94dd97df97fc516, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.1
@@ -2387,18 +2399,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -7918335002988649766, guid: bb654381e1083ef42ae744e6767499c9, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: b96f7d0862920c74f8dc2544b1c900f8, type: 2}
-    - target: {fileID: -1071359958148435772, guid: bb654381e1083ef42ae744e6767499c9, type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4876933053422263863, guid: bb654381e1083ef42ae744e6767499c9, type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: -462981019419857548, guid: bb654381e1083ef42ae744e6767499c9, type: 3}
     - target: {fileID: -7511558181221131132, guid: 1665b640d6d54de42b242dc74b9cc03f, type: 3}
       propertyPath: m_Materials.Array.size
       value: 1
@@ -2522,6 +2522,8 @@ MonoBehaviour:
   legacyHudCanvasRoot: {fileID: 1780026797}
   maxLives: 3
   zeroPad: 6
+  heatIncrement: 15
+  cooldownRate: 10
 --- !u!114 &1580774561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2592,30 +2594,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameOverMenu
   gameOverMenuDocument: {fileID: 1617551421}
   gameOverMenu: {fileID: 1617551419}
-  backButtonHover:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  replayButtonHover:
-    m_PersistentCalls:
-      m_Calls: []
-  deleteButtonHover:
-    m_PersistentCalls:
-      m_Calls: []
-  keyboardButtonHover:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &1617551421
 MonoBehaviour:
   m_ObjectHideFlags: 0

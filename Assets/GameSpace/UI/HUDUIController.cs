@@ -1,23 +1,29 @@
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.InputSystem;
+
 
 public class HUDUIController : MonoBehaviour
 {
     [Header("Refs")]
     [SerializeField] private UIDocument hudDocument;
     [SerializeField] private SpaceshipDamage player;
-
     [SerializeField] private GameObject legacyHudCanvasRoot;
 
     [Header("Lives")]
     [SerializeField] private int maxLives = 3;
-
     [Header("Score")]
     [SerializeField] private int zeroPad = 6;
 
+    [Header("Heat")]
+    [SerializeField] private float heatIncrement = 10.0f;
+    [SerializeField] private float cooldownRate = 10.0f;
     private Label scoreLabel;
     private VisualElement healthSegmentsRoot;
     private VisualElement[] segments;
+    private ProgressBar heatBar;
+    private PlayerInputActions spaceshipControls;
+    private InputAction shootAction;    
 
     private int lastLives = -999;
     private int lastScore = -999;
@@ -26,13 +32,21 @@ public class HUDUIController : MonoBehaviour
     void OnEnable()
     {
         if (!hudDocument) hudDocument = GetComponent<UIDocument>();
-
+        shootAction.performed += OnShoot;
         var root = hudDocument.rootVisualElement;
         scoreLabel = root.Q<Label>("scoreLabel");
         healthSegmentsRoot = root.Q<VisualElement>("healthSegments");
+        heatBar = root.Q<ProgressBar>("heatBar");
+        heatBar.value = 0;
 
         BuildSegments();
         ForceRefresh();
+    }
+
+    void OnDisable()
+    {
+        if (shootAction != null)
+            shootAction.performed -= OnShoot;
     }
 
     void Update()
@@ -54,10 +68,12 @@ public class HUDUIController : MonoBehaviour
             UpdateScore(score);
             lastScore = score;
         }
+        UpdateHeat();
     }
 
     private void Awake()
     {
+        shootAction = InputSystem.actions.FindAction("Shoot");
         if (legacyHudCanvasRoot != null)
             legacyHudCanvasRoot.SetActive(false);
     }
@@ -106,7 +122,30 @@ public class HUDUIController : MonoBehaviour
             // else: leave default ".segment" styling
         }
     }
+    private void OnShoot(InputAction.CallbackContext context)
+    {
+        AddHeat();
+    }
 
+    private void UpdateHeat()
+    {
+        if (heatBar != null)
+        {
+            if (heatBar.value > 0)
+            {
+                heatBar.value = Mathf.Clamp(heatBar.value - cooldownRate * Time.deltaTime, 0, 100);
+            }
+        }
+            
+    }
+
+    public void AddHeat()
+    {
+        if (heatBar != null)
+        {
+            heatBar.value = Mathf.Clamp(heatBar.value + heatIncrement, 0, 100);
+        }
+    }
 
     private void UpdateScore(int score)
     {
