@@ -2524,7 +2524,7 @@ MonoBehaviour:
   maxLives: 3
   zeroPad: 6
   heatIncrement: 15
-  cooldownRate: 10
+  cooldownRate: 20
 --- !u!114 &1580774561
 MonoBehaviour:
   m_ObjectHideFlags: 0

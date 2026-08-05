@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 
 public class HUDUIController : MonoBehaviour
 {
+    public static HUDUIController Instance { get; private set; }
+
     [Header("Refs")]
     [SerializeField] private UIDocument hudDocument;
     [SerializeField] private SpaceshipDamage playerDamage;
@@ -18,11 +20,11 @@ public class HUDUIController : MonoBehaviour
 
     [Header("Heat")]
     [SerializeField] private float heatIncrement = 10.0f;
-    [SerializeField] private float cooldownRate = 10.0f;
+    [SerializeField] private float cooldownRate = 20.0f;
     private Label scoreLabel;
     private VisualElement healthSegmentsRoot;
     private VisualElement[] segments;
-    private ProgressBar heatBar;
+    private VisualElement heatBar;
     private VisualElement heatBarContents;
     private VisualElement Gauge;
     private VisualElement GaugeFill;
@@ -46,13 +48,13 @@ public class HUDUIController : MonoBehaviour
 
         scoreLabel = root.Q<Label>("scoreLabel");
         healthSegmentsRoot = root.Q<VisualElement>("healthSegments");
-        heatBar = root.Q<ProgressBar>("heatBar");
+        heatBar = root.Q<VisualElement>("HeatGauge");
         Gauge = root.Q<VisualElement>("Gauge");
         GaugeFill = root.Q<VisualElement>("Fill");
-        heatBarContents = ResolveHeatBarContents();
+        heatBarContents = root.Q<VisualElement>("HeatFill");
 
         if (heatBar != null)
-            heatBar.value = 0;
+            UpdateHeat();
 
         BuildSegments();
         ForceRefresh();
@@ -90,6 +92,14 @@ public class HUDUIController : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+            return;
+        }
+
+        Instance = this;
+
         shootAction = InputSystem.actions.FindAction("Shoot");
         if (legacyHudCanvasRoot != null)
             legacyHudCanvasRoot.SetActive(false);
@@ -107,18 +117,6 @@ public class HUDUIController : MonoBehaviour
             healthSegmentsRoot.Add(seg);
             segments[i] = seg;
         }
-    }
-
-    private VisualElement ResolveHeatBarContents()
-    {
-        if (heatBar == null)
-            return null;
-
-        VisualElement fill = heatBar.Q<VisualElement>(className: "unity-progress-bar__progress");
-        if (fill != null)
-            return fill;
-
-        return heatBar.Q<VisualElement>(className: "unity-progress-bar_progress");
     }
 
     private Color GetHeatColor(float value)
@@ -178,31 +176,48 @@ public class HUDUIController : MonoBehaviour
     }
     private void OnShoot(InputAction.CallbackContext context)
     {
+        if (!CanShoot)
+            return;
+
         AddHeat();
     }
+
+    private float currentHeat;
+    private bool overheated;
+    public bool CanShoot => !overheated;
 
     private void UpdateHeat()
     {
         if (heatBar != null)
         {
-            if (heatBar.value > 0)
+            if (currentHeat >= 100f)
             {
-                heatBar.value = Mathf.Clamp(heatBar.value - cooldownRate * Time.deltaTime, 0, 100);
+                overheated = true;
+            }
+            else if (currentHeat <= 0f)
+            {
+                overheated = false;
+            }
+
+            if (currentHeat >= 0f)
+            {
+                currentHeat = Mathf.Clamp(currentHeat - cooldownRate * Time.deltaTime, 0f, 100f);
             }
 
             if (heatBarContents != null)
             {
-                heatBarContents.style.backgroundColor = new StyleColor(GetHeatColor(heatBar.value));
+                heatBarContents.style.backgroundColor = new StyleColor(GetHeatColor(currentHeat));
+                heatBarContents.style.height = new Length(Mathf.Clamp(currentHeat, 0f, 100f), LengthUnit.Percent);
             }
         }
     }
 
     public void AddHeat()
     {
-        if (heatBar != null)
-        {
-            heatBar.value = Mathf.Clamp(heatBar.value + heatIncrement, 0, 100);
-        }
+        if (overheated)
+            return;
+
+        currentHeat = Mathf.Clamp(currentHeat + heatIncrement, 0f, 100f);
     }
 
     private void UpdateScore(int score)

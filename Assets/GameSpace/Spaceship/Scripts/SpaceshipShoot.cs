@@ -22,6 +22,9 @@ public class SpaceshipShoot : MonoBehaviour
 
     private void OnShoot(InputAction.CallbackContext _)
     {
+        if (HUDUIController.Instance != null && !HUDUIController.Instance.CanShoot)
+            return;
+
         ShootLaser();
     }
 
