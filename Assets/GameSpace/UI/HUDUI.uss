@@ -230,4 +230,55 @@
 #ProgressBarContainer > #heatBar > #unity-progress-bar {
 }
 
+.fillGap {
+    background-color: rgb(215, 239, 255);
+    flex-grow: 0;
+    height: 2%;
+    margin-top: 0;
+    margin-bottom: 1px;
+    flex-shrink: 0;
+    border-bottom-color: rgba(110, 220, 255, 0.45);
+    border-bottom-width: 1px;
+    overflow: visible;
+    border-left-color: rgba(110, 220, 255, 0.45);
+    border-right-color: rgba(110, 220, 255, 0.45);
+    border-top-color: rgba(110, 220, 255, 0.45);
+    border-bottom-left-radius: 1px;
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-left-width: 1px;
+    border-top-left-radius: 1px;
+    border-top-right-radius: 1px;
+    border-bottom-right-radius: 1px;
+}
 
+.gauge-fill-content {
+    justify-content: flex-end;
+    align-items: stretch;
+}
+
+.gauges {
+    width: 22px;
+    top: auto;
+    bottom: 11%;
+    left: 30%;
+}
+
+.heat-gauge {
+}
+
+.gaugeFrame {
+    background-color: rgba(2, 8, 16, 0);
+    border-right-width: 0;
+    border-top-width: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    border-left-width: 2px;
+    border-bottom-width: 2px;
+    border-left-color: rgb(182, 232, 255);
+    border-right-color: rgb(182, 232, 255);
+    border-top-color: rgb(182, 232, 255);
+    border-bottom-color: rgb(182, 232, 255);
+}

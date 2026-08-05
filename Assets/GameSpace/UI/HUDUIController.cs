@@ -50,7 +50,7 @@ public class HUDUIController : MonoBehaviour
         healthSegmentsRoot = root.Q<VisualElement>("healthSegments");
         heatBar = root.Q<VisualElement>("HeatGauge");
         Gauge = root.Q<VisualElement>("Gauge");
-        GaugeFill = root.Q<VisualElement>("Fill");
+        GaugeFill = root.Q<VisualElement>("GaugeFill");
         heatBarContents = root.Q<VisualElement>("HeatFill");
 
         if (heatBar != null)
