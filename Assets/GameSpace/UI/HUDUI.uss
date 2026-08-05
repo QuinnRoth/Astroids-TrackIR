@@ -129,6 +129,75 @@
     align-items: flex-end;
 }
 
+.tachometer {
+    position: absolute;
+    top: 58%;
+    left: 32%;
+    width: 86px;
+    height: 210px;
+    justify-content: flex-end;
+    align-items: center;
+    overflow: visible;
+}
+
+.tachometer-frame {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    border-top-width: 2px;
+    border-right-width: 2px;
+    border-bottom-width: 2px;
+    border-left-width: 2px;
+    border-top-color: rgba(110, 220, 255, 0.85);
+    border-right-color: rgba(110, 220, 255, 0.85);
+    border-bottom-color: rgba(110, 220, 255, 0.85);
+    border-left-color: rgba(110, 220, 255, 0.85);
+    border-top-left-radius: 14px;
+    border-top-right-radius: 14px;
+    border-bottom-left-radius: 14px;
+    border-bottom-right-radius: 14px;
+    background-color: rgba(2, 8, 16, 0.92);
+}
+
+.tachometer-glow {
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    top: 10px;
+    bottom: 10px;
+    border-top-left-radius: 9px;
+    border-top-right-radius: 9px;
+    border-bottom-left-radius: 9px;
+    border-bottom-right-radius: 9px;
+    background-color: rgba(110, 220, 255, 0.08);
+}
+
+.tachometer-fill {
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    height: 100%;
+    max-height: 100%;
+    background-color: rgb(0, 220, 120);
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.tachometer-label {
+    position: absolute;
+    top: -18px;
+    color: rgb(230, 245, 255);
+    -unity-font-definition: url("project://database/Assets/Fonts/Evil_Empire.otf?fileID=12800000&guid=0e60124b4f87b0d46ab6b79b77c270d9&type=3#Evil_Empire");
+    font-size: 16px;
+    letter-spacing: 2px;
+    -unity-text-outline-color: rgba(110, 220, 255, 0.75);
+    -unity-text-outline-width: 0.12;
+}
+
 .unity-progress-bar_container {
 }
 
@@ -146,3 +215,8 @@
 #ProgressBarContainer > .unity-progress-bar > #unity-progress-bar > .unity-progress-bar__background > .unity-progress-bar__progress {
     background-color: rgb(0, 132, 183);
 }
+
+#ProgressBarContainer > #heatBar > #unity-progress-bar {
+}
+
+

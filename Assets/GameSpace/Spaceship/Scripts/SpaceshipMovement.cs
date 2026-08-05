@@ -28,13 +28,14 @@ public class SpaceshipMovement : MonoBehaviour
     private float pitch;
     private float yaw;
     private float roll;
+    public float speed { get; private set; }
 
     // Spaceship feel values
     public float MaxSpeed = 200.0f;
     public float LinearDamping = 1.0f;
     public float AngularDamping = 1.0f;
 
-    public static float ThrustScaler = 30000.0f; //Make 100 if using TrackIR5 and not the Flex 3
+    public static float ThrustScaler = 30.0f; //Make 100 if using TrackIR5 and not the Flex 3
     public static float PitchScaler = 1.0f;
     public static float YawScaler = 1.5f;
     public static float RollScaler = 1.1f;
@@ -124,6 +125,7 @@ public class SpaceshipMovement : MonoBehaviour
         // Read keyboard every frame
         float kbThrust = thrustInput.ReadValue<float>() * ThrustScaler;
 
+        speed = rb.linearVelocity.magnitude;
         // For direct mode we treat pitch/yaw/roll as "input" (-1..1) and convert to deg/sec later
         float kbPitch = pitchInput.ReadValue<float>();
         float kbYaw = yawInput.ReadValue<float>();

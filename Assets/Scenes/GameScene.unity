@@ -2315,18 +2315,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 60033868}
     m_Modifications:
-    - target: {fileID: -7918335002988649766, guid: bb654381e1083ef42ae744e6767499c9, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: b96f7d0862920c74f8dc2544b1c900f8, type: 2}
-    - target: {fileID: -1071359958148435772, guid: bb654381e1083ef42ae744e6767499c9, type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4876933053422263863, guid: bb654381e1083ef42ae744e6767499c9, type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: -462981019419857548, guid: bb654381e1083ef42ae744e6767499c9, type: 3}
     - target: {fileID: -8679921383154817045, guid: 17b4583417a828f4a94dd97df97fc516, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.1
@@ -2399,6 +2387,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7918335002988649766, guid: bb654381e1083ef42ae744e6767499c9, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: b96f7d0862920c74f8dc2544b1c900f8, type: 2}
+    - target: {fileID: -1071359958148435772, guid: bb654381e1083ef42ae744e6767499c9, type: 3}
+      propertyPath: m_Lightmapping
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4876933053422263863, guid: bb654381e1083ef42ae744e6767499c9, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -462981019419857548, guid: bb654381e1083ef42ae744e6767499c9, type: 3}
     - target: {fileID: -7511558181221131132, guid: 1665b640d6d54de42b242dc74b9cc03f, type: 3}
       propertyPath: m_Materials.Array.size
       value: 1
@@ -2518,7 +2518,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HUDUIController
   hudDocument: {fileID: 1580774561}
-  player: {fileID: 60033882}
+  playerDamage: {fileID: 60033882}
+  playerMovement: {fileID: 60033874}
   legacyHudCanvasRoot: {fileID: 1780026797}
   maxLives: 3
   zeroPad: 6

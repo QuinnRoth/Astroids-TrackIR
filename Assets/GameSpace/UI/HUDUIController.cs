@@ -7,7 +7,8 @@ public class HUDUIController : MonoBehaviour
 {
     [Header("Refs")]
     [SerializeField] private UIDocument hudDocument;
-    [SerializeField] private SpaceshipDamage player;
+    [SerializeField] private SpaceshipDamage playerDamage;
+    [SerializeField] private SpaceshipMovement playerMovement;
     [SerializeField] private GameObject legacyHudCanvasRoot;
 
     [Header("Lives")]
@@ -22,6 +23,9 @@ public class HUDUIController : MonoBehaviour
     private VisualElement healthSegmentsRoot;
     private VisualElement[] segments;
     private ProgressBar heatBar;
+    private VisualElement heatBarContents;
+    private VisualElement Gauge;
+    private VisualElement GaugeFill;
     private PlayerInputActions spaceshipControls;
     private InputAction shootAction;    
 
@@ -32,12 +36,23 @@ public class HUDUIController : MonoBehaviour
     void OnEnable()
     {
         if (!hudDocument) hudDocument = GetComponent<UIDocument>();
-        shootAction.performed += OnShoot;
+        if (hudDocument == null) return;
+
+        if (shootAction != null)
+            shootAction.performed += OnShoot;
+
         var root = hudDocument.rootVisualElement;
+        if (root == null) return;
+
         scoreLabel = root.Q<Label>("scoreLabel");
         healthSegmentsRoot = root.Q<VisualElement>("healthSegments");
         heatBar = root.Q<ProgressBar>("heatBar");
-        heatBar.value = 0;
+        Gauge = root.Q<VisualElement>("Gauge");
+        GaugeFill = root.Q<VisualElement>("Fill");
+        heatBarContents = ResolveHeatBarContents();
+
+        if (heatBar != null)
+            heatBar.value = 0;
 
         BuildSegments();
         ForceRefresh();
@@ -51,9 +66,9 @@ public class HUDUIController : MonoBehaviour
 
     void Update()
     {
-        if (!player) return;
+        if (!playerDamage) return;
 
-        int lives = Mathf.Clamp(player.playerHealth, 0, maxLives);
+        int lives = Mathf.Clamp(playerDamage.playerHealth, 0, maxLives);
 
         score = ScoreManager.Instance ? ScoreManager.Instance.GetScore() : 0;
 
@@ -68,7 +83,9 @@ public class HUDUIController : MonoBehaviour
             UpdateScore(score);
             lastScore = score;
         }
+        UpdateSpeed();
         UpdateHeat();
+        
     }
 
     private void Awake()
@@ -90,6 +107,43 @@ public class HUDUIController : MonoBehaviour
             healthSegmentsRoot.Add(seg);
             segments[i] = seg;
         }
+    }
+
+    private VisualElement ResolveHeatBarContents()
+    {
+        if (heatBar == null)
+            return null;
+
+        VisualElement fill = heatBar.Q<VisualElement>(className: "unity-progress-bar__progress");
+        if (fill != null)
+            return fill;
+
+        return heatBar.Q<VisualElement>(className: "unity-progress-bar_progress");
+    }
+
+    private Color GetHeatColor(float value)
+    {
+        float normalized = Mathf.Clamp01(value / 100f);
+
+        if (normalized < 0.5f)
+            return Color.Lerp(Color.green, Color.yellow, normalized * 2f);
+
+        return Color.Lerp(Color.yellow, Color.red, (normalized - 0.5f) * 2f);
+    }
+
+    private void UpdateSpeed()
+    {
+        if (playerMovement == null || GaugeFill == null)
+            return;
+
+        if (playerMovement.MaxSpeed <= 0f)
+        {
+            GaugeFill.style.height = new Length(0f, LengthUnit.Percent);
+            return;
+        }
+
+        float speedRatio = Mathf.Clamp01(playerMovement.speed / playerMovement.MaxSpeed);
+        GaugeFill.style.height = new Length(speedRatio * 100f, LengthUnit.Percent);
     }
 
     private void UpdateLives(int lives)
@@ -135,8 +189,12 @@ public class HUDUIController : MonoBehaviour
             {
                 heatBar.value = Mathf.Clamp(heatBar.value - cooldownRate * Time.deltaTime, 0, 100);
             }
+
+            if (heatBarContents != null)
+            {
+                heatBarContents.style.backgroundColor = new StyleColor(GetHeatColor(heatBar.value));
+            }
         }
-            
     }
 
     public void AddHeat()
@@ -155,8 +213,9 @@ public class HUDUIController : MonoBehaviour
 
     private void ForceRefresh()
     {
-        if (!player) return;
-        UpdateLives(Mathf.Clamp(player.playerHealth, 0, maxLives));
+        if (!playerDamage) return;
+        UpdateLives(Mathf.Clamp(playerDamage.playerHealth, 0, maxLives));
         UpdateScore(ScoreManager.Instance ? ScoreManager.Instance.GetScore() : 0);
+        UpdateSpeed();
     }
 }
