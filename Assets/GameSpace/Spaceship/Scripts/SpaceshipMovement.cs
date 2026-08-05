@@ -32,10 +32,11 @@ public class SpaceshipMovement : MonoBehaviour
 
     // Spaceship feel values
     public float MaxSpeed = 200.0f;
-    public float LinearDamping = 1.0f;
-    public float AngularDamping = 1.0f;
+    public float LinearDamping = 2.0f;
+    public float AngularDamping = 2.0f;
 
-    public static float ThrustScaler = 30.0f; //Make 100 if using TrackIR5 and not the Flex 3
+    public static float ThrustScaler = 30.0f;
+    public static float TIRThrustScaler = 100.0f;
     public static float PitchScaler = 1.0f;
     public static float YawScaler = 1.5f;
     public static float RollScaler = 1.1f;
@@ -137,8 +138,7 @@ public class SpaceshipMovement : MonoBehaviour
             trackirPitch = TrackIRManager.Instance.HeadPitch;
             trackirYaw = TrackIRManager.Instance.HeadYaw;
             trackirRoll = TrackIRManager.Instance.HeadRoll;
-            Debug.Log("TrackIR Zpos: " + TrackIRManager.Instance.HeadZPos);
-            trackirThrust = (TrackIRManager.Instance.HeadZPos * -1f * ThrustScaler) + 0.2f;
+            trackirThrust = (TrackIRManager.Instance.HeadZPos * -1f * TIRThrustScaler) + 0.2f;
         }
 
         // Combine inputs (TrackIR stays stable between updates; keyboard is continuous)
