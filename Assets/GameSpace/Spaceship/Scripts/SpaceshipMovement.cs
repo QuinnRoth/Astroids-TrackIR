@@ -36,7 +36,7 @@ public class SpaceshipMovement : MonoBehaviour
     public float AngularDamping = 2.0f;
 
     public static float ThrustScaler = 30.0f;
-    public static float TIRThrustScaler = 100.0f;
+    public static float TIRThrustScaler = 20000.0f; //Set to 100 if using TrackIR5
     public static float PitchScaler = 1.0f;
     public static float YawScaler = 1.5f;
     public static float RollScaler = 1.1f;
