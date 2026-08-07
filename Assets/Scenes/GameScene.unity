@@ -269,8 +269,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpaceshipMovement
   MaxSpeed: 30
-  LinearDamping: 0.5
-  AngularDamping: 0.5
+  LinearDamping: 1
+  AngularDamping: 1
   DirectRotationSpeed: 120
 --- !u!114 &60033875
 MonoBehaviour:
