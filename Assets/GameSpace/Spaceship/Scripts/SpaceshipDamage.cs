@@ -17,6 +17,7 @@ public class SpaceshipDamage : MonoBehaviour
 
     //private SpaceshipDeathAnimation deathAnimation;
     public GameObject gameOverMenu;
+    public GameObject HUD;
 
     public DamageFlashEffect damageFlash;
     // private SpaceshipMovement spaceshipMovement; 
@@ -154,7 +155,7 @@ public class SpaceshipDamage : MonoBehaviour
     {
         SoundManager.PlaySound(SoundType.DEATH, 0.75f);
         GetComponent<SpaceshipDeathAnimation>().TriggerDeath();
-
+        
         var camera = transform.Find("CameraHolder");
         if (camera)
             camera.transform.SetParent(null);
@@ -165,7 +166,9 @@ public class SpaceshipDamage : MonoBehaviour
 
         CursorInput.Instance.SetCursorVisible(true);
         gameOverMenu.SetActive(true);
-
+        if (HUD != null){
+            HUD.SetActive(false);
+        }
         Destroy(gameObject, 1f);
     }
 

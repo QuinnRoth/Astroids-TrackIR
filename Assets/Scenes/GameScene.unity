@@ -466,6 +466,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpaceshipDamage
   gameOverMenu: {fileID: 1617551419}
+  HUD: {fileID: 1580774559}
   damageFlash: {fileID: 728335390}
   damageCooldown: 1
   damageBlinkDuration: 0.8
@@ -2477,6 +2478,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpaceshipDamage
   gameOverMenu: {fileID: 1617551419}
+  HUD: {fileID: 0}
   damageFlash: {fileID: 728335390}
   damageCooldown: 1
   damageBlinkDuration: 0.8
@@ -2736,8 +2738,9 @@ MonoBehaviour:
   player: {fileID: 60033882}
   asteroidSpawner: {fileID: 456537966}
   legacyHudCanvasRoot: {fileID: 1780026797}
-  soundManager: {fileID: 0}
+  soundManager: {fileID: 60033880}
   tutorialComplete: 0
+  HUD: {fileID: 1580774559}
 --- !u!4 &1766867298
 Transform:
   m_ObjectHideFlags: 0

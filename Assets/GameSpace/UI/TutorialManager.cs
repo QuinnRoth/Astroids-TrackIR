@@ -24,6 +24,7 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private Toggle Heal;
     [SerializeField] private SoundManager soundManager;
     public bool tutorialComplete = false;
+    public GameObject HUD;
     private PlayerInputActions spaceshipControls;
     private InputAction shootAction;    
     private InputAction thrustInput;
@@ -81,6 +82,9 @@ public class TutorialManager : MonoBehaviour
 
     private void Awake()
     {
+        if(!HUD.activeSelf){
+            HUD.SetActive(false);
+        }
         legacyHudCanvasRoot?.SetActive(false);
         AsteroidSpawner.asteroidCount = 0;
         soundManager = GetComponent<SoundManager>();
