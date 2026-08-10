@@ -10,7 +10,7 @@ public class Boundary : MonoBehaviour
     }
 
     [Header("Boundary Settings")]
-    public Vector3 boxSize = new Vector3(600f, 600f, 600f);
+    public Vector3 boxSize = new Vector3(400f, 400f, 400f);
     public BoundaryMode boundaryMode = BoundaryMode.Wrap;
 
     [Header("Bounce Settings")]

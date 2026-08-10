@@ -22,7 +22,7 @@ public class GhostBoundary : MonoBehaviour
         if (boundary != null)
             boxSize = boundary.boxSize;
         else
-            boxSize = new Vector3(600f, 600f, 600f);
+            boxSize = new Vector3(400f, 400f, 400f);
 
         CreateGhosts();
     }
