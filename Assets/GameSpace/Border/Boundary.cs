@@ -10,7 +10,7 @@ public class Boundary : MonoBehaviour
     }
 
     [Header("Boundary Settings")]
-    public Vector3 boxSize = new Vector3(500f, 500f, 500f);
+    public Vector3 boxSize = new Vector3(600f, 600f, 600f);
     public BoundaryMode boundaryMode = BoundaryMode.Wrap;
 
     [Header("Bounce Settings")]
@@ -22,10 +22,7 @@ public class Boundary : MonoBehaviour
 
     void Start()
     {
-        if (GameModeMenu.gameModeSetting == 0)  // Trade show mode
-        {
-            boxSize = new Vector3(400f, 400f, 400f);
-        }
+
         halfSize = boxSize * 0.5f;
         rb = GetComponent<Rigidbody>();
     }

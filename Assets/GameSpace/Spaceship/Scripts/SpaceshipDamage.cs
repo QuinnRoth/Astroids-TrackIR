@@ -18,6 +18,7 @@ public class SpaceshipDamage : MonoBehaviour
     //private SpaceshipDeathAnimation deathAnimation;
     public GameObject gameOverMenu;
     public GameObject HUD;
+    public GameObject TutorialUI;
 
     public DamageFlashEffect damageFlash;
     // private SpaceshipMovement spaceshipMovement; 
@@ -168,6 +169,9 @@ public class SpaceshipDamage : MonoBehaviour
         gameOverMenu.SetActive(true);
         if (HUD != null){
             HUD.SetActive(false);
+        }
+        if (TutorialUI != null){
+            TutorialUI.SetActive(false);
         }
         Destroy(gameObject, 1f);
     }

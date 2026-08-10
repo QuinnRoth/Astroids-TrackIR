@@ -143,7 +143,7 @@ public class AsteroidSpawner : MonoBehaviour
         for (int i = 0; i < x; i++)
         {
 
-            float half = 200f;
+            float half = 300f;
             float exclusionRadius = half / 2f;
             Vector3 randomPosition = RangeWithExclusionZone(half, exclusionRadius);
 
@@ -232,7 +232,7 @@ public class AsteroidSpawner : MonoBehaviour
             int randomSize = (int)UnityEngine.Random.Range(minAsteroidSize, maxAsteroidSize);
             float randomMoveSpeed = UnityEngine.Random.Range(minAsteroidMoveSpeed, maxAsteroidMoveSpeed);
             Vector3 randomRotDir = new Vector3(UnityEngine.Random.Range(-1.0f, 1.0f), UnityEngine.Random.Range(-1.0f, 1.0f), UnityEngine.Random.Range(-1.0f, 1.0f)).normalized;
-            float half = 200f;
+            float half = 300f;
             float exclusionRadius = half / 2f;
             Vector3 randomPosition = RangeWithExclusionZone(half, exclusionRadius);
 

@@ -304,7 +304,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c596d87cb13637d479b7bf2765edc930, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Boundary
-  boxSize: {x: 400, y: 400, z: 400}
+  boxSize: {x: 600, y: 600, z: 600}
   boundaryMode: 0
   bounceDamping: 0.9
 --- !u!82 &60033878
@@ -467,6 +467,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SpaceshipDamage
   gameOverMenu: {fileID: 1617551419}
   HUD: {fileID: 1580774559}
+  TutorialUI: {fileID: 1766867295}
   damageFlash: {fileID: 728335390}
   damageCooldown: 1
   damageBlinkDuration: 0.8
@@ -2291,7 +2292,7 @@ MonoBehaviour:
   asteroidSpawner: {fileID: 456537966}
   spawnTimerMin: 2
   reachSpawnTimerMin: 30
-  initSpawnTimer: 7
+  initSpawnTimer: 10
   initSpawnAmount: 8
 --- !u!4 &1151369644
 Transform:
@@ -2479,6 +2480,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SpaceshipDamage
   gameOverMenu: {fileID: 1617551419}
   HUD: {fileID: 0}
+  TutorialUI: {fileID: 0}
   damageFlash: {fileID: 728335390}
   damageCooldown: 1
   damageBlinkDuration: 0.8
