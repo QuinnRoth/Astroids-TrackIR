@@ -4,10 +4,11 @@ public class TrailColor : MonoBehaviour
 {
     void Awake()
     {
-        Color32 newColor = GetShipColor();
-        Color32 currentColor = gameObject.GetComponent<TrailRenderer>().GetComponent<Renderer>().material.color;
+        // No longer using this. Ship trail is now a static orange.
+        //Color32 newColor = GetShipColor();
+        //Color32 currentColor = gameObject.GetComponent<TrailRenderer>().GetComponent<Renderer>().material.color;
         
-        gameObject.GetComponent<TrailRenderer>().GetComponent<Renderer>().material.color = newColor;
+        //gameObject.GetComponent<TrailRenderer>().GetComponent<Renderer>().material.color = newColor;
     }
 
     Color32 GetShipColor()
