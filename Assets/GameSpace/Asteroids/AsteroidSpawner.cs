@@ -5,6 +5,7 @@ public class AsteroidSpawner : MonoBehaviour
     [Header("Spawn Position")]    // Parent of all asteroids spawned
     [SerializeField] private Transform parentOfAsteroids;
     [SerializeField] private Transform spaceshipTransform;
+    [SerializeField] private Camera mainCamera;
 
 
     [Header("Asteroid Types")]    // Different types of asteroids to spawn
@@ -91,7 +92,7 @@ public class AsteroidSpawner : MonoBehaviour
         }
     }
 
-    // Generates a random spawn position on a cube face while avoiding a sphere around the spaceship
+    // Generates a random spawn position on a cube face while avoiding the spaceship and camera view
     private Vector3 RangeWithExclusionZone(float half, float exclusionRadius)
     {
         Vector3 randomPosition;
@@ -132,9 +133,27 @@ public class AsteroidSpawner : MonoBehaviour
             if (gameModeSetting == 0)
                 randomPosition /= 2f;
         }
-        while ((randomPosition - spaceshipTransform.position).sqrMagnitude < exclusionRadius * exclusionRadius);
+        while (
+            (randomPosition - spaceshipTransform.position).sqrMagnitude < exclusionRadius * exclusionRadius ||
+            IsInsideCameraView(randomPosition)
+        );
 
         return randomPosition;
+    }
+
+    private bool IsInsideCameraView(Vector3 worldPosition)
+    {
+        if (!mainCamera)
+            return false;
+
+        Vector3 viewportPosition = mainCamera.WorldToViewportPoint(worldPosition);
+        if (viewportPosition.z <= 0f)
+            return false;
+
+        const float viewPadding = 0.05f;
+
+        return viewportPosition.x > viewPadding && viewportPosition.x < 1f - viewPadding &&
+               viewportPosition.y > viewPadding && viewportPosition.y < 1f - viewPadding;
     }
 
     // Spawns X amount of asteroids in the spawn radius

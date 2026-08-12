@@ -1236,6 +1236,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AsteroidSpawner2
   parentOfAsteroids: {fileID: 456537967}
   spaceshipTransform: {fileID: 60033868}
+  mainCamera: {fileID: 330585545}
   basicAsteroidPrefab: {fileID: 8123916397191553103, guid: eb756b8de8b16434198104bcd327b734, type: 3}
   healingAsteroidPrefab: {fileID: 2250062479149318844, guid: 562e9238a44e6974ea620344b446bc12, type: 3}
   bombAsteroidPrefab: {fileID: 5300011350229775121, guid: d7f7b5ebad8306541822aedf7360c344, type: 3}
