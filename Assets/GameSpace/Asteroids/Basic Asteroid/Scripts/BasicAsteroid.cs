@@ -67,9 +67,10 @@ public class BasicAsteroid : AsteroidClass
             Vector3 randomRotDir = new Vector3(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)).normalized;
             Vector3 leftPosition = new Vector3(this.transform.position.x - size, this.transform.position.y, this.transform.position.z);
             Vector3 rightPosition = new Vector3(this.transform.position.x + size, this.transform.position.y, this.transform.position.z);
+            Vector3 spawnPosition = i % 2 == 0 ? leftPosition : rightPosition;
 
             // Spawn child asteroid at the parent like we do in the asteroid spawner script, setting its parent to this objects parent
-            GameObject asteroid = Instantiate(asteroidPrefab, leftPosition, Quaternion.identity, this.transform.parent);
+            GameObject asteroid = Instantiate(asteroidPrefab, spawnPosition, Quaternion.identity, this.transform.parent);
 
             // Initialize child asteroid
             asteroid.GetComponent<AsteroidClass>().Init(newSize, randomMoveSpeed, randomMoveDir, randomRotDir);

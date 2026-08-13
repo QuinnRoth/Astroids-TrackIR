@@ -80,8 +80,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87b365ee1526411418f11b4037506757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GhostBoundary
-  renderDistance: 625
-  wrapLayers: 1
+  renderDistance: 900
+  wrapLayers: 2
 --- !u!1001 &7966003458002395168
 PrefabInstance:
   m_ObjectHideFlags: 0

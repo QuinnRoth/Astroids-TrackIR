@@ -7,52 +7,29 @@ public class GhostBoundary : MonoBehaviour
     public float renderDistance = 350f;
     public int wrapLayers = 1;
     
+    private Boundary boundary;
     private Vector3 boxSize;
     private List<GhostData> ghosts = new List<GhostData>();
 
     private class GhostData
     {
-        public GameObject obj;
+        public GameObject root;
         public Vector3Int offset;
     }
 
     void Start()
     {
-        Boundary boundary = FindAnyObjectByType<Boundary>();
+        boundary = GetComponent<Boundary>();
         if (boundary != null)
             boxSize = boundary.boxSize;
         else
-            boxSize = new Vector3(400f, 400f, 400f);
+            boxSize = new Vector3(600f, 600f, 600f);
 
         CreateGhosts();
     }
 
     void CreateGhosts()
     {
-        Mesh asteroidMesh = null;
-        Material asteroidMaterial = null;
-
-        MeshFilter[] childMF = GetComponentsInChildren<MeshFilter>();
-        MeshRenderer[] childMR = GetComponentsInChildren<MeshRenderer>();
-        
-        foreach (var filter in childMF)
-        {
-            if (filter.sharedMesh != null)
-            {
-                asteroidMesh = filter.sharedMesh;
-                break;
-            }
-        }
-        
-        foreach (var renderer in childMR)
-        {
-            if (renderer.sharedMaterial != null)
-            {
-                asteroidMaterial = renderer.sharedMaterial;
-                break;
-            }
-        }
-
         for (int x = -wrapLayers; x <= wrapLayers; x++)
         {
             for (int y = -wrapLayers; y <= wrapLayers; y++)
@@ -63,18 +40,42 @@ public class GhostBoundary : MonoBehaviour
                         continue;
 
                     Vector3Int offset = new Vector3Int(x, y, z);
-                    
-                    GameObject ghost = new GameObject($"Ghost_{x}_{y}_{z}");
-                    
-                    MeshFilter ghostMF = ghost.AddComponent<MeshFilter>();
-                    ghostMF.mesh = asteroidMesh;
+                    GameObject ghostRoot = new GameObject($"Ghost_{x}_{y}_{z}");
+                    GhostData ghostData = new GhostData { root = ghostRoot, offset = offset };
 
-                    MeshRenderer ghostMR = ghost.AddComponent<MeshRenderer>();
-                    ghostMR.material = new Material(asteroidMaterial);
-
-                    ghosts.Add(new GhostData { obj = ghost, offset = offset });
+                    CloneVisibleHierarchy(transform, ghostRoot.transform, ghostData);
+                    ghosts.Add(ghostData);
                 }
             } 
+        }
+    }
+
+    private void CloneVisibleHierarchy(Transform source, Transform targetParent, GhostData ghostData)
+    {
+        foreach (Transform sourceChild in source)
+        {
+            GameObject targetChild = new GameObject(sourceChild.name);
+            targetChild.transform.SetParent(targetParent, false);
+            targetChild.transform.localPosition = sourceChild.localPosition;
+            targetChild.transform.localRotation = sourceChild.localRotation;
+            targetChild.transform.localScale = sourceChild.localScale;
+
+            MeshFilter sourceMeshFilter = sourceChild.GetComponent<MeshFilter>();
+            MeshRenderer sourceMeshRenderer = sourceChild.GetComponent<MeshRenderer>();
+            if (sourceMeshFilter != null && sourceMeshFilter.sharedMesh != null &&
+                sourceMeshRenderer != null && sourceMeshRenderer.sharedMaterial != null)
+            {
+                MeshFilter targetMeshFilter = targetChild.AddComponent<MeshFilter>();
+                targetMeshFilter.sharedMesh = sourceMeshFilter.sharedMesh;
+
+                MeshRenderer targetMeshRenderer = targetChild.AddComponent<MeshRenderer>();
+                targetMeshRenderer.sharedMaterials = sourceMeshRenderer.sharedMaterials;
+
+                ghostData.root.layer = sourceChild.gameObject.layer;
+                targetChild.layer = sourceChild.gameObject.layer;
+            }
+
+            CloneVisibleHierarchy(sourceChild, targetChild.transform, ghostData);
         }
     }
 
@@ -150,33 +151,33 @@ public class GhostBoundary : MonoBehaviour
 
     void Update()
     {
-        Vector3 halfSize = boxSize * 0.5f;
+        if (boundary != null)
+            boxSize = boundary.boxSize;
+
         Vector3 pos = transform.position;
         Quaternion rot = transform.rotation;
         Vector3 scale = transform.localScale;
 
-        Quaternion rotationOffset = Quaternion.Euler(270, 0, 0);
-
         foreach (var ghost in ghosts)
         {
-            ghost.obj.transform.rotation = rot * rotationOffset;
-            ghost.obj.transform.localScale = scale;
-            ghost.obj.transform.position = pos + Vector3.Scale(ghost.offset, boxSize);
+            ghost.root.transform.rotation = rot;
+            ghost.root.transform.localScale = scale;
+            ghost.root.transform.position = pos + Vector3.Scale(ghost.offset, boxSize);
 
             bool visible = true;
 
             if (!IsGhostVisible(ghost))
                 visible = false;
 
-            ghost.obj.SetActive(visible);
+            ghost.root.SetActive(visible);
         }
     }
 
     void OnDestroy()
     {
         foreach (var ghost in ghosts)
-            if (ghost.obj != null)
-                Destroy(ghost.obj);
+            if (ghost.root != null)
+                Destroy(ghost.root);
         ghosts.Clear();
     }
 }

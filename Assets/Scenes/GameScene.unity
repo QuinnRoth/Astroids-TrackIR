@@ -304,7 +304,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c596d87cb13637d479b7bf2765edc930, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Boundary
-  boxSize: {x: 400, y: 400, z: 400}
+  boxSize: {x: 600, y: 600, z: 600}
   boundaryMode: 0
   bounceDamping: 0.9
 --- !u!82 &60033878
@@ -585,7 +585,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BoundaryWarningFade
   player: {fileID: 60033868}
   whiteOverlay: {fileID: 153945043}
-  boxSize: {x: 400, y: 400, z: 400}
+  boxSize: {x: 600, y: 600, z: 600}
   warningDistance: 20
   maxAlpha: 0.4
   fadeSpeed: 5
@@ -2480,8 +2480,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpaceshipDamage
   gameOverMenu: {fileID: 1617551419}
-  HUD: {fileID: 0}
-  TutorialUI: {fileID: 0}
+  HUD: {fileID: 1580774559}
+  TutorialUI: {fileID: 1766867295}
   damageFlash: {fileID: 728335390}
   damageCooldown: 1
   damageBlinkDuration: 0.8

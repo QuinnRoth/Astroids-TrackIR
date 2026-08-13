@@ -8,7 +8,7 @@ public class BoundaryWarningFade : MonoBehaviour
     public Image whiteOverlay;
 
     [Header("Boundary Settings")]
-    public Vector3 boxSize = new Vector3(500f, 500f, 500f);
+    public Vector3 boxSize;
     public float warningDistance = 20f;
 
     [Header("Fade Settings")]
@@ -23,6 +23,8 @@ public class BoundaryWarningFade : MonoBehaviour
         {
             boxSize = new Vector3(400f, 400f, 400f);
         }
+        
+        boxSize = player.GetComponent<Boundary>().boxSize;
         halfSize = boxSize * 0.5f;
     }
 

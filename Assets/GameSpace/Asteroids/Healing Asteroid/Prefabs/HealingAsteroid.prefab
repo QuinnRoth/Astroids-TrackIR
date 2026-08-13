@@ -85,7 +85,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c596d87cb13637d479b7bf2765edc930, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Boundary
-  boxSize: {x: 400, y: 400, z: 400}
+  boxSize: {x: 600, y: 600, z: 600}
   boundaryMode: 0
   bounceDamping: 0.9
 --- !u!114 &-5909780120932598358
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87b365ee1526411418f11b4037506757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GhostBoundary
-  renderDistance: 700
+  renderDistance: 900
   wrapLayers: 2
 --- !u!1001 &4576514874198958947
 PrefabInstance:

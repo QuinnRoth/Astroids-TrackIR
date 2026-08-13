@@ -37,7 +37,6 @@ public class AsteroidSpawner : MonoBehaviour
     // keeps a count of how many asteroids there are
     // incs in SpawnXAsteroids function and Basic Asteroid's Split function, decs in each Asteroid's Die function
     public static int asteroidCount = 0;
-    
     private int gameModeSetting;
 
     public void StartGame()
@@ -251,8 +250,8 @@ public class AsteroidSpawner : MonoBehaviour
             int randomSize = (int)UnityEngine.Random.Range(minAsteroidSize, maxAsteroidSize);
             float randomMoveSpeed = UnityEngine.Random.Range(minAsteroidMoveSpeed, maxAsteroidMoveSpeed);
             Vector3 randomRotDir = new Vector3(UnityEngine.Random.Range(-1.0f, 1.0f), UnityEngine.Random.Range(-1.0f, 1.0f), UnityEngine.Random.Range(-1.0f, 1.0f)).normalized;
-            float half = 200f;
-            float exclusionRadius = half / 2f;
+            float half = 300f; // I beleive this should be set to half the size of the border box
+            float exclusionRadius = half;
             Vector3 randomPosition = RangeWithExclusionZone(half, exclusionRadius);
 
             // Generate a random number [0-20) and use that number for chance calculations
