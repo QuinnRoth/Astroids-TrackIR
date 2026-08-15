@@ -489,3 +489,21 @@
     padding-bottom: 0;
     padding-left: 10px;
 }
+
+.presets {
+    flex-grow: 1;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    height: 29%;
+    width: 31%;
+    align-content: center;
+    justify-content: center;
+    margin-right: 9px;
+    margin-left: 9px;
+}
+
+.presetRightColor {
+}
+
+.presetLeftColor {
+}
