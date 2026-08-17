@@ -866,6 +866,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MainMenuUI
   spaceshipContainer: {fileID: 926992810}
+  cursor: {fileID: 1339164338}
   mainMenuMusic: {fileID: 8300000, guid: 0e7ceaa75d5a5a14da704e54b681ef75, type: 3}
   mainMenuMusicVolume: 0.5
   mainMenuDocument: {fileID: 987804716}

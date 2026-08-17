@@ -15,21 +15,15 @@ public class ColorMenu : MonoBehaviour
     [SerializeField] private GameObject mainMenu;
 
     private VisualElement root;
-    private VisualElement rootColors;
-    private VisualElement rootPresets;
-    private VisualElement MenuContainer;
 
     private VisualElement shipPreview;
     private VisualElement astPreview;
-    private VisualElement presetLeftColor;
-    private VisualElement presetRightColor;
 
     private Button backButton;
     private Button doneButton;
 
     private readonly List<Button> shipSwatches = new();
     private readonly List<Button> astSwatches = new();
-    private readonly List<Button> presets = new();
 
     // PlayerPrefs keys we will write
     private const string ShipPrefix = "ShipColor";
@@ -82,9 +76,7 @@ public class ColorMenu : MonoBehaviour
     {
         if (uiDocument == null) uiDocument = GetComponent<UIDocument>();
         root = uiDocument.rootVisualElement;
-        rootColors = root.Q<VisualElement>("rootColors");
-        MenuContainer = root.Q<VisualElement>("MenuContainer");
-        rootPresets = root.Q<VisualElement>("rootPresets");
+
         shipPreview = root.Q<VisualElement>("shipPreview");
         astPreview = root.Q<VisualElement>("astPreview");
 
@@ -94,21 +86,16 @@ public class ColorMenu : MonoBehaviour
         // Gather swatch buttons by class
         shipSwatches.Clear();
         astSwatches.Clear();
-        presets.Clear();
-        foreach (var b in rootColors.Query<Button>().ToList())
+
+        foreach (var b in root.Query<Button>().ToList())
         {
             if (b.ClassListContains("ShipSwatch")) shipSwatches.Add(b);
             if (b.ClassListContains("AstSwatch")) astSwatches.Add(b);
-            
-        }
-        foreach (var b in rootPresets.Query<Button>().ToList())
-        {
-            if (b.ClassListContains("presets")) presets.Add(b);
         }
 
         SetupSwatches(shipSwatches, isShip: true);
         SetupSwatches(astSwatches, isShip: false);
-        SetupPresets(presets);
+
 
         currentShip = LoadColor32(ShipPrefix, defaultColor: new Color32(255, 166, 0, 255));
         currentAst = LoadColor32(AstPrefixA, defaultColor: new Color32(100, 182, 238, 255));
@@ -129,33 +116,6 @@ public class ColorMenu : MonoBehaviour
         if (doneButton != null) doneButton.clicked -= OnDone;
     }
 
-    private void SetupPresets(List<Button> presets)
-    {
-        int count = Mathf.Min(presets.Count, PresetColors.Length / 2);
-
-        for (int i = 0; i < count; i++)
-        {
-            int idx = i * 2;
-            var btn = presets[i];
-
-            var left = btn.Q<VisualElement>("leftColor");
-            var right = btn.Q<VisualElement>("rightColor");
-
-            if (left != null)
-                left.style.backgroundColor = new StyleColor(PresetColors[idx]);
-            if (right != null)
-                right.style.backgroundColor = new StyleColor(PresetColors[idx + 1]);
-
-            btn.clicked += () =>
-            {
-                currentShip = PresetColors[idx];
-                currentAst = PresetColors[idx + 1];
-
-                UpdatePreview(shipPreview, currentShip);
-                UpdatePreview(astPreview, currentAst);
-            };
-        }
-    }
     private void SetupSwatches(List<Button> swatches, bool isShip)
     {
         int count = Mathf.Min(swatches.Count, Palette.Length);
