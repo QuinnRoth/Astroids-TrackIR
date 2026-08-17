@@ -19,6 +19,10 @@ public class ApplySavedColors : MonoBehaviour
     [Tooltip("If empty, script will auto-find renderers under Target (or this GameObject).")]
     [SerializeField] private List<Renderer> renderers = new List<Renderer>();
 
+    [Header("Renderer Filtering")]
+    [Tooltip("Ignore sprite renderers so the ship's child sprite object is not recolored.")]
+    [SerializeField] private bool ignoreSpriteRenderers = true;
+
     [Header("Material Filtering")]
     [Tooltip("Only apply to materials whose name contains this text. Leave empty to apply to all materials on these renderers.")]
     [SerializeField] private string materialNameContains = "";
@@ -92,7 +96,10 @@ public class ApplySavedColors : MonoBehaviour
         foreach (var r in renderers)
         {
             if (r == null) continue;
-
+            
+            if (ignoreSpriteRenderers && r is SpriteRenderer)
+                continue;
+                
             var mats = useSharedMaterial ? r.sharedMaterials : r.materials;
             if (mats == null) continue;
 
