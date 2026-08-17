@@ -58,7 +58,7 @@ public class ColorMenu : MonoBehaviour
         new Color32(100, 182, 238, 255), // bright blue
         new Color32(255, 166,   0, 255), // orange
         // Active IO themed
-        new Color32(75, 15, 18, 255), // dark red
+        new Color32(197, 40, 46, 255), // red
         new Color32(255, 255, 255, 255), // white
         // TrackIR/Motive themed
         new Color32(255, 255, 255, 255), // white
@@ -66,12 +66,12 @@ public class ColorMenu : MonoBehaviour
         // White
         new Color32(255, 255, 255, 255), // white
         new Color32(255, 255, 255, 255), // white
-        // 
-        new Color32(255,  80, 200, 255), // pink
-        new Color32(255,  90,  70, 255), // red-ish\
-        //
-        new Color32(255,  80, 200, 255), // pink
-        new Color32(255,  90,  70, 255), // red-ish
+        // OG Asteroids Arcade themed
+        new Color32(255,  255,  0, 255), // yellow
+        new Color32(0,  247, 247, 255), // cyan
+        // Tron?
+        new Color32(140,  217, 255, 255), // light blue
+        new Color32(255,  122,  33, 255), // orange
 
     };
 
