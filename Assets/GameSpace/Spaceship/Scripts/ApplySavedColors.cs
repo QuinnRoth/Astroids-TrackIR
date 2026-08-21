@@ -34,6 +34,9 @@ public class ApplySavedColors : MonoBehaviour
     [SerializeField] private bool applySpaceshipColor = false;
     [SerializeField] private bool applyAsteroidColor = false;
 
+    private Color defaultSpaceshipColor = new Color32(100, 182, 238, 255); // bright blue
+    private Color defaultAsteroidColor = new Color32(255, 166,   0, 255); // orange
+
     // Keys we support (new + old)
     private const string ShipPrefix = "ShipColor";
 
@@ -71,13 +74,13 @@ public class ApplySavedColors : MonoBehaviour
 
         if (applySpaceshipColor)
         {
-            var shipColor = LoadColorAny(new[] { ShipPrefix }, Color.white);
+            var shipColor = LoadColorAny(new[] { ShipPrefix }, defaultSpaceshipColor);
             ApplyColorToRenderers(shipColor);
         }
 
         if (applyAsteroidColor)
         {
-            var astColor = LoadColorAny(AsteroidPrefixes, Color.white);
+            var astColor = LoadColorAny(AsteroidPrefixes, defaultAsteroidColor);
             ApplyColorToRenderers(astColor);
         }
     }
