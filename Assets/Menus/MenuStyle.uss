@@ -495,23 +495,28 @@
     flex-wrap: nowrap;
     flex-direction: column;
     height: 29%;
-    width: 31%;
+    width: 32%;
     align-content: center;
     justify-content: center;
     margin-right: 9px;
     margin-left: 9px;
-    aspect-ratio: auto;
+    aspect-ratio: 1;
+    background-color: rgba(0, 0, 0, 0);
 }
 
 .presetRightColor {
-    border-left-color: rgba(0, 0, 0, 0);
-    border-right-color: rgba(0, 0, 0, 0);
-    border-top-color: rgba(0, 0, 0, 0);
-    border-bottom-color: rgba(0, 0, 0, 0);
+    border-left-color: rgba(110, 220, 255, 0.85);
+    border-right-color: rgba(110, 220, 255, 0.85);
+    border-top-color: rgba(110, 220, 255, 0.85);
+    border-bottom-color: rgba(110, 220, 255, 0.85);
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     border-bottom-right-radius: 4px;
     border-bottom-left-radius: 4px;
+    border-top-width: 0;
+    border-right-width: 2px;
+    border-bottom-width: 2px;
+    border-left-width: 2px;
 }
 
 .presetLeftColor {
@@ -519,6 +524,14 @@
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
     border-bottom-right-radius: 0;
+    border-top-width: 2px;
+    border-right-width: 2px;
+    border-bottom-width: 0;
+    border-left-width: 2px;
+    border-left-color: rgba(110, 220, 255, 0.85);
+    border-right-color: rgba(110, 220, 255, 0.85);
+    border-top-color: rgba(110, 220, 255, 0.85);
+    border-bottom-color: rgba(110, 220, 255, 0.85);
 }
 
 .quickPresets {
@@ -532,4 +545,14 @@
     border-bottom-right-radius: 6px;
     flex-shrink: 0;
     flex-grow: 1;
+}
+
+.presetTitles {
+    color: rgb(230, 245, 255);
+    -unity-text-outline-color: rgba(110, 220, 255, 0.9);
+    -unity-text-outline-width: 0;
+    font-size: 30px;
+    text-shadow: 1.1px 0.9px 20.1px rgba(110, 220, 255, 0.85);
+    -unity-font-style: bold;
+    -unity-font-definition: url("project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&guid=4665f3a764435ab458073afb5589a827&type=3#Spaceport_2006");
 }
