@@ -24,6 +24,7 @@ public class SettingsMenu : MonoBehaviour
     private Label yawScale;
     private Button yawDec, yawInc;
     private Button fullScreen;
+    private Button quickStart;
     private Button pov;
     private Button backButton;
     private Button defaultsButton;
@@ -51,7 +52,7 @@ public class SettingsMenu : MonoBehaviour
         yawScale = root.Q<Label>("yawScale");
         yawDec = root.Q<Button>("yawDec");
         yawInc = root.Q<Button>("yawInc");
-
+        quickStart = root.Q<Button>("quickStart");
         fullScreen = root.Q<Button>("fullScreen");
         pov = root.Q<Button>("pointofView");
 
@@ -79,6 +80,7 @@ public class SettingsMenu : MonoBehaviour
         yawDec.clicked += DecYaw;
         yawInc.clicked += IncYaw;
 
+        quickStart.clicked += QSToggle;
         fullScreen.clicked += FSToggle;
         pov.clicked += PoVToggle;
 
@@ -115,6 +117,16 @@ public class SettingsMenu : MonoBehaviour
             yawScale.text = PlayerPrefs.GetFloat("yawScl").ToString();
         else
             yawScale.text = "1.5";
+
+        if (PlayerPrefs.HasKey("quickStart"))
+        {
+            if (PlayerPrefs.GetInt("quickStart") == 1)
+                quickStart.text = "ON";
+            else
+                quickStart.text = "OFF";
+        }
+        else
+            quickStart.text = "OFF";
 
         if (PlayerPrefs.HasKey("fullScrn"))
         {
@@ -163,6 +175,7 @@ public class SettingsMenu : MonoBehaviour
         PlayerPrefs.SetFloat("ptchScl", float.Parse(pitchScale.text));
         PlayerPrefs.SetFloat("rollScl", float.Parse(rollScale.text));
         PlayerPrefs.SetFloat("yawScl", float.Parse(yawScale.text));
+        PlayerPrefs.SetInt("quickStart", quickStart.text == "ON" ? 1 : 0);
         PlayerPrefs.SetInt("fullScrn", fullScreen.text == "ON" ? 1 : 0);
         PlayerPrefs.SetInt("povFrst", pov.text == "First" ? 1 : 0);
         PlayerPrefs.Save();
@@ -178,6 +191,7 @@ public class SettingsMenu : MonoBehaviour
         yawDec.clicked -= DecYaw;
         yawInc.clicked -= IncYaw;
 
+        quickStart.clicked -= QSToggle;
         fullScreen.clicked -= FSToggle;
         pov.clicked -= PoVToggle;
 
@@ -278,6 +292,14 @@ public class SettingsMenu : MonoBehaviour
         float value = float.Parse(yawScale.text);
         if(value < 3.0f)
             yawScale.text = (value + 0.1f).ToString();
+    }
+
+    private void QSToggle()
+    {
+        if(quickStart.text == "OFF")
+            quickStart.text = "ON";
+        else
+            quickStart.text = "OFF";
     }
 
     private void FSToggle()

@@ -137,6 +137,13 @@ public class GameModeMenu : MonoBehaviour
     private void MenuBack()
     {
         gameModeMenu.SetActive(false);
-        presetMenu.SetActive(true);
+        if(PlayerPrefs.GetInt("quickStart", 0) == 1)
+        {
+            presetMenu.SetActive(true);
+        }
+        else
+        {
+            mainMenu.SetActive(true);
+        }
     }
 }
