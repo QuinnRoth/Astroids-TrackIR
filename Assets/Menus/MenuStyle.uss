@@ -502,6 +502,7 @@
     margin-left: 9px;
     aspect-ratio: 1;
     background-color: rgba(0, 0, 0, 0);
+    transition-duration: 0.5s;
 }
 
 .presetRightColor {
@@ -536,23 +537,45 @@
 
 .quickPresets {
     background-color: rgba(240, 250, 255, 0);
-    height: 100%;
-    width: 3%;
-    aspect-ratio: 1;
+    height: auto;
+    width: 13%;
+    aspect-ratio: 0.9;
     border-bottom-left-radius: 6px;
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
     border-bottom-right-radius: 6px;
     flex-shrink: 0;
-    flex-grow: 1;
+    flex-grow: 0;
+    border-right-width: 0;
+    border-left-width: 0;
+    margin-right: 10px;
+    margin-left: 10px;
 }
 
 .presetTitles {
     color: rgb(230, 245, 255);
     -unity-text-outline-color: rgba(110, 220, 255, 0.9);
     -unity-text-outline-width: 0;
-    font-size: 30px;
+    font-size: 23px;
     text-shadow: 1.1px 0.9px 20.1px rgba(110, 220, 255, 0.85);
     -unity-font-style: bold;
     -unity-font-definition: url("project://database/Assets/Fonts/Spaceport_2006.otf?fileID=12800000&guid=4665f3a764435ab458073afb5589a827&type=3#Spaceport_2006");
+}
+
+
+
+.quickPresets:hover {
+    flex-grow: 0;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    height: auto;
+    width: 18%;
+    align-content: center;
+    justify-content: center;
+    margin-right: 9px;
+    margin-left: 9px;
+    aspect-ratio: 1;
+    background-color: rgba(0, 0, 0, 0);
+    transition-duration: 0.5s;
+    flex-shrink: 0;
 }
