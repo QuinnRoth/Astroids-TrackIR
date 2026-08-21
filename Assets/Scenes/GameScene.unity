@@ -2530,8 +2530,8 @@ MonoBehaviour:
   legacyHudCanvasRoot: {fileID: 1780026797}
   maxLives: 3
   zeroPad: 6
-  heatIncrement: 15
-  cooldownRate: 20
+  heatIncrement: 10
+  cooldownRate: 30
 --- !u!114 &1580774561
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -19,8 +19,8 @@ public class HUDUIController : MonoBehaviour
     [SerializeField] private int zeroPad = 6;
 
     [Header("Heat")]
-    [SerializeField] private float heatIncrement = 10.0f;
-    [SerializeField] private float cooldownRate = 20.0f;
+    [SerializeField] private float heatIncrement = 7.0f;
+    [SerializeField] private float cooldownRate = 25.0f;
     private Label scoreLabel;
     private VisualElement healthSegmentsRoot;
     private VisualElement[] segments;

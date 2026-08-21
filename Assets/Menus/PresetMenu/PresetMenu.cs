@@ -78,8 +78,6 @@ public class PresetMenu : MonoBehaviour
 
     private void OnEnable()
     {
-        CursorInput.Instance?.SetCursorVisible(false);
-
         if (uiDocument == null) uiDocument = GetComponent<UIDocument>();
         root = uiDocument.rootVisualElement;
         MenuContainer = root.Q<VisualElement>("MenuContainer");

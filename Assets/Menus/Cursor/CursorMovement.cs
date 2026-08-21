@@ -5,7 +5,7 @@ public class CursorMovement : MonoBehaviour
 {
     public RectTransform cursorTransform;
 
-    private const float CursorSpeed = 2200f;
+    private const float CursorSpeed = 1400f;
     private const float DeadZone = 0.05f;
 
     private Vector2 cursorPos;
