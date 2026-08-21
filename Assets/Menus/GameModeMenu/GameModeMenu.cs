@@ -11,6 +11,7 @@ public class GameModeMenu : MonoBehaviour
 
     public GameObject gameModeMenu;
     public GameObject mainMenu;
+    public GameObject presetMenu;
 
 
     private Button tradeShowButton;
@@ -136,6 +137,6 @@ public class GameModeMenu : MonoBehaviour
     private void MenuBack()
     {
         gameModeMenu.SetActive(false);
-        mainMenu.SetActive(true);
+        presetMenu.SetActive(true);
     }
 }

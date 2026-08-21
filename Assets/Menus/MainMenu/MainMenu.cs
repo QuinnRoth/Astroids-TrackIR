@@ -20,6 +20,7 @@ public class MainMenu : MonoBehaviour
     public GameObject gameModeMenu;
     public GameObject settingsMenu;
     public GameObject colorsMenu;
+    public GameObject presetMenu;
     public GameObject leaderboardMenu;
 
     [Header("Main Menu Buttons")]
@@ -157,7 +158,7 @@ public class MainMenu : MonoBehaviour
     private void PlayGame()
     {
         mainMenu.SetActive(false);
-        gameModeMenu.SetActive(true);
+        presetMenu.SetActive(true);
     }
 
     private void DisplaySettingMenu()
