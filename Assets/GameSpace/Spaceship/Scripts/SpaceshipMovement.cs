@@ -35,7 +35,7 @@ public class SpaceshipMovement : MonoBehaviour
     public float LinearDamping = 2.0f;
     public float AngularDamping = 2.0f;
 
-    public static float ThrustScaler = 30.0f;
+    public static float ThrustScaler = 40.0f;
     public static float TIRThrustScaler = 120.0f; 
     public static float PitchScaler = 1.2f;
     public static float YawScaler = 1.5f;

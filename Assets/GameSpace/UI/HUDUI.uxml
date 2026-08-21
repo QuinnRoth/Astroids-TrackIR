@@ -22,8 +22,8 @@
     <ui:VisualElement name="Gauge" class="tachometer gauges">
         <ui:VisualElement class="tachometer-frame gaugeFrame" style="background-color: rgba(2, 8, 16, 0);"/>
         <ui:VisualElement name="VisualElement" class="tachometer-glow" style="border-top-left-radius: 0; border-top-right-radius: 0; border-bottom-right-radius: 0; border-bottom-left-radius: 0; bottom: 3px; left: 4px; right: 0; top: 0; height: auto; overflow: hidden; flex-direction: column-reverse;">
-            <ui:VisualElement name="GaugeFill" class="gauge-fill" style="flex-grow: 0; height: 100%; overflow: hidden; flex-wrap: nowrap; flex-direction: column-reverse; align-content: flex-start;">
-                <ui:VisualElement class="gauge-fill-content" style="flex-grow: 1; background-color: rgba(2, 8, 16, 0); height: 206px; flex-shrink: 0; position: relative; width: auto; overflow: hidden; -unity-background-scale-mode: stretch-to-fill; justify-content: flex-end; flex-wrap: nowrap; flex-basis: auto;">
+            <ui:VisualElement name="GaugeFill" class="gauge-fill" style="flex-grow: 0; height: 100%; overflow: hidden; flex-wrap: nowrap; flex-direction: column-reverse; align-content: flex-start; max-height: 100%;">
+                <ui:VisualElement class="gauge-fill-content" style="flex-grow: 0; background-color: rgba(2, 8, 16, 0); height: 207px; flex-shrink: 0; position: relative; width: auto; overflow: hidden; -unity-background-scale-mode: stretch-to-fill; justify-content: flex-end; flex-wrap: nowrap; flex-basis: auto;">
                     <ui:VisualElement name="Fill" class="tachometer-fill speed-fill" style="left: 0; right: 0; bottom: 0; background-color: rgba(110, 220, 255, 0.85); border-top-left-radius: 0; border-top-right-radius: 0; border-bottom-right-radius: 0; border-bottom-left-radius: 0; opacity: 1; overflow: visible; visibility: hidden; display: none;"/>
                     <ui:VisualElement name="VisualElement" class="fillGap"/>
                     <ui:VisualElement name="VisualElement" class="fillGap"/>
