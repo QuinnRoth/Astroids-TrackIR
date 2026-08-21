@@ -63,8 +63,8 @@ public class ColorMenu : MonoBehaviour
         // TrackIR/Motive themed
         new Color32(255, 255, 255, 255), // white
         new Color32(255, 166,   0, 255), // orange
-        // White
-        new Color32(255, 255, 255, 255), // white
+        // Planar themed
+        new Color32(46, 84, 255, 255), // blue
         new Color32(255, 255, 255, 255), // white
         // OG Asteroids Arcade themed
         new Color32(255,  255,  0, 255), // yellow
