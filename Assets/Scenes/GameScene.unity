@@ -268,7 +268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faa67814509b9a3458aa9ed9412f0d64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpaceshipMovement
-  MaxSpeed: 30
+  MaxSpeed: 60
   LinearDamping: 1
   AngularDamping: 1
   DirectRotationSpeed: 120
