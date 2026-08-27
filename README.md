@@ -121,7 +121,7 @@ This project is built in **Unity** and uses **TrackIR** hardware for the intende
    
 3. Unzip the folder
    
-4. Run the .exe file titled `TrackIR3dAsteroids.exe`
+4. Run the .exe file titled `AsteroidsIR.exe`
 
 ### Opening the Project in Unity
 
