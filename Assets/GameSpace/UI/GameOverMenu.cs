@@ -53,8 +53,6 @@ public class GameOverMenu : MonoBehaviour
     void OnEnable()
     {
 
-        CursorInput.Instance?.SetCursorVisible(false);
-
         VisualElement root = gameOverMenuDocument.rootVisualElement;
 
         scoreField = root.Q<Label>("ScoreField");

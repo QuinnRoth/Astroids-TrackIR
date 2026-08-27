@@ -158,14 +158,9 @@ public class MainMenu : MonoBehaviour
     private void PlayGame()
     {
         mainMenu.SetActive(false);
-        if(PlayerPrefs.GetInt("quickStart", 0) == 1)
-        {
-            presetMenu.SetActive(true);
-        }
-        else
-        {
-            gameModeMenu.SetActive(true);
-        }
+        
+        gameModeMenu.SetActive(true);
+        
     }
 
     private void DisplaySettingMenu()

@@ -97,7 +97,7 @@ public class TutorialManager : MonoBehaviour
         {
             "Control Thrust:\nLean closer (" + thrustInput.GetBindingDisplayString(2) + ") or farther (" + thrustInput.GetBindingDisplayString(1) + ") from the screen to move forward or backward.",
             "Steer with Your Head:\nLook Left (" + yawInput.GetBindingDisplayString(1) + ") / Right (" + yawInput.GetBindingDisplayString(2) + ") to control Yaw. \nLook Up (" + pitchInput.GetBindingDisplayString(1) + ") / Down (" + pitchInput.GetBindingDisplayString(2) + ") to control Pitch.",
-            "Destroy Astroids by pressing " + shootAction.GetBindingDisplayString(0) + " to shoot.",
+            "Destroy Astroids by pressing " + shootAction.GetBindingDisplayString(0) + " to shoot.\n If the heat meter is full, the lasers will be disabled until they cool down.",
             "Bomb asteroids will explode when hit.\nHealing asteroids will drop a health pack when hit.",
             "Tutorial complete! Game Start!"
         };
@@ -142,7 +142,7 @@ public class TutorialManager : MonoBehaviour
                 break;
 
             case 1:
-                tutorialProgressBar.value = GetDegreesRotated() / 360f;
+                tutorialProgressBar.value = GetDegreesRotated() / 180f;
                 if (tutorialProgressBar.value >= 1f)
                 {
                     AdvanceTutorialStep();

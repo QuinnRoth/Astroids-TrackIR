@@ -119,23 +119,6 @@ public class GameModeMenu : MonoBehaviour
     private void TradeShowMode()
     {
         gameModeSetting = 0;        // 0 for trade show
-        SceneManager.LoadScene("GameScene");
-    }
-    
-    private void EndlessMode()
-    {
-        gameModeSetting = 1;        // 1 for endless
-        SceneManager.LoadScene("GameScene");
-    }
-
-    private void WaveMode()
-    {
-        gameModeSetting = 2;        // 2 for waves
-        SceneManager.LoadScene("GameScene");
-    }
-
-    private void MenuBack()
-    {
         gameModeMenu.SetActive(false);
         if(PlayerPrefs.GetInt("quickStart", 0) == 1)
         {
@@ -143,7 +126,42 @@ public class GameModeMenu : MonoBehaviour
         }
         else
         {
-            mainMenu.SetActive(true);
+            SceneManager.LoadScene("GameScene");
         }
+    }
+    
+    private void EndlessMode()
+    {
+        gameModeSetting = 1;        // 1 for endless
+        gameModeMenu.SetActive(false);
+        if(PlayerPrefs.GetInt("quickStart", 0) == 1)
+        {
+            presetMenu.SetActive(true);
+        }
+        else
+        {
+            SceneManager.LoadScene("GameScene");
+        }
+    }
+
+    private void WaveMode()
+    {
+        gameModeSetting = 2;        // 2 for waves
+        gameModeMenu.SetActive(false);
+        if(PlayerPrefs.GetInt("quickStart", 0) == 1)
+        {
+            presetMenu.SetActive(true);
+        }
+        else
+        {
+            SceneManager.LoadScene("GameScene");
+        }
+    }
+
+    private void MenuBack()
+    {
+        gameModeMenu.SetActive(false);
+        mainMenu.SetActive(true);
+        
     }
 }

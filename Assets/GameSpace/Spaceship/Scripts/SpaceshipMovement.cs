@@ -31,7 +31,7 @@ public class SpaceshipMovement : MonoBehaviour
     public float speed { get; private set; }
 
     // Spaceship feel values
-    public float MaxSpeed = 350.0f;
+    public float MaxSpeed = 700.0f;
     public float LinearDamping = 2.0f;
     public float AngularDamping = 2.0f;
 

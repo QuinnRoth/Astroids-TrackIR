@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
+
 
 public class PresetMenu : MonoBehaviour
 {
@@ -146,8 +148,11 @@ public class PresetMenu : MonoBehaviour
 
                 // Tell all ApplySavedColors instances to refresh right now
                 ApplySavedColors.NotifyColorsChanged();
+                // Start Game on color select
+                if (presetMenu != null) presetMenu.SetActive(false);
+                SceneManager.LoadScene("GameScene");
 
-
+                spaceshipContainer.GetComponent<SpaceshipMainMenuButtonHover>().EnableSpaceshipModel();
             };
         }
     }
@@ -163,8 +168,8 @@ public class PresetMenu : MonoBehaviour
     {
         // Just close without saving
         if (presetMenu != null) presetMenu.SetActive(false);
-        if (mainMenu != null) mainMenu.SetActive(true);
-        
+        if (gameModeMenu != null) gameModeMenu.SetActive(true);
+
         spaceshipContainer.GetComponent<SpaceshipMainMenuButtonHover>().EnableSpaceshipModel();
     }
 
@@ -174,9 +179,10 @@ public class PresetMenu : MonoBehaviour
 
         // Close menu
         if (presetMenu != null) presetMenu.SetActive(false);
-        if (gameModeMenu != null) gameModeMenu.SetActive(true);
 
         spaceshipContainer.GetComponent<SpaceshipMainMenuButtonHover>().EnableSpaceshipModel();
+
+        SceneManager.LoadScene("GameScene");
     }
 
     private static void SaveColor32(string prefix, Color32 c)
